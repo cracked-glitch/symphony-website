@@ -100,41 +100,15 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Case Study */}
+      {/* How We're Different */}
       <Section bg="bg-bg-tertiary">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">How We Work: An Example</h2>
-          <p className="text-lg text-text-secondary">The Excel Sports Engagement</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card hover={false}>
-            <h3 className="text-sm font-semibold text-error mb-3">Challenge</h3>
-            <p className="text-text-secondary text-sm">Manual scouting report compilation, data entry, and analysis consuming 40+ hours per week across the team.</p>
-          </Card>
-          <Card hover={false}>
-            <h3 className="text-sm font-semibold text-warning mb-3">Approach</h3>
-            <p className="text-text-secondary text-sm">Custom AI agents for report synthesis, automated data pipelines, and integrated dashboards built on existing tools.</p>
-          </Card>
-          <Card hover={false}>
-            <h3 className="text-sm font-semibold text-success mb-3">Results</h3>
-            <ul className="space-y-2 text-text-secondary text-sm">
-              <li>40+ hours/week automated</li>
-              <li>ROI achieved in 12 weeks</li>
-              <li>Workflow time reduced by 65%</li>
-            </ul>
-          </Card>
-        </div>
-      </Section>
-
-      {/* Trust Signals */}
-      <Section>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Reliability &amp; Security</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">How We&rsquo;re Different</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { title: 'SOC 2 Aligned', desc: 'Security practices aligned with SOC 2 standards. Your data stays protected with enterprise-grade controls.' },
-            { title: 'Enterprise-Grade Compliance', desc: 'HIPAA-ready, GDPR-compliant architecture. Built for industries where compliance is not optional.' },
+            { title: 'Speed Over Bureaucracy', desc: 'We move fast. Weeks to a working system, not months of planning documents. You get results while others are still scoping.' },
+            { title: 'Security by Default', desc: 'Your data stays in your environment. NDAs are standard. We build with compliance in mind from day one.' },
             { title: 'White-Glove Onboarding', desc: 'Dedicated support through launch and beyond. Your success is our success.' },
           ].map((item) => (
             <Card key={item.title} hover={false}>

@@ -23,8 +23,8 @@ export default function Home() {
               <Button href="/services" variant="ghost" size="lg">Explore Services</Button>
             </div>
             <div className="flex flex-wrap gap-3">
-              <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>} text="Enterprise-Grade Security" />
-              <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} text="SOC 2 Aligned" />
+              <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>} text="Production-Grade Security" />
+              <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} text="Built for Speed" />
               <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>} text="White-Glove Onboarding" />
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function Home() {
             <ul className="space-y-3 text-text-secondary">
               <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Proven frameworks. Measured outcomes.</li>
               <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Data architecture. Process mapping. Execution discipline.</li>
-              <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> 90-day engagement to first measurable win</li>
+              <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Weeks to first measurable win, not months</li>
               <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Outcomes tied to your business metrics</li>
             </ul>
           </div>
@@ -62,7 +62,7 @@ export default function Home() {
       <Section>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Three Ways We Drive Measurable Impact</h2>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto">Every engagement is scoped to deliver ROI within 90 days. No retainers without results.</p>
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">Every engagement is scoped to deliver ROI fast. No retainers without results.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card icon={<svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342" /></svg>}>
@@ -83,17 +83,16 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Social Proof */}
+      {/* What We Deliver */}
       <Section bg="bg-bg-tertiary">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Trusted by Innovative Teams</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">What We Deliver</h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {[
-            { metric: '40+', label: 'Hours/week automated' },
-            { metric: '90-day', label: 'ROI guarantee' },
-            { metric: '12+', label: 'SMBs served' },
-            { metric: '4-person', label: 'Team, enterprise results' },
+            { metric: 'Weeks', label: 'From kickoff to working system' },
+            { metric: 'Custom', label: 'Built on your data, your rules' },
+            { metric: 'Measurable', label: 'ROI you can track from day one' },
           ].map((item) => (
             <div key={item.label} className="text-center">
               <div className="text-3xl md:text-4xl font-bold font-heading text-purple mb-2">{item.metric}</div>

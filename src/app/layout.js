@@ -26,7 +26,7 @@ export const metadata = {
     default: 'Symphony AI - Custom AI Agents & Automation for Elite Teams',
     template: '%s | Symphony AI',
   },
-  description: 'Custom AI agents and workflow automation that deliver measurable results. 40+ hours/week automated. 90-day ROI guarantee.',
+  description: 'Custom AI agents and workflow automation that deliver measurable results. Built fast. No hype.',
   openGraph: {
     type: 'website',
     locale: 'en_US',

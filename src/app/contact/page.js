@@ -9,15 +9,15 @@ export const metadata = {
 };
 
 const faqItems = [
-  { question: 'How long is a typical engagement?', answer: 'Most engagements run 8-16 weeks, depending on scope. We provide a detailed timeline after the discovery call.' },
-  { question: "What's included in the discovery call?", answer: 'We map your current processes, identify bottlenecks, and propose 2-3 quick wins you could achieve in 90 days.' },
+  { question: 'How long is a typical engagement?', answer: 'We move fast. Most engagements deliver a working system in weeks, not months. We provide a detailed timeline after the discovery call.' },
+  { question: "What's included in the discovery call?", answer: 'We map your current processes, identify bottlenecks, and propose 2-3 quick wins you could start on immediately.' },
   { question: 'Do you offer retainers?', answer: "Not until you see results. We tie our fees to measurable outcomes. Once you see ROI, we can discuss ongoing support." },
   { question: "What if we're not ready for a full engagement?", answer: "Start with an AI Literacy Workshop. It's the fastest way to get your team up to speed." },
-  { question: 'How do you handle data security?', answer: 'SOC 2 aligned, HIPAA-ready architecture. All data stays in your environment. We sign NDAs as standard.' },
+  { question: 'How do you handle data security?', answer: 'All data stays in your environment. We sign NDAs as standard and build with compliance in mind from day one.' },
   { question: 'Can you integrate with our existing tools?', answer: "Yes. We work with most modern data platforms, APIs, and internal systems. We'll assess compatibility during discovery." },
   { question: 'What about custom requirements or edge cases?', answer: "That's what we do. We'll architect a solution that fits your specific needs, not force you into a template." },
   { question: 'How do we measure success?', answer: 'We define clear metrics in week 1 and track them throughout. ROI is measurable, not subjective.' },
-  { question: 'Do you provide ongoing support after launch?', answer: 'Yes. We include 30 days of post-launch support and can discuss extended retainers.' },
+  { question: 'Do you provide ongoing support after launch?', answer: 'Yes. We include post-launch support and can discuss extended retainers.' },
   { question: "What's the next step?", answer: "Book a discovery call above. We'll discuss your goals and timeline. No obligation." },
 ];
 

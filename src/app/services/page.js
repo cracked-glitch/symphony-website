@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-[1280px] px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">Three Ways We Drive Measurable Impact</h1>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto">Every engagement is scoped to deliver ROI within 90 days. No retainers without results.</p>
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">Every engagement is scoped to deliver ROI fast. No retainers without results.</p>
         </div>
       </section>
 
@@ -66,7 +66,7 @@ export default function ServicesPage() {
                 'RAG pipelines built on your data',
                 'Multi-step reasoning with human-in-the-loop checkpoints',
                 'Role-based access and audit logging',
-                'Compliance-first architecture (SOC 2, HIPAA-ready)',
+                'Compliance-aware architecture built for your requirements',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-text-secondary text-sm">
                   <span className="text-cyan mt-0.5">&#x2713;</span> {item}
@@ -74,7 +74,7 @@ export default function ServicesPage() {
               ))}
             </ul>
             <Button href="/contact">Scope Your Agent</Button>
-            <p className="text-xs text-text-tertiary mt-3">Discovery call &rarr; Architecture design &rarr; 8-week build &rarr; Measured results</p>
+            <p className="text-xs text-text-tertiary mt-3">Discovery call &rarr; Architecture design &rarr; Build &rarr; Measured results</p>
           </div>
         </div>
       </Section>
@@ -101,7 +101,7 @@ export default function ServicesPage() {
               ))}
             </ul>
             <Button href="/contact">Automate Your Workflow</Button>
-            <p className="text-xs text-text-tertiary mt-3">Typical engagement: 12 weeks from discovery to live automation</p>
+            <p className="text-xs text-text-tertiary mt-3">Typical engagement: weeks from discovery to live automation</p>
           </div>
           <div className="rounded-xl bg-bg-secondary border border-border h-64 lg:h-80 flex items-center justify-center text-text-tertiary">
             Automation Visual Placeholder
@@ -116,10 +116,10 @@ export default function ServicesPage() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { step: '1', title: 'Discover', time: 'Week 1-2', desc: 'Map your current process, bottlenecks, and success metrics.' },
-            { step: '2', title: 'Design', time: 'Week 3-4', desc: 'Propose AI + automation architecture tailored to your needs.' },
-            { step: '3', title: 'Build', time: 'Week 5-12', desc: 'Development, testing, and iteration with your team in the loop.' },
-            { step: '4', title: 'Launch & Measure', time: 'Week 13+', desc: 'Live deployment, ROI tracking, and continuous optimization.' },
+            { step: '1', title: 'Discover', time: 'Week 1', desc: 'Map your current process, bottlenecks, and success metrics.' },
+            { step: '2', title: 'Design', time: 'Week 2', desc: 'Propose AI + automation architecture tailored to your needs.' },
+            { step: '3', title: 'Build', time: 'Week 3-6', desc: 'Rapid development, testing, and iteration with your team in the loop.' },
+            { step: '4', title: 'Launch & Measure', time: 'Week 7+', desc: 'Live deployment, ROI tracking, and continuous optimization.' },
           ].map((item) => (
             <Card key={item.step} hover={false}>
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple text-white font-bold text-sm mb-4">{item.step}</div>
