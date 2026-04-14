@@ -23,7 +23,7 @@ export default function NewsletterForm() {
         type="email"
         placeholder="you@company.com"
         required
-        className="flex-1 rounded-lg border border-border bg-bg-primary px-4 py-3 text-text-primary placeholder-text-tertiary focus:border-purple focus:outline-none focus:ring-1 focus:ring-purple"
+        className="flex-1 rounded-lg border border-bg-glass-border bg-bg-glass backdrop-blur-sm px-4 py-3 text-text-primary placeholder-text-tertiary focus:border-purple focus:outline-none focus:ring-1 focus:ring-purple focus:shadow-[0_0_0_3px_rgba(124,58,237,0.15)] transition-all duration-200"
         aria-label="Email address for newsletter"
       />
       <Button type="submit">Subscribe</Button>

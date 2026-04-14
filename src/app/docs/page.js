@@ -3,6 +3,8 @@ import Section from '@/components/ui/Section';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import CTA from '@/components/ui/CTA';
+import WaveformBg from '@/components/backgrounds/WaveformBg';
+import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
 
 export const metadata = {
   title: 'Documentation',
@@ -28,6 +30,15 @@ const guides = [
     pages: 6,
     time: '15 min',
   },
+  {
+    title: 'Deploy Your First AI Agent in 60 Minutes',
+    desc: 'The no-code playbook for small teams. Identify the right workflow to automate, choose a platform, build a working agent, and measure ROI. No technical background required.',
+    tag: 'No-Code Playbook',
+    href: '/docs/ai-agent-guide',
+    pdf: '/symphony-ai-agent-guide.pdf',
+    pages: 10,
+    time: '30 min',
+  },
 ];
 
 const upcomingDocs = [
@@ -48,11 +59,13 @@ export default function DocsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-[1280px] px-6">
+      <section className="relative overflow-hidden py-20 md:py-28 bg-noise">
+        <WaveformBg variant="subtle" />
+        <GradientOrbsBg variant="section" />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-6">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold font-heading leading-tight mb-6">
-              Documentation &amp; Guides
+              Documentation &amp; <span className="gradient-text">Guides</span>
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed mb-4">
               Free frameworks, playbooks, and technical guides for teams building with AI. Use them yourself. Call us when you need hands-on help.
@@ -64,8 +77,10 @@ export default function DocsPage() {
         </div>
       </section>
 
+      <div className="gradient-line-thick" />
+
       {/* Published Guides */}
-      <Section bg="bg-bg-tertiary">
+      <Section bg="bg-bg-tertiary" background="grid">
         <div className="flex items-center gap-2 mb-8">
           <span className="text-xs font-semibold text-purple bg-purple/10 px-2.5 py-1 rounded-full">Available Now</span>
           <h2 className="text-2xl md:text-3xl font-bold font-heading">Guides &amp; Tutorials</h2>
@@ -73,18 +88,16 @@ export default function DocsPage() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {guides.map((guide) => (
-            <div key={guide.title} className="rounded-2xl border border-purple/30 bg-bg-secondary p-7 md:p-8 flex flex-col">
-              <span className="text-xs font-semibold text-cyan bg-cyan/10 px-2.5 py-1 rounded-full self-start mb-4">{guide.tag}</span>
-              <h3 className="text-xl font-bold font-heading mb-3">{guide.title}</h3>
-              <p className="text-text-secondary text-sm leading-relaxed mb-6 flex-1">{guide.desc}</p>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                <Link href={guide.href} className="inline-flex items-center gap-2 rounded-lg bg-purple px-5 py-2.5 text-sm font-semibold text-white hover:bg-purple-dark transition-colors">
-                  Read Online
-                </Link>
-                <a href={guide.pdf} download className="inline-flex items-center gap-2 rounded-lg border border-cyan text-cyan px-5 py-2.5 text-sm font-semibold hover:bg-cyan/10 transition-colors">
-                  Download PDF
-                </a>
-                <span className="text-xs text-text-tertiary">{guide.pages} pages &middot; {guide.time} read</span>
+            <div key={guide.title} className="gradient-border">
+              <div className="glass rounded-[calc(1rem-1px)] p-7 md:p-8 flex flex-col h-full">
+                <span className="text-xs font-semibold text-cyan bg-cyan/10 px-2.5 py-1 rounded-full self-start mb-4">{guide.tag}</span>
+                <h3 className="text-xl font-bold font-heading mb-3">{guide.title}</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-6 flex-1">{guide.desc}</p>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                  <Button href={guide.href} size="sm">Read Online</Button>
+                  <Button href={guide.pdf} variant="ghost" size="sm">Download PDF</Button>
+                  <span className="text-xs text-text-tertiary">{guide.pages} pages &middot; {guide.time} read</span>
+                </div>
               </div>
             </div>
           ))}
@@ -93,7 +106,7 @@ export default function DocsPage() {
 
       {/* Upcoming Docs */}
       {upcomingDocs.map((section) => (
-        <Section key={section.category}>
+        <Section key={section.category} decoration="nodes">
           <h2 className="text-2xl md:text-3xl font-bold font-heading mb-8">{section.category}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {section.items.map((item) => (
@@ -109,15 +122,6 @@ export default function DocsPage() {
           </div>
         </Section>
       ))}
-
-      {/* Newsletter */}
-      <Section bg="bg-bg-tertiary">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold font-heading mb-4">Get Notified When Docs Drop</h2>
-          <p className="text-text-secondary mb-6">We&rsquo;re publishing new guides regularly. No spam. Just practical AI content.</p>
-          <Button href="/resources">Subscribe for Updates</Button>
-        </div>
-      </Section>
 
       {/* CTA */}
       <CTA

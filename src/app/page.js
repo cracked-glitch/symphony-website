@@ -3,65 +3,81 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import TrustBadge from '@/components/ui/TrustBadge';
 import CTA from '@/components/ui/CTA';
+import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
+import NodeGraphBg from '@/components/backgrounds/NodeGraphBg';
+import EqualizerBg from '@/components/backgrounds/EqualizerBg';
+import ConcentricRingsBg from '@/components/backgrounds/ConcentricRingsBg';
+import SectionDivider from '@/components/backgrounds/SectionDivider';
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple/20 via-bg-primary to-bg-primary" />
-        <div className="relative mx-auto max-w-[1280px] px-6">
+      <section className="relative overflow-hidden py-24 md:py-36 bg-noise">
+        <GradientOrbsBg variant="hero" />
+        <NodeGraphBg density="sparse" />
+        <EqualizerBg bars={40} position="bottom" className="opacity-60" />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-6">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-6">
-              Orchestrating the Future of Performance
+            <div className="flex flex-wrap gap-3 mb-8">
+              <TrustBadge text="Secure by Design" />
+              <TrustBadge text="Built for Speed" />
+              <TrustBadge text="White-Glove Onboarding" />
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading leading-[1.1] mb-6">
+              <span className="gradient-text">Orchestrating</span>
+              <br />
+              the Future of
+              <br />
+              Performance
             </h1>
-            <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl">
-              Custom AI Agents and Automation for Elite Teams. We turn AI ambition into measurable operational leverage&mdash;no hype, no hallucinations, just systems that ship.
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-10 max-w-2xl">
+              Custom AI Agents and Automation for Elite Teams. No hype, no hallucinations, just systems that ship.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/contact" size="lg">Start Your AI Strategy</Button>
               <Button href="/services" variant="ghost" size="lg">Explore Services</Button>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>} text="Production-Grade Security" />
-              <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} text="Built for Speed" />
-              <TrustBadge icon={<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>} text="White-Glove Onboarding" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Reality Check */}
-      <Section accent>
-        <h2 className="text-3xl md:text-4xl font-bold font-heading mb-12">
-          Everyone Wants &lsquo;AI Agents.&rsquo; Almost Nobody Has the Foundation.
+      <div className="gradient-line-thick" />
+
+      {/* What We Do */}
+      <Section accent background="grid" decoration="rings">
+        <h2 className="text-3xl md:text-4xl font-bold font-heading mb-3">
+          AI Systems Built to <span className="gradient-text">Perform</span>
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="rounded-xl border border-error/20 bg-error/5 p-6 md:p-8">
-            <h3 className="text-lg font-semibold font-heading text-error mb-4">What They Sell You</h3>
-            <ul className="space-y-3 text-text-secondary">
-              <li className="flex items-start gap-3"><span className="text-error mt-1">&#x2717;</span> &ldquo;AI will solve everything&rdquo;</li>
-              <li className="flex items-start gap-3"><span className="text-error mt-1">&#x2717;</span> &ldquo;ChatGPT + RAG = magic&rdquo;</li>
-              <li className="flex items-start gap-3"><span className="text-error mt-1">&#x2717;</span> &ldquo;We&rsquo;ll integrate in 2 weeks&rdquo;</li>
-              <li className="flex items-start gap-3"><span className="text-error mt-1">&#x2717;</span> &ldquo;Results guaranteed (no SLA)&rdquo;</li>
-            </ul>
-          </div>
-          <div className="rounded-xl border border-success/20 bg-success/5 p-6 md:p-8">
-            <h3 className="text-lg font-semibold font-heading text-success mb-4">What We Build</h3>
-            <ul className="space-y-3 text-text-secondary">
-              <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Proven frameworks. Measured outcomes.</li>
-              <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Data architecture. Process mapping. Execution discipline.</li>
-              <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Weeks to first measurable win, not months</li>
-              <li className="flex items-start gap-3"><span className="text-success mt-1">&#x2713;</span> Outcomes tied to your business metrics</li>
-            </ul>
-          </div>
+        <p className="text-lg text-text-secondary mb-12 max-w-2xl">
+          We build production AI that maps to your processes, runs on your data, and delivers results you can measure from week one.
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { icon: '01', title: 'Process Mapping', desc: 'We study how your team actually works before writing a single line of code.' },
+            { icon: '02', title: 'Data Architecture', desc: 'Clean inputs, structured pipelines, and guardrails that keep your data secure.' },
+            { icon: '03', title: 'Custom Build', desc: 'AI agents and automations designed around your specific workflows.' },
+            { icon: '04', title: 'Measured Outcomes', desc: 'Every system ships with metrics so you see exactly what changed and by how much.' },
+          ].map((item) => (
+            <div key={item.title} className="gradient-border-subtle group">
+              <div className="glass rounded-[calc(1rem-1px)] p-6 h-full transition-all duration-300 group-hover:shadow-[0_8px_32px_rgba(124,58,237,0.12)] group-hover:scale-[1.01]">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-purple/10 text-purple font-bold font-heading text-lg mb-4 glow-purple">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg font-semibold font-heading mb-2">{item.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </Section>
 
+      <SectionDivider variant="wave" />
+
       {/* Services Overview */}
-      <Section>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Three Ways We Drive Measurable Impact</h2>
+      <Section decoration="waveform">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Three Ways We Drive <span className="gradient-text">Measurable Impact</span></h2>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">Every engagement is scoped to deliver ROI fast. No retainers without results.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -83,24 +99,42 @@ export default function Home() {
         </div>
       </Section>
 
+      <SectionDivider variant="frequency" />
+
       {/* What We Deliver */}
-      <Section bg="bg-bg-tertiary">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">What We Deliver</h2>
+      <Section bg="bg-bg-tertiary" background="dots">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Solutions That Solve <span className="gradient-text">Real Problems</span></h2>
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+            We don&rsquo;t ship buzzwords. Every system we build is designed around a specific bottleneck in your business, and running in your environment within days, not quarters.
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {[
-            { metric: 'Weeks', label: 'From kickoff to working system' },
-            { metric: 'Custom', label: 'Built on your data, your rules' },
-            { metric: 'Measurable', label: 'ROI you can track from day one' },
+            {
+              title: 'Hours Reclaimed',
+              desc: 'The manual data entry, report building, and synthesis work burning 20+ hours a week, replaced by systems that run themselves.',
+            },
+            {
+              title: 'Decisions Made Clear',
+              desc: 'Scattered data, dashboards, and documents turned into the answers your team actually needs to act today.',
+            },
+            {
+              title: 'Software That Ships',
+              desc: 'Production tools deployed in your environment from day one. Not prototypes, not slideware. Real software you use tomorrow.',
+            },
           ].map((item) => (
-            <div key={item.label} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold font-heading text-purple mb-2">{item.metric}</div>
-              <div className="text-sm text-text-tertiary">{item.label}</div>
+            <div key={item.title} className="gradient-border-subtle group">
+              <div className="glass rounded-[calc(1rem-1px)] p-8 h-full transition-all duration-300 group-hover:shadow-[0_8px_32px_rgba(124,58,237,0.12)] group-hover:scale-[1.01]">
+                <h3 className="text-xl font-bold font-heading gradient-text mb-3">{item.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
       </Section>
+
+      <div className="gradient-line" />
 
       {/* Final CTA */}
       <CTA

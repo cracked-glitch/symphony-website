@@ -10,11 +10,11 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-bg-primary/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 bg-bg-primary/60 backdrop-blur-xl" style={{ borderBottom: '1px solid transparent', borderImage: 'linear-gradient(to right, transparent, rgba(124,58,237,0.3), rgba(6,182,212,0.2), transparent) 1' }}>
       <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold font-heading text-purple">Symphony</span>
+          <span className="text-xl font-bold font-heading gradient-text">Symphony</span>
           <span className="text-xl font-light font-heading text-text-secondary">AI</span>
         </Link>
 
@@ -39,7 +39,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex rounded-lg bg-purple px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-purple-dark"
+          className="hidden md:inline-flex rounded-lg bg-gradient-to-r from-purple to-purple-dark px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] glow-purple hover:shadow-[0_0_30px_rgba(124,58,237,0.3)]"
         >
           Book a Call
         </Link>
@@ -59,7 +59,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 top-[65px] z-40 bg-bg-primary/95 backdrop-blur-md">
+        <div className="md:hidden fixed inset-0 top-[65px] z-40 bg-bg-primary/95 backdrop-blur-xl bg-mesh">
           <nav className="flex flex-col items-center gap-6 pt-12" aria-label="Mobile navigation">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -79,7 +79,7 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-4 rounded-lg bg-purple px-8 py-3 text-base font-semibold text-white hover:bg-purple-dark"
+              className="mt-4 rounded-lg bg-gradient-to-r from-purple to-purple-dark px-8 py-3 text-base font-semibold text-white glow-purple"
             >
               Book a Call
             </Link>

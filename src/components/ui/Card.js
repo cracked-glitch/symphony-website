@@ -3,15 +3,18 @@ export default function Card({
   icon,
   className = '',
   hover = true,
+  glow = false,
 }) {
   return (
-    <div className={`rounded-xl border border-border bg-bg-secondary p-6 md:p-8 ${hover ? 'transition-all duration-300 hover:border-border-light hover:shadow-lg hover:shadow-purple/5 hover:-translate-y-1' : ''} ${className}`}>
-      {icon && (
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-cyan/10 text-cyan">
-          {icon}
-        </div>
-      )}
-      {children}
+    <div className={`gradient-border-subtle group ${className}`}>
+      <div className={`glass rounded-[calc(1rem-1px)] p-6 md:p-8 h-full ${hover ? 'transition-all duration-300 group-hover:shadow-[0_8px_32px_rgba(124,58,237,0.12)] group-hover:scale-[1.01]' : ''} ${glow ? 'glow-purple' : ''}`}>
+        {icon && (
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple/20 to-cyan/10 text-cyan">
+            {icon}
+          </div>
+        )}
+        {children}
+      </div>
     </div>
   );
 }

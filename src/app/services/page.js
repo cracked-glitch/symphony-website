@@ -1,7 +1,10 @@
+import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CTA from '@/components/ui/CTA';
+import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
+import WaveformBg from '@/components/backgrounds/WaveformBg';
 
 export const metadata = {
   title: 'Services',
@@ -12,18 +15,22 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-[1280px] px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">Three Ways We Drive Measurable Impact</h1>
+      <section className="relative overflow-hidden py-20 md:py-28 bg-noise">
+        <WaveformBg variant="subtle" />
+        <GradientOrbsBg variant="section" />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">Three Ways We Drive <span className="gradient-text">Measurable Impact</span></h1>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">Every engagement is scoped to deliver ROI fast. No retainers without results.</p>
         </div>
       </section>
 
+      <div className="gradient-line-thick" />
+
       {/* AI Literacy Workshops */}
-      <Section>
+      <Section decoration="orbs">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="inline-block rounded-full bg-cyan/10 text-cyan text-xs font-semibold px-3 py-1 mb-4">Training</div>
+            <div className="glass-subtle inline-block rounded-full text-cyan text-xs font-semibold px-3 py-1 mb-4">Training</div>
             <h2 className="text-3xl font-bold font-heading mb-4">AI Literacy Workshops</h2>
             <p className="text-text-secondary mb-6 leading-relaxed">
               A hands-on, 2-hour intensive that takes your team from AI-curious to AI-competent. Your team leaves understanding prompt engineering, output evaluation, and security fundamentals. No fluff. Just the skills they need to collaborate effectively with AI tools.
@@ -43,23 +50,35 @@ export default function ServicesPage() {
             <Button href="/contact">Book a Workshop</Button>
             <p className="text-xs text-text-tertiary mt-3">2-hour session, fully facilitated, questions encouraged</p>
           </div>
-          <div className="rounded-xl bg-bg-secondary border border-border h-64 lg:h-80 flex items-center justify-center text-text-tertiary">
-            Workshop Visual Placeholder
+          <div className="relative rounded-xl overflow-hidden h-64 lg:h-80">
+            <Image
+              src="/images/Team Meeting learning AI.png"
+              alt="Team learning AI in a workshop"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
         </div>
       </Section>
 
       {/* Custom Agent Development */}
-      <Section bg="bg-bg-tertiary">
+      <Section bg="bg-bg-tertiary" background="grid">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="rounded-xl bg-bg-secondary border border-border h-64 lg:h-80 flex items-center justify-center text-text-tertiary order-2 lg:order-1">
-            Agent Visual Placeholder
+          <div className="relative rounded-xl overflow-hidden h-64 lg:h-80 order-2 lg:order-1">
+            <Image
+              src="/images/Custom AI Agents.png"
+              alt="Custom AI agent architecture"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
           <div className="order-1 lg:order-2">
-            <div className="inline-block rounded-full bg-purple/10 text-purple text-xs font-semibold px-3 py-1 mb-4">Development</div>
+            <div className="glass-subtle inline-block rounded-full text-purple text-xs font-semibold px-3 py-1 mb-4">Development</div>
             <h2 className="text-3xl font-bold font-heading mb-4">Custom Agent Development</h2>
             <p className="text-text-secondary mb-6 leading-relaxed">
-              Bespoke AI assistants built on your data, your rules, your compliance requirements. We don&rsquo;t wrap ChatGPT and call it a solution. We architect systems with RAG pipelines, multi-step reasoning, and human-in-the-loop controls. Every agent is built for production and auditable.
+              Bespoke AI assistants built on your data, your rules, your compliance requirements. We architect systems with RAG pipelines, multi-step reasoning, and human-in-the-loop controls. Every agent is built for production and fully auditable.
             </p>
             <ul className="space-y-3 mb-8">
               {[
@@ -80,10 +99,10 @@ export default function ServicesPage() {
       </Section>
 
       {/* Workflow Automation */}
-      <Section>
+      <Section decoration="waveform">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="inline-block rounded-full bg-indigo/10 text-indigo text-xs font-semibold px-3 py-1 mb-4">Automation</div>
+            <div className="glass-subtle inline-block rounded-full text-indigo text-xs font-semibold px-3 py-1 mb-4">Automation</div>
             <h2 className="text-3xl font-bold font-heading mb-4">Workflow Automation</h2>
             <p className="text-text-secondary mb-6 leading-relaxed">
               Replace the manual data entry, report compilation, and scouting report synthesis that burns 20+ hours per week. We audit your workflows, identify automation targets, and build systems that reduce toil without introducing new complexity.
@@ -101,28 +120,34 @@ export default function ServicesPage() {
               ))}
             </ul>
             <Button href="/contact">Automate Your Workflow</Button>
-            <p className="text-xs text-text-tertiary mt-3">Typical engagement: weeks from discovery to live automation</p>
+            <p className="text-xs text-text-tertiary mt-3">Typical engagement: days from discovery to live automation</p>
           </div>
-          <div className="rounded-xl bg-bg-secondary border border-border h-64 lg:h-80 flex items-center justify-center text-text-tertiary">
-            Automation Visual Placeholder
+          <div className="relative rounded-xl overflow-hidden h-64 lg:h-80">
+            <Image
+              src="/images/Complex Workflow Automation.png"
+              alt="Complex workflow automation diagram"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
         </div>
       </Section>
 
       {/* How We Work */}
-      <Section bg="bg-bg-tertiary">
+      <Section bg="bg-bg-tertiary" background="dots" decoration="orbs">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">How We Work</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">How We <span className="gradient-text">Work</span></h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { step: '1', title: 'Discover', time: 'Week 1', desc: 'Map your current process, bottlenecks, and success metrics.' },
-            { step: '2', title: 'Design', time: 'Week 2', desc: 'Propose AI + automation architecture tailored to your needs.' },
-            { step: '3', title: 'Build', time: 'Week 3-6', desc: 'Rapid development, testing, and iteration with your team in the loop.' },
-            { step: '4', title: 'Launch & Measure', time: 'Week 7+', desc: 'Live deployment, ROI tracking, and continuous optimization.' },
+            { step: '1', title: 'Discover', time: 'Day 1-2', desc: 'Map your current process, bottlenecks, and success metrics.' },
+            { step: '2', title: 'Design', time: 'Day 3-4', desc: 'Propose AI + automation architecture tailored to your needs.' },
+            { step: '3', title: 'Build', time: 'Day 5-14', desc: 'Rapid development, testing, and iteration with your team in the loop.' },
+            { step: '4', title: 'Launch & Measure', time: 'Day 15+', desc: 'Live deployment, ROI tracking, and continuous optimization.' },
           ].map((item) => (
             <Card key={item.step} hover={false}>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple text-white font-bold text-sm mb-4">{item.step}</div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple to-indigo text-white font-bold text-sm mb-4">{item.step}</div>
               <h3 className="text-lg font-bold font-heading mb-1">{item.title}</h3>
               <p className="text-xs text-purple font-medium mb-2">{item.time}</p>
               <p className="text-sm text-text-secondary">{item.desc}</p>

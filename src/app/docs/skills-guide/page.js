@@ -81,10 +81,10 @@ export default function SkillsGuidePage() {
             <p className="text-xs font-semibold tracking-wider uppercase text-error mb-2">One-Off Prompt</p>
             <h3 className="font-heading text-lg font-semibold text-error mb-3">The Temp</h3>
             <ul className="space-y-1.5 text-text-secondary text-sm">
-              <li>&mdash; Re-explain context every time</li>
-              <li>&mdash; Output format varies wildly</li>
-              <li>&mdash; No memory of preferences</li>
-              <li>&mdash; Works for anything, optimized for nothing</li>
+              <li>Re-explain context every time</li>
+              <li>Output format varies wildly</li>
+              <li>No memory of preferences</li>
+              <li>Works for anything, optimized for nothing</li>
             </ul>
           </div>
           <div className="bg-success/10 border-l-4 border-success rounded-lg p-5">

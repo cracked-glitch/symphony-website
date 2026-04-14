@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 const variants = {
-  primary: 'bg-purple text-white hover:bg-purple-dark',
-  secondary: 'bg-indigo text-white hover:bg-indigo-dark',
-  ghost: 'bg-transparent text-cyan border border-cyan hover:bg-cyan/10',
+  primary: 'bg-gradient-to-r from-purple to-purple-dark text-white glow-purple hover:shadow-[0_0_40px_rgba(124,58,237,0.3)] hover:scale-[1.02]',
+  secondary: 'bg-gradient-to-r from-indigo to-indigo-dark text-white hover:shadow-[0_0_30px_rgba(99,102,241,0.2)] hover:scale-[1.02]',
+  ghost: 'bg-transparent text-cyan border border-cyan/30 hover:bg-cyan/5 hover:border-cyan/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)]',
 };
 
 const sizes = {
@@ -22,7 +22,7 @@ export default function Button({
   className = '',
   ...props
 }) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 ${variants[variant]} ${sizes[size]} ${fullWidth ? 'w-full' : ''} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`;
+  const classes = `inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-300 ${variants[variant]} ${sizes[size]} ${fullWidth ? 'w-full' : ''} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`;
 
   if (href) {
     return (

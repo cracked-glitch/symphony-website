@@ -49,7 +49,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} ${jetbrainsMono.variable}`}>
-      <body className="min-h-screen flex flex-col bg-bg-primary text-text-primary antialiased">
+      <body className="min-h-screen flex flex-col bg-bg-primary text-text-primary antialiased bg-noise">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
