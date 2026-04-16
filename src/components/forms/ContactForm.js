@@ -8,13 +8,34 @@ const inputClasses = "w-full rounded-lg border border-bg-glass-border bg-bg-glas
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitted(true);
-    setLoading(false);
+    setError(null);
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/mgopdoqy', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const json = await res.json();
+        setError(json?.errors?.[0]?.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -55,6 +76,9 @@ export default function ContactForm() {
         <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-1.5">Message</label>
         <textarea id="message" name="message" required rows={5} className={`${inputClasses} resize-none`} placeholder="Tell us about your project and goals..." />
       </div>
+      {error && (
+        <p className="text-sm text-red-400 text-center">{error}</p>
+      )}
       <Button type="submit" fullWidth disabled={loading}>
         {loading ? 'Sending...' : 'Book My Discovery Call'}
       </Button>
