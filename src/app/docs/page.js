@@ -32,11 +32,20 @@ const guides = [
   },
   {
     title: 'Deploy Your First AI Agent in 60 Minutes',
-    desc: 'The no-code playbook for small teams. Identify the right workflow to automate, choose a platform, build a working agent, and measure ROI. No technical background required.',
+    desc: 'The no-code playbook for builders, not coders. See the same lead capture agent Symphony AI runs internally, then follow the step-by-step build for your own business. No developer required.',
     tag: 'No-Code Playbook',
     href: '/docs/ai-agent-guide',
     pdf: '/symphony-ai-agent-guide.pdf',
-    pages: 10,
+    pages: 11,
+    time: '30 min',
+  },
+  {
+    title: 'Your First Claude Code Routine in Under 60 Minutes',
+    desc: 'The operator playbook for non-developers. See the Monday morning briefing Routine Symphony AI runs internally, then build it for your business in nine prompts. No terminal commands, just paste and refine.',
+    tag: 'Operator Playbook',
+    href: '/docs/claude-code-routines',
+    pdf: '/symphony-claude-code-routines-guide.pdf',
+    pages: 12,
     time: '30 min',
   },
 ];

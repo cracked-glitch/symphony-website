@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import CTA from '@/components/ui/CTA';
+import GuideFooterCTA from '@/components/ui/GuideFooterCTA';
 
 export const metadata = {
   title: 'Building Your First Claude Skill',
@@ -324,20 +325,15 @@ NEXT STEPS
       </section>
 
       {/* PAGE 6: CTA */}
-      <section className="px-6 md:px-10 py-20 md:py-28 flex flex-col items-center text-center">
-        <h2 className="text-4xl font-bold font-heading mb-1">SYMPHONY AI</h2>
-        <p className="text-text-tertiary underline underline-offset-4 mb-1">Strategic AI Consulting</p>
-        <p className="italic font-semibold text-xl text-text-secondary mb-8">From Prompt to Power.</p>
+      <section className="px-6 md:px-10 py-20 md:py-28">
+        <GuideFooterCTA
+          headline="Ready to automate your workflows?"
+          body="Custom Claude Skills, AI agents, and hands-on training built for your team."
+        />
 
-        <div className="w-full max-w-lg bg-gradient-to-br from-purple to-indigo rounded-xl p-8 md:p-10 text-center mb-6">
-          <h3 className="font-heading text-2xl font-bold mb-2">Ready to automate your workflows?</h3>
-          <p className="text-white/85 mb-5">Custom Claude Skills, AI agents, and hands-on training built for your team.</p>
-          <Link href="/contact" className="inline-block bg-white text-purple font-heading font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition-opacity">Book a Discovery Call</Link>
+        <div className="max-w-[900px] mx-auto">
+          <PageFooter page={6} />
         </div>
-
-        <p className="text-text-tertiary text-sm">nathan@symphonylabs.ai</p>
-
-        <PageFooter page={6} />
       </section>
     </div>
   );

@@ -65,7 +65,7 @@ function drawGradientBar(x, y, w, h) {
   }
 }
 
-function pageFooter(pageNum, total = 10) {
+function pageFooter(pageNum, total = 11) {
   setFont('normal', 8);
   setColor(TEXT_TERTIARY);
   doc.text('Symphony AI  |  Strategic AI Consulting', MARGIN, PAGE_H - 30);
@@ -116,7 +116,7 @@ drawGradientBar(MARGIN, 208, 180, 4);
 // Subtitle
 setFont('italic', 18);
 setColor(PURPLE);
-doc.text('The No-Code Playbook for Small Teams', MARGIN, 245);
+doc.text('The No-Code Playbook for Builders, Not Coders', MARGIN, 245);
 
 // About box
 drawRect(MARGIN, 275, CONTENT_W, 110, DARK_SECONDARY);
@@ -126,7 +126,7 @@ doc.text('ABOUT THIS GUIDE', MARGIN + 16, 298);
 setFont('normal', 10);
 setColor(TEXT_SECONDARY);
 const aboutLines = doc.splitTextToSize(
-  'A complete walkthrough for building your first AI agent without writing code. Identify the right workflow to automate, choose the right platform, build a working agent, and measure whether it delivers. Written for small business owners, operations managers, and anyone tasked with bringing AI into their team. No technical background required.',
+  'A complete walkthrough for building your first AI agent without writing code. Identify the right workflow to automate, choose the right platform, build a working agent, and measure whether it delivers. Written for anyone ready to build, from solo founders to enterprise ops teams. No developer, no engineering team, and no technical background required.',
   CONTENT_W - 32
 );
 aboutLines.forEach((line, i) => {
@@ -173,9 +173,7 @@ drawRect(0, 0, PAGE_W, PAGE_H, DARK_BG);
 
 setFont('bold', 9);
 setColor(WARNING);
-doc.text('CONCEPT', MARGIN, currentY);
-setColor(SUCCESS);
-doc.text('DEFINITION', MARGIN + 80, currentY);
+doc.text('CONCEPT  |  DEFINITION', MARGIN, currentY);
 currentY += 25;
 
 setFont('bold', 28);
@@ -216,11 +214,13 @@ colTitles.forEach((title, i) => {
   setFont('bold', 12);
   setColor(colColors[i]);
   doc.text(title, cx + 12, cy + 36);
-  setFont('normal', 9);
-  setColor(TEXT_SECONDARY);
   colItems[i].forEach((item, j) => {
-    const prefix = i === 2 ? '\u2713 ' : '';
-    doc.text(prefix + item, cx + 12, cy + 56 + j * 18);
+    const dotY = cy + 52 + j * 18;
+    doc.setFillColor(colColors[i][0], colColors[i][1], colColors[i][2]);
+    doc.circle(cx + 14, dotY, 1.6, 'F');
+    setFont('normal', 9);
+    setColor(TEXT_SECONDARY);
+    doc.text(item, cx + 22, dotY + 3);
   });
 });
 currentY += 165;
@@ -239,12 +239,11 @@ const canDo = [
   'Summarize documents and flag key items',
 ];
 canDo.forEach((item) => {
-  setFont('bold', 9);
-  setColor(SUCCESS);
-  doc.text('\u2713', MARGIN + 5, currentY);
+  doc.setFillColor(SUCCESS[0], SUCCESS[1], SUCCESS[2]);
+  doc.circle(MARGIN + 8, currentY - 3, 2, 'F');
   setFont('normal', 9.5);
   setColor(TEXT_SECONDARY);
-  doc.text(item, MARGIN + 20, currentY);
+  doc.text(item, MARGIN + 18, currentY);
   currentY += 15;
 });
 currentY += 8;
@@ -260,9 +259,11 @@ const cannotDo = [
   'Replace the need for human oversight entirely',
 ];
 cannotDo.forEach((item) => {
+  doc.setFillColor(ERROR[0], ERROR[1], ERROR[2]);
+  doc.circle(MARGIN + 8, currentY - 3, 2, 'F');
   setFont('normal', 9.5);
   setColor(TEXT_SECONDARY);
-  doc.text('\u2717 ' + item, MARGIN + 5, currentY);
+  doc.text(item, MARGIN + 18, currentY);
   currentY += 15;
 });
 currentY += 10;
@@ -270,21 +271,130 @@ currentY += 10;
 drawRect(MARGIN, currentY, CONTENT_W, 28, [30, 20, 50]);
 setFont('italic', 10);
 setColor(WARNING);
-doc.text('80-90% of AI projects fail. This guide is built to keep you in the 10-20% that succeed.', PAGE_W / 2, currentY + 18, { align: 'center' });
+doc.text('Roughly 85% of AI projects fail in production. This guide is built to keep you in the 15% that succeed.', PAGE_W / 2, currentY + 18, { align: 'center' });
 
 pageFooter(2);
 
 // ============================================================
-// PAGE 3: FIND YOUR FIRST AUTOMATION TARGET
+// PAGE 3: SEE AN AGENT IN ACTION (SYMPHONY AI EXAMPLE)
 // ============================================================
 newPage();
 drawRect(0, 0, PAGE_W, PAGE_H, DARK_BG);
 
 setFont('bold', 9);
 setColor(WARNING);
-doc.text('STRATEGY', MARGIN, currentY);
+doc.text('EXAMPLE  |  A DAY IN THE LIFE', MARGIN, currentY);
+currentY += 25;
+
+setFont('bold', 28);
+setColor(WHITE);
+doc.text('See an Agent in Action', MARGIN, currentY);
+currentY += 15;
+drawGradientBar(MARGIN, currentY, 180, 4);
+currentY += 25;
+
+setFont('normal', 10.5);
+setColor(TEXT_SECONDARY);
+writeWrapped('Symphony AI runs on its own agents. Before our first deployment, every lead that arrived after 6 PM sat cold until Monday morning. Here is what one Saturday looks like now that the agent is live.', MARGIN, CONTENT_W, 15);
+currentY += 8;
+
+// Timeline section
+setFont('bold', 10);
+setColor(PURPLE);
+doc.text('THE TIMELINE', MARGIN, currentY);
+currentY += 16;
+
+const timeline = [
+  { time: '11:47:00 PM  SAT', event: 'A prospect submits the contact form asking about growth strategy.', color: CYAN },
+  { time: '11:47:14 PM  SAT', event: 'The agent replies personally, sends a meeting link, and logs the lead in HubSpot.', color: PURPLE },
+  { time: '9:14 AM  SUN', event: 'The prospect books a Monday 10 AM call from the agent\u2019s link.', color: INDIGO },
+  { time: '10:00 AM  MON', event: 'Symphony AI\u2019s founder runs discovery with a warm, context-rich lead.', color: WARNING },
+  { time: 'THURSDAY', event: 'An $18,000 engagement is signed, sourced entirely from the weekend inquiry.', color: SUCCESS },
+];
+
+drawRect(MARGIN, currentY, CONTENT_W, timeline.length * 28 + 10, DARK_SECONDARY);
+const timelineStartY = currentY + 8;
+timeline.forEach((t, i) => {
+  const rowY = timelineStartY + i * 28;
+  doc.setFillColor(t.color[0], t.color[1], t.color[2]);
+  doc.circle(MARGIN + 14, rowY + 8, 3, 'F');
+  if (i < timeline.length - 1) {
+    drawLine(MARGIN + 14, rowY + 12, MARGIN + 14, rowY + 28, [60, 60, 70], 1);
+  }
+  setFont('bold', 8);
+  setColor(t.color);
+  doc.text(t.time, MARGIN + 26, rowY + 6);
+  setFont('normal', 9);
+  setColor(TEXT_SECONDARY);
+  doc.text(t.event, MARGIN + 26, rowY + 18);
+});
+currentY += timeline.length * 28 + 20;
+
+// Before / After comparison
+setFont('bold', 10);
+setColor(PURPLE);
+doc.text('BEFORE THE AGENT  vs.  AFTER THE AGENT', MARGIN, currentY);
+currentY += 16;
+
+const halfColW = (CONTENT_W - 10) / 2;
+const compareRows = [
+  { label: 'Response time', before: '14 hours', after: '14 seconds' },
+  { label: 'Weekend close rate', before: '22%', after: '61%' },
+  { label: 'Founder on weekends', before: 'Working', after: 'Off the clock' },
+  { label: 'Hours on lead intake', before: '6 hrs / week', after: '45 min / week' },
+];
+const compareBoxH = compareRows.length * 20 + 24;
+drawRect(MARGIN, currentY, halfColW, compareBoxH, [40, 15, 15]);
+drawLine(MARGIN, currentY, MARGIN, currentY + compareBoxH, ERROR, 3);
+drawRect(MARGIN + halfColW + 10, currentY, halfColW, compareBoxH, [10, 35, 25]);
+drawLine(MARGIN + halfColW + 10, currentY, MARGIN + halfColW + 10, currentY + compareBoxH, SUCCESS, 3);
+
+setFont('bold', 8);
+setColor(ERROR);
+doc.text('BEFORE', MARGIN + 12, currentY + 14);
 setColor(SUCCESS);
-doc.text('THE MONEY LEAK AUDIT', MARGIN + 80, currentY);
+doc.text('AFTER', MARGIN + halfColW + 22, currentY + 14);
+
+compareRows.forEach((row, i) => {
+  const rowY = currentY + 30 + i * 20;
+  setFont('normal', 8);
+  setColor(TEXT_TERTIARY);
+  doc.text(row.label, MARGIN + 12, rowY);
+  setFont('bold', 10);
+  setColor(TEXT_SECONDARY);
+  doc.text(row.before, MARGIN + halfColW - 12, rowY, { align: 'right' });
+
+  setFont('normal', 8);
+  setColor(TEXT_TERTIARY);
+  doc.text(row.label, MARGIN + halfColW + 22, rowY);
+  setFont('bold', 10);
+  setColor(WHITE);
+  doc.text(row.after, MARGIN + CONTENT_W - 12, rowY, { align: 'right' });
+});
+currentY += compareBoxH + 14;
+
+// Closing callout
+drawRect(MARGIN, currentY, CONTENT_W, 48, [30, 20, 50]);
+drawLine(MARGIN, currentY, MARGIN, currentY + 48, PURPLE, 3);
+setFont('bold', 9.5);
+setColor(WARNING);
+doc.text('THE RESULT', MARGIN + 12, currentY + 16);
+setFont('normal', 9.5);
+setColor(TEXT_SECONDARY);
+doc.text('In 30 days, Symphony AI\u2019s agent captured 47 qualified weekend leads that would have waited', MARGIN + 12, currentY + 30);
+doc.text('until Monday. You are about to build the same agent for your business.', MARGIN + 12, currentY + 42);
+
+pageFooter(3);
+
+// ============================================================
+// PAGE 4: FIND YOUR FIRST AUTOMATION TARGET
+// ============================================================
+newPage();
+drawRect(0, 0, PAGE_W, PAGE_H, DARK_BG);
+
+setFont('bold', 9);
+setColor(WARNING);
+doc.text('STRATEGY  |  THE MONEY LEAK AUDIT', MARGIN, currentY);
 currentY += 25;
 
 setFont('bold', 26);
@@ -296,7 +406,7 @@ currentY += 25;
 
 setFont('italic', 10.5);
 setColor(TEXT_SECONDARY);
-writeWrapped('Before you build anything, identify where your business is losing time, leads, and money. The right first agent pays for itself in weeks.', MARGIN, CONTENT_W, 15);
+writeWrapped('Symphony AI\u2019s leak was weekend inquiries. Yours will be specific to your workflow. Before you build anything, identify where your business is losing time, leads, and money.', MARGIN, CONTENT_W, 15);
 currentY += 8;
 
 drawRect(MARGIN, currentY, CONTENT_W, 36, DARK_SECONDARY);
@@ -335,11 +445,11 @@ doc.text('Top 5 Starter Use Cases (Ranked by Impact)', MARGIN, currentY);
 currentY += 18;
 
 const useCases = [
-  { rank: '1', title: 'After-Hours Lead Capture', desc: 'Every lead that emails at 11pm and gets a reply at 9am is a lead your competitor already answered.' },
+  { rank: '1', title: 'After-Hours Lead Capture', desc: 'Every lead that emails at 11pm and gets a reply at 9am is a lead your competitor already answered.', tag: 'SYMPHONY AI STARTED HERE' },
   { rank: '2', title: 'Email Triage and Routing', desc: 'Stop your team from reading every email manually. Let an agent sort, tag, and route.' },
-  { rank: '3', title: 'Appointment Scheduling', desc: 'Eliminate the back-and-forth. Agent checks availability, books the meeting, sends confirmation.' },
-  { rank: '4', title: 'FAQ and Support Responses', desc: 'Answer the same 20 questions automatically. Escalate the rest to a human.' },
-  { rank: '5', title: 'Invoice Follow-Ups', desc: 'Automate payment reminders on a schedule. Polite, consistent, never forgets.' },
+  { rank: '3', title: 'Appointment Scheduling', desc: 'The agent checks availability, books the meeting, and sends confirmation without the back-and-forth.' },
+  { rank: '4', title: 'FAQ and Support Responses', desc: 'The agent answers the same 20 questions automatically and escalates the rest to a human.' },
+  { rank: '5', title: 'Invoice Follow-Ups', desc: 'Automate payment reminders on a schedule that stays polite, consistent, and never forgets.' },
 ];
 useCases.forEach((uc) => {
   drawRect(MARGIN, currentY, CONTENT_W, 38, DARK_SECONDARY);
@@ -352,13 +462,18 @@ useCases.forEach((uc) => {
   setFont('normal', 9);
   setColor(TEXT_SECONDARY);
   doc.text(uc.desc, MARGIN + 35, currentY + 30);
+  if (uc.tag) {
+    setFont('bold', 7);
+    setColor(SUCCESS);
+    doc.text(uc.tag, MARGIN + CONTENT_W - 12, currentY + 15, { align: 'right' });
+  }
   currentY += 44;
 });
 
-pageFooter(3);
+pageFooter(4);
 
 // ============================================================
-// PAGE 4: CHOOSE YOUR PLATFORM
+// PAGE 5: CHOOSE YOUR PLATFORM
 // ============================================================
 newPage();
 drawRect(0, 0, PAGE_W, PAGE_H, DARK_BG);
@@ -377,7 +492,7 @@ currentY += 25;
 
 setFont('normal', 10.5);
 setColor(TEXT_SECONDARY);
-writeWrapped('There are dozens of no-code agent platforms. Most comparison guides are written by the platforms themselves. Here is an honest breakdown of four that work well for small teams.', MARGIN, CONTENT_W, 15);
+writeWrapped('Dozens of no-code agent platforms compete for your attention, and most comparison guides come from the platforms themselves. Here is an honest breakdown of four that work well for small teams.', MARGIN, CONTENT_W, 15);
 currentY += 10;
 
 // Table
@@ -448,7 +563,7 @@ setFont('italic', 9.5);
 setColor(WARNING);
 doc.text('The best platform is the one your team will actually use. Pick one, build, and upgrade later.', PAGE_W / 2, currentY + 18, { align: 'center' });
 
-pageFooter(4);
+pageFooter(5);
 
 // ============================================================
 // PAGE 5: BUILD YOUR FIRST AGENT
@@ -458,25 +573,19 @@ drawRect(0, 0, PAGE_W, PAGE_H, DARK_BG);
 
 setFont('bold', 9);
 setColor(WARNING);
-doc.text('HANDS-ON', MARGIN, currentY);
-setColor(SUCCESS);
-doc.text('STEP-BY-STEP BUILD', MARGIN + 80, currentY);
+doc.text('HANDS-ON  |  STEP-BY-STEP BUILD', MARGIN, currentY);
 currentY += 25;
 
-setFont('bold', 40);
-setColor(PURPLE);
-doc.text('BUILD', MARGIN, currentY);
-currentY += 12;
-setFont('bold', 22);
+setFont('bold', 28);
 setColor(WHITE);
-doc.text('Your First AI Agent', MARGIN, currentY);
-currentY += 10;
+doc.text('Build Your First AI Agent', MARGIN, currentY);
+currentY += 15;
 drawGradientBar(MARGIN, currentY, 180, 4);
-currentY += 20;
+currentY += 25;
 
 setFont('normal', 10);
 setColor(TEXT_SECONDARY);
-writeWrapped('We are building a 24/7 Lead Capture Agent that monitors your inbox, identifies potential leads, sends an instant reply, and logs the lead in your CRM. Estimated build time: 45-60 minutes.', MARGIN, CONTENT_W, 14);
+writeWrapped('You are going to build the same 24/7 Lead Capture Agent Symphony AI uses internally. It monitors your inbox, identifies potential leads, sends an instant reply, and logs the lead in your CRM. Estimated build time: 45 to 60 minutes.', MARGIN, CONTENT_W, 14);
 currentY += 8;
 
 const buildSteps = [
@@ -515,7 +624,7 @@ setFont('normal', 9);
 setColor(TEXT_SECONDARY);
 doc.text('Deploy it and let it run overnight. Check the results in the morning.', MARGIN + 12, currentY + 40);
 
-pageFooter(5);
+pageFooter(6);
 
 // ============================================================
 // PAGE 6: MAKE IT SMARTER
@@ -537,19 +646,19 @@ currentY += 25;
 
 setFont('normal', 10.5);
 setColor(TEXT_SECONDARY);
-writeWrapped('Your first agent works. Now make it better. These three upgrades turn a basic automation into a reliable team member.', MARGIN, CONTENT_W, 15);
+writeWrapped('Your first agent works. Now make it better. These three upgrades are the same ones Symphony AI rolled out on its own lead capture agent in the first 90 days.', MARGIN, CONTENT_W, 15);
 currentY += 15;
 
 const upgrades = [
   {
     n: '1', title: 'Add Memory', color: PURPLE,
     desc: 'Without memory, your agent treats every interaction as brand new. With memory, it recognizes returning contacts, references previous conversations, and builds context over time.',
-    tip: 'Add after your agent handles 20+ interactions and you notice it re-asking questions.'
+    tip: 'Symphony AI added memory in week 3 when the agent started re-asking returning prospects for details they had already shared.'
   },
   {
     n: '2', title: 'Human-in-the-Loop Escalation', color: WARNING,
-    desc: 'Not every inquiry should be handled by an agent. Set a confidence threshold: when uncertain, send a Slack or email notification to a human. The agent handles the routine 80%. Your team handles the critical 20%.',
-    tip: 'Agent processes, scores confidence, and routes low-confidence cases to a human with full context.'
+    desc: 'An agent should not handle every inquiry. Set a confidence threshold so the agent sends uncertain cases to a human via Slack or email, handling the routine 80% while your team handles the critical 20%.',
+    tip: 'On Symphony AI\u2019s deployment, anything under 85% confidence pings the founder on Slack with the full context.'
   },
   {
     n: '3', title: 'One Agent, One Job', color: SUCCESS,
@@ -584,7 +693,7 @@ upgrades.forEach((u) => {
   currentY += 130;
 });
 
-pageFooter(6);
+pageFooter(7);
 
 // ============================================================
 // PAGE 7: MEASURE WHAT MATTERS
@@ -594,9 +703,7 @@ drawRect(0, 0, PAGE_W, PAGE_H, DARK_BG);
 
 setFont('bold', 9);
 setColor(WARNING);
-doc.text('MEASUREMENT', MARGIN, currentY);
-setColor(SUCCESS);
-doc.text('AGENT SCORECARD', MARGIN + 110, currentY);
+doc.text('MEASUREMENT  |  AGENT SCORECARD', MARGIN, currentY);
 currentY += 25;
 
 setFont('bold', 28);
@@ -661,9 +768,9 @@ currentY += 90;
 drawRect(MARGIN, currentY, CONTENT_W, 28, [30, 20, 50]);
 setFont('italic', 9);
 setColor(WARNING);
-doc.text('Agents that handle after-hours leads typically capture 3-5 additional qualified leads per week.', PAGE_W / 2, currentY + 18, { align: 'center' });
+doc.text('Symphony AI hit these targets in week 4, with a response time under 15 seconds and 47 new weekend leads captured.', PAGE_W / 2, currentY + 18, { align: 'center' });
 
-pageFooter(7);
+pageFooter(8);
 
 // ============================================================
 // PAGE 8: THE 8 TRAPS
@@ -685,21 +792,21 @@ currentY += 22;
 
 setFont('normal', 10);
 setColor(TEXT_SECONDARY);
-doc.text('88% of AI agents fail in production. Here is why, and how to avoid each failure mode.', MARGIN, currentY);
+doc.text('Most of that 85% failure rate traces back to these eight traps. Here is how to avoid each one.', MARGIN, currentY);
 currentY += 20;
 
 const traps = [
-  { n: '1', trap: 'Starting Too Big', wrong: 'Automating ten workflows on day one.', fix: 'Automate one. Prove it works. Then expand.' },
-  { n: '2', trap: 'Building a God Agent', wrong: 'One agent handles everything.', fix: 'One agent, one job. Connect them together.' },
+  { n: '1', trap: 'Starting Too Big', wrong: 'Automating ten workflows on day one.', fix: 'Automate one workflow, prove it works, then expand.' },
+  { n: '2', trap: 'Building a God Agent', wrong: 'One agent handles everything.', fix: 'Give each agent one job and connect them together.' },
   { n: '3', trap: 'Over-Automation', wrong: 'Removing all human touchpoints.', fix: 'Keep humans in the loop for high-value cases.' },
-  { n: '4', trap: 'No Success Metrics', wrong: 'Deploying without defining success.', fix: 'Set scorecard metrics before deploying.' },
-  { n: '5', trap: 'Tools Before Workflows', wrong: 'Buying a platform, then looking for uses.', fix: 'Map workflows first. Then pick the tool.' },
-  { n: '6', trap: 'Ignoring Data Quality', wrong: 'Feeding messy, inconsistent data.', fix: 'Clean inputs first. Garbage in, garbage out.' },
-  { n: '7', trap: 'No Feedback Loop', wrong: 'Deploying and never reviewing.', fix: 'Review agent logs weekly. Tighten instructions.' },
-  { n: '8', trap: 'Skipping Security', wrong: 'Giving the agent access to everything.', fix: 'Least-privilege access. Only what it needs.' },
+  { n: '4', trap: 'No Success Metrics', wrong: 'Deploying without defining success.', fix: 'Set scorecard metrics before you deploy.' },
+  { n: '5', trap: 'Tools Before Workflows', wrong: 'Buying a platform, then looking for uses.', fix: 'Map the workflow first, then pick the tool.' },
+  { n: '6', trap: 'Ignoring Data Quality', wrong: 'Feeding messy, inconsistent data.', fix: 'Clean your inputs first, because garbage in means garbage out.' },
+  { n: '7', trap: 'No Feedback Loop', wrong: 'Deploying and never reviewing.', fix: 'Review agent logs weekly and tighten instructions as patterns emerge.' },
+  { n: '8', trap: 'Skipping Security', wrong: 'Giving the agent access to everything.', fix: 'Grant least-privilege access and connect only what the agent needs.' },
 ];
 traps.forEach((t) => {
-  const rowH = 55;
+  const rowH = 64;
   drawRect(MARGIN, currentY, CONTENT_W, rowH, DARK_SECONDARY);
   setFont('bold', 18);
   setColor(ERROR);
@@ -715,7 +822,10 @@ traps.forEach((t) => {
   doc.text('WHAT GOES WRONG', MARGIN + 35, currentY + 32);
   setFont('normal', 8.5);
   setColor(TEXT_SECONDARY);
-  doc.text(t.wrong, MARGIN + 35, currentY + 44);
+  const wrongLines = doc.splitTextToSize(t.wrong, halfW - 10);
+  wrongLines.forEach((line, i) => {
+    doc.text(line, MARGIN + 35, currentY + 44 + i * 11);
+  });
 
   // What to do
   setFont('bold', 7.5);
@@ -723,12 +833,15 @@ traps.forEach((t) => {
   doc.text('WHAT TO DO INSTEAD', MARGIN + 35 + halfW, currentY + 32);
   setFont('normal', 8.5);
   setColor(TEXT_SECONDARY);
-  doc.text(t.fix, MARGIN + 35 + halfW, currentY + 44);
+  const fixLines = doc.splitTextToSize(t.fix, halfW - 10);
+  fixLines.forEach((line, i) => {
+    doc.text(line, MARGIN + 35 + halfW, currentY + 44 + i * 11);
+  });
 
   currentY += rowH + 4;
 });
 
-pageFooter(8);
+pageFooter(9);
 
 // ============================================================
 // PAGE 9: SECURITY
@@ -820,7 +933,7 @@ setFont('italic', 9.5);
 setColor(WARNING);
 doc.text('Security is not a feature you add later. Build these safeguards from day one.', PAGE_W / 2, currentY + 18, { align: 'center' });
 
-pageFooter(9);
+pageFooter(10);
 
 // ============================================================
 // PAGE 10: SCALE + CTA
@@ -867,21 +980,21 @@ phases.forEach((p) => {
   doc.text(p.desc, MARGIN + 12, currentY + 32);
   currentY += 48;
 });
-currentY += 15;
+currentY += 30;
 
-// CTA
-setFont('bold', 24);
+// CTA wordmark
+setFont('bold', 16);
 setColor(WHITE);
-doc.text('SYMPHONY AI', PAGE_W / 2, currentY, { align: 'center' });
+doc.text('Symphony AI', PAGE_W / 2, currentY, { align: 'center' });
 currentY += 14;
 setFont('normal', 9);
 setColor(TEXT_TERTIARY);
 doc.text('Strategic AI Consulting', PAGE_W / 2, currentY, { align: 'center' });
-currentY += 14;
-setFont('italic', 14);
-setColor(TEXT_SECONDARY);
+currentY += 18;
+setFont('italic', 12);
+setColor(PURPLE);
 doc.text('From Prompt to Power.', PAGE_W / 2, currentY, { align: 'center' });
-currentY += 25;
+currentY += 24;
 
 // CTA Box
 const ctaBoxY = currentY;
@@ -908,19 +1021,23 @@ doc.text('Symphony AI builds production-grade AI agents your team owns.', PAGE_W
 doc.text('No subscriptions. No lock-in. Just systems that ship.', PAGE_W / 2, ctaBoxY + 76, { align: 'center' });
 
 // White button
-drawRect(PAGE_W / 2 - 75, ctaBoxY + ctaBoxH - 10, 150, 28, WHITE);
+const btnX = PAGE_W / 2 - 75;
+const btnY = ctaBoxY + ctaBoxH - 10;
+const btnW = 150;
+const btnH = 28;
+drawRect(btnX, btnY, btnW, btnH, WHITE);
 setFont('bold', 10);
 setColor(PURPLE);
 doc.text('Book a Strategy Call', PAGE_W / 2, ctaBoxY + ctaBoxH + 9, { align: 'center' });
+doc.link(btnX, btnY, btnW, btnH, { url: 'https://symphonylabs.ai/contact' });
 
 currentY = ctaBoxY + ctaBoxH + 35;
 setFont('normal', 9);
 setColor(TEXT_TERTIARY);
-doc.text('nathan@symphonylabs.ai', PAGE_W / 2, currentY, { align: 'center' });
-currentY += 10;
-doc.text('symphonylabs.ai', PAGE_W / 2, currentY, { align: 'center' });
+doc.text('symphonylabs.ai/contact', PAGE_W / 2, currentY, { align: 'center' });
+doc.link(PAGE_W / 2 - 60, currentY - 10, 120, 14, { url: 'https://symphonylabs.ai/contact' });
 
-pageFooter(10);
+pageFooter(11);
 
 // Save
 const outputPath = path.join(__dirname, '..', 'public', 'symphony-ai-agent-guide.pdf');

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/lib/config';
+import Overlay from '@/components/ui/Overlay';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -57,35 +58,33 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden fixed inset-0 top-[65px] z-40 bg-bg-primary/95 backdrop-blur-xl bg-mesh">
-          <nav className="flex flex-col items-center gap-6 pt-12" aria-label="Mobile navigation">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`text-lg font-medium transition-colors ${
-                    isActive ? 'text-purple' : 'text-text-secondary hover:text-purple'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-            <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="mt-4 rounded-lg bg-gradient-to-r from-purple to-purple-dark px-8 py-3 text-base font-semibold text-white glow-purple"
-            >
-              Book a Call
-            </Link>
-          </nav>
-        </div>
-      )}
+      {/* Mobile Menu — portaled to body so backdrop-filter on <header> can't trap it */}
+      <Overlay open={mobileOpen} className="md:hidden top-[65px] bg-bg-primary">
+        <nav className="flex flex-col items-center gap-6 pt-12" aria-label="Mobile navigation">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`text-lg font-medium transition-colors ${
+                  isActive ? 'text-purple' : 'text-text-secondary hover:text-purple'
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <Link
+            href="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="mt-4 rounded-lg bg-gradient-to-r from-purple to-purple-dark px-8 py-3 text-base font-semibold text-white glow-purple"
+          >
+            Book a Call
+          </Link>
+        </nav>
+      </Overlay>
     </header>
   );
 }
