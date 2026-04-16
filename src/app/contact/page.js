@@ -2,7 +2,6 @@ import Section from '@/components/ui/Section';
 import FAQ from '@/components/ui/FAQ';
 import ContactForm from '@/components/forms/ContactForm';
 import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
-import { siteConfig } from '@/lib/config';
 
 export const metadata = {
   title: 'Contact',
@@ -81,10 +80,6 @@ export default function ContactPage() {
             {' '}&middot;{' '}
             <a href="mailto:Sean@Symphonylabs.ai" className="text-purple hover:text-purple-light transition-colors">Sean@Symphonylabs.ai</a>
           </p>
-          <div className="flex justify-center gap-6 mt-4">
-            <a href={siteConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-text-tertiary hover:text-purple transition-colors">LinkedIn</a>
-            <a href={siteConfig.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-sm text-text-tertiary hover:text-purple transition-colors">Twitter</a>
-          </div>
         </div>
       </Section>
     </>
