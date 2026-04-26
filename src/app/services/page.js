@@ -3,8 +3,10 @@ import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import CTA from '@/components/ui/CTA';
+import BuyButton from '@/components/checkout/BuyButton';
 import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
 import WaveformBg from '@/components/backgrounds/WaveformBg';
+import { suiteProducts } from '@/lib/products';
 
 export const metadata = {
   title: 'Services',
@@ -131,6 +133,67 @@ export default function ServicesPage() {
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
+        </div>
+      </Section>
+
+      {/* The Symphony Suite — pre-built, ready-to-use */}
+      <Section bg="bg-bg-tertiary" background="grid" decoration="orbs">
+        <div className="max-w-3xl mb-10">
+          <div className="glass-subtle inline-block rounded-full text-warning text-xs font-semibold px-3 py-1 mb-4">
+            Pre-Built &middot; Ready to Use
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
+            The Symphony <span className="gradient-text">Suite</span>
+          </h2>
+          <p className="text-text-secondary leading-relaxed mb-3">
+            Custom builds solve your specific work. The Suite solves the work every
+            team faces. Pre-built prompt packs, calibrated and tested, delivered as a
+            one-time download. No engagement, no scoping call, no subscription.
+          </p>
+          <p className="text-text-secondary leading-relaxed">
+            Same operator&rsquo;s logic as the custom builds, packaged so you can run, not study.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {suiteProducts.map((p) => (
+            <div key={p.slug} className="gradient-border">
+              <div className="glass rounded-[calc(1rem-1px)] p-6 md:p-7 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-semibold text-cyan bg-cyan/10 px-2.5 py-1 rounded-full">
+                    {p.promptCount} Prompts
+                  </span>
+                  <span className="font-heading font-bold text-lg gradient-text">
+                    ${p.price}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold font-heading mb-2">{p.name}</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-5 flex-1">
+                  {p.blurb}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Button href={`/suite/${p.slug}`} size="sm">
+                    See What&rsquo;s Inside
+                  </Button>
+                  <BuyButton product={p} variant="ghost" size="sm">
+                    Buy ${p.price}
+                  </BuyButton>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-xl bg-bg-secondary border-l-4 border-purple p-5 max-w-3xl">
+          <p className="text-sm text-text-secondary leading-relaxed">
+            <span className="text-purple font-semibold">Not sure what fits?</span>{' '}
+            Start with a pack to see how we work. If your team needs something the Suite
+            does not cover,{' '}
+            <a href="/contact" className="text-cyan hover:underline">
+              book a discovery call
+            </a>
+            {' '}for a custom build.
+          </p>
         </div>
       </Section>
 

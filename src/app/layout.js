@@ -1,6 +1,7 @@
 import { Inter, Sora, JetBrains_Mono } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import LemonProvider from '@/components/checkout/LemonProvider';
 import './globals.css';
 
 const inter = Inter({
@@ -50,9 +51,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen flex flex-col bg-bg-primary text-text-primary antialiased bg-noise">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <LemonProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LemonProvider>
       </body>
     </html>
   );
