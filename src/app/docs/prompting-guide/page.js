@@ -21,9 +21,54 @@ function PageFooter({ page, total = 6 }) {
   );
 }
 
+function SuiteSidePanel() {
+  return (
+    <div className="gradient-border">
+      <div className="glass rounded-[calc(1rem-1px)] p-5">
+        <span className="inline-block font-heading text-[10px] font-semibold tracking-[2px] uppercase text-purple mb-2">
+          From the Symphony Suite
+        </span>
+        <h3 className="font-heading font-bold text-base mb-2 leading-snug">
+          The Manager Pack
+        </h3>
+        <p className="text-text-secondary text-xs leading-relaxed mb-3">
+          Fourteen ready-to-run prompts built on the framework in this guide.
+          Performance reviews, PIPs, 1:1s, and the hard conversations.
+        </p>
+        <ul className="space-y-1.5 mb-4 text-xs text-text-tertiary">
+          {[
+            'Drafts that survive HR review',
+            'Locked word counts where it matters',
+            'Lifetime updates, no subscription',
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <span className="text-cyan mt-0.5 shrink-0">&#x2713;</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-heading font-bold gradient-text text-base">$59</span>
+          <span className="text-[10px] text-text-tertiary tracking-wider uppercase">
+            One-Time
+          </span>
+        </div>
+        <Link
+          href="/suite/manager-pack"
+          className="block text-center rounded-lg bg-gradient-to-r from-purple to-purple-dark px-4 py-2.5 text-xs font-semibold text-white hover:scale-[1.01] transition-transform"
+        >
+          See the Pack &rarr;
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export default function PromptingGuidePage() {
   return (
-    <div className="max-w-[900px] mx-auto">
+    <div className="mx-auto max-w-[1280px] px-2 sm:px-4 lg:px-6">
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-10">
+        <div className="max-w-[900px] mx-auto lg:mx-0 lg:max-w-none">
 
       {/* PAGE 1: COVER */}
       <section className="px-6 md:px-10 py-16 md:py-20 border-b-[3px] border-purple">
@@ -38,6 +83,16 @@ export default function PromptingGuidePage() {
             A step-by-step walkthrough for writing effective AI prompts in your daily work.
             Use this alongside a training session or work through each page on your own.
             By the end, you will have built a real, production-ready prompt.
+          </p>
+          <p className="text-text-secondary text-sm mb-3">
+            Want the work already done?{' '}
+            <Link
+              href="/suite/manager-pack"
+              className="text-purple font-semibold hover:underline"
+            >
+              See the Symphony Manager Pack
+            </Link>
+            : fourteen ready-to-run prompts built on the framework in this guide.
           </p>
           <p className="text-text-tertiary text-sm">Symphony AI &nbsp;|&nbsp; Strategic AI Consulting</p>
         </div>
@@ -230,6 +285,29 @@ export default function PromptingGuidePage() {
 
       {/* PAGE 6: CTA */}
       <section className="px-6 md:px-10 py-20 md:py-28">
+        {/* Manager Pack callout — packs the prompts taught in this guide */}
+        <div className="max-w-[900px] mx-auto mb-12">
+          <div className="rounded-xl bg-bg-secondary border-l-4 border-purple p-6 md:p-7">
+            <span className="inline-block font-heading text-[11px] font-semibold tracking-[2px] uppercase text-purple mb-2">
+              Want the work already done?
+            </span>
+            <h3 className="font-heading text-xl md:text-2xl font-semibold mb-2">
+              The Symphony Manager Pack
+            </h3>
+            <p className="text-text-secondary text-sm md:text-base mb-4 leading-relaxed">
+              Fourteen ready-to-run prompts built on the framework you just read.
+              Performance reviews, PIPs, 1:1s, and the hard conversations. Calibrated,
+              tested, and tuned to produce defensible drafts in minutes.
+            </p>
+            <Link
+              href="/suite/manager-pack"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple to-purple-dark px-5 py-2.5 text-sm font-semibold text-white hover:scale-[1.01] transition-transform"
+            >
+              See the Manager Pack &rarr;
+            </Link>
+          </div>
+        </div>
+
         <GuideFooterCTA
           headline="Ready to build AI into your workflow?"
           body="Custom agents, automated workflows, and hands-on training for your team."
@@ -239,6 +317,15 @@ export default function PromptingGuidePage() {
           <PageFooter page={6} />
         </div>
       </section>
+        </div>
+
+        {/* Sticky side panel — desktop only */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-24 py-16">
+            <SuiteSidePanel />
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }

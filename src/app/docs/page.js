@@ -3,8 +3,10 @@ import Section from '@/components/ui/Section';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import CTA from '@/components/ui/CTA';
+import BuyButton from '@/components/checkout/BuyButton';
 import WaveformBg from '@/components/backgrounds/WaveformBg';
 import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
+import { suiteProducts } from '@/lib/products';
 
 export const metadata = {
   title: 'Documentation',
@@ -110,6 +112,38 @@ export default function DocsPage() {
               </div>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* Suite promo */}
+      <Section decoration="orbs">
+        <div className="gradient-border max-w-4xl">
+          <div className="glass rounded-[calc(1rem-1px)] p-7 md:p-9">
+            <div className="flex flex-col md:flex-row gap-6 md:items-center">
+              <div className="flex-1">
+                <span className="inline-block font-heading text-[11px] font-semibold tracking-[2px] uppercase text-purple mb-2">
+                  The Symphony Suite
+                </span>
+                <h3 className="font-heading text-xl md:text-2xl font-bold mb-2">
+                  When you want the work already done.
+                </h3>
+                <p className="text-text-secondary text-sm md:text-base leading-relaxed">
+                  Pre-built prompt packs that solve common work in minutes. Same operator&rsquo;s
+                  logic as the free guides, packaged so you can run, not study.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 md:shrink-0">
+                <Button href="/suite" size="md">Browse the Suite</Button>
+                <BuyButton
+                  product={suiteProducts.find((p) => p.slug === 'manager-pack')}
+                  variant="ghost"
+                  size="md"
+                >
+                  Manager Pack $59
+                </BuyButton>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
