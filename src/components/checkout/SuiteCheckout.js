@@ -89,7 +89,7 @@ export default function SuiteCheckout({ cart = [] }) {
         <div className="mt-6 pt-5 border-t border-border/30 grid sm:grid-cols-3 gap-3 text-xs text-text-tertiary">
           <div>
             <p className="font-semibold text-text-secondary mb-0.5">Delivery</p>
-            <p>Instant download link by email plus on this page.</p>
+            <p>Instant download after checkout. Receipt and license key also emailed.</p>
           </div>
           <div>
             <p className="font-semibold text-text-secondary mb-0.5">Format</p>
