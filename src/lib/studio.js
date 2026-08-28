@@ -4,9 +4,9 @@
 
 export const studioMeta = {
   name: 'Symphony Studio',
-  tagline: 'Post like you have a label behind you.',
+  tagline: 'You send footage. We send back posts.',
   blurb:
-    'Send us your raw footage. We turn it into a month of trial-ready reels, captions in your voice, and the alternate accounts to post them from.',
+    'Symphony Studio makes social content for musicians. Send us an hour of raw footage and we send back finished Instagram Reels, TikToks, carousel slides, and captions. Ready to post, in your voice.',
 };
 
 // Where the order flow sends briefs.
@@ -14,6 +14,51 @@ export const studioMeta = {
 // tagged with formType so they filter cleanly. Swap in a dedicated form ID or a
 // real backend endpoint here and nothing else has to change.
 export const studioIntakeEndpoint = 'https://formspree.io/f/mgopdoqy';
+
+// The trade, stated literally. This is the thing artists need to understand in
+// the first five seconds: what goes in, what comes out.
+export const whatYouSend = [
+  'An hour of raw studio or session footage',
+  'Live show video, phone clips, tour B roll',
+  'The songs you want it scored to',
+  'Five of your own posts, so we learn your voice',
+];
+
+export const whatYouGetBack = [
+  '12 to 15 Instagram Reels and TikToks, cut and captioned',
+  'Carousel slides pulled from the same footage',
+  'Captions written in your voice, per post',
+  'Long-form text posts for Facebook and newsletters',
+];
+
+// Where the output is aimed. Video is the hard part and the part that travels,
+// so Reels and TikTok lead. The rest ships alongside it.
+export const platforms = [
+  {
+    name: 'Instagram Reels',
+    format: 'Vertical video',
+    primary: true,
+    note: 'The main event. 15 and 30 second cuts, 9:16, scored and captioned.',
+  },
+  {
+    name: 'TikTok',
+    format: 'Vertical video',
+    primary: true,
+    note: 'Same cuts, paced and hooked for a colder audience that does not know you yet.',
+  },
+  {
+    name: 'Instagram Carousels',
+    format: 'Slides',
+    primary: false,
+    note: 'Full-resolution stills from the same shoot, sequenced as a swipe post.',
+  },
+  {
+    name: 'Facebook and long-form',
+    format: 'Written posts',
+    primary: false,
+    note: 'The longer story behind a show or a song, written the way you would tell it.',
+  },
+];
 
 export const studioTiers = [
   {

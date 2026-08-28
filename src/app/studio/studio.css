@@ -26,7 +26,6 @@
 
   /* Type */
   --st-display: var(--font-st-display), 'Barlow Condensed', Impact, sans-serif;
-  --st-serif: var(--font-st-serif), 'Times New Roman', Georgia, serif;
   --st-ui: var(--font-st-ui), 'Inter', system-ui, sans-serif;
   --st-cond: var(--font-st-cond), 'Barlow', sans-serif;
 
@@ -63,10 +62,6 @@
   text-transform: uppercase;
 }
 
-.st-serif {
-  font-family: var(--st-serif);
-}
-
 .st-kicker {
   font-family: var(--st-cond);
   font-weight: 600;
@@ -81,9 +76,10 @@
 }
 
 .st-lede {
-  font-family: var(--st-serif);
-  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
-  line-height: 1.55;
+  font-family: var(--st-ui);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1.9vw, 1.4rem);
+  line-height: 1.6;
   color: var(--st-bone-dim);
 }
 

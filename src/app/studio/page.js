@@ -9,12 +9,15 @@ import {
   pipeline,
   intakeRequirements,
   studioFaq,
+  whatYouSend,
+  whatYouGetBack,
+  platforms,
 } from '@/lib/studio';
 
 export const metadata = {
   title: 'Studio',
   description:
-    'Send us your raw footage. We turn it into a month of trial-ready reels, captions in your voice, and the alternate accounts to post them from.',
+    'Symphony Studio makes social content for musicians. Send an hour of raw footage, get back finished Instagram Reels, TikToks, slides, and captions.',
 };
 
 function formatPrice(amount) {
@@ -28,36 +31,46 @@ function formatPrice(amount) {
 export default function StudioPage() {
   return (
     <>
+      {/* ---------- Purpose banner. States the service before anything else. ---------- */}
+      <div className="bg-[var(--st-flare)] text-[var(--st-ink)]">
+        <div className="mx-auto max-w-[1280px] px-6 py-3.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="st-display text-[1.15rem] leading-none">
+            Symphony Studio makes social content for musicians.
+          </span>
+          <span className="st-body !text-[rgba(12,11,10,0.82)] text-[0.95rem]">
+            You send raw footage. We send back posts.
+          </span>
+        </div>
+      </div>
+
       {/* ---------- Hero ---------- */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-[1280px] px-6 pt-16 pb-14 md:pt-24 md:pb-20">
-          <p className="st-kicker mb-6">For working artists</p>
+        <div className="mx-auto max-w-[1280px] px-6 pt-14 pb-14 md:pt-20 md:pb-20">
+          <p className="st-kicker mb-6">For musicians, first</p>
 
-          <h1 className="st-display text-[clamp(3.4rem,13vw,10.5rem)] mb-2">
-            Post like you
+          <h1 className="st-display text-[clamp(2.9rem,10.5vw,8.6rem)] mb-1">
+            You send footage.
           </h1>
-          <h1 className="st-display text-[clamp(3.4rem,13vw,10.5rem)] mb-8">
-            have a <span className="st-flare-text">label</span>
+          <h1 className="st-display text-[clamp(2.9rem,10.5vw,8.6rem)] mb-8">
+            We send back <span className="st-flare-text">posts</span>.
           </h1>
 
           <div className="st-rule-flare max-w-md mb-8" />
 
           <div className="grid lg:grid-cols-[1.35fr_1fr] gap-10 lg:gap-16 items-start">
-            <p className="st-lede max-w-2xl">
-              {studioMeta.blurb}
-            </p>
+            <p className="st-lede max-w-2xl">{studioMeta.blurb}</p>
             <div className="lg:pt-2">
               <p className="st-body text-[0.95rem] mb-7">
-                The platforms now expect an unsustainable amount of content. Artists with
-                nepotism or a label budget hire a team for it. This is how everyone else
-                competes on the same footing.
+                Give us an hour of studio footage or a night of live video. You get back a
+                month of finished Reels and TikToks, plus the slides and captions to run
+                alongside them. Nothing to edit. Nothing to write.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/studio/order" className="st-btn st-btn-primary">
                   Start a Drop
                 </Link>
-                <Link href="#tracklist" className="st-btn st-btn-ghost">
-                  What Ships
+                <Link href="#the-trade" className="st-btn st-btn-ghost">
+                  See the Trade
                 </Link>
               </div>
             </div>
@@ -67,13 +80,106 @@ export default function StudioPage() {
 
       <Marquee
         items={[
-          '12 to 15 reels per drop',
+          'Instagram Reels',
+          'TikToks',
+          'Carousel slides',
           'Captions in your voice',
-          'Fan pages built and fed',
+          '12 to 15 posts per drop',
           'You own everything',
-          'No subscription',
         ]}
       />
+
+      {/* ---------- The trade: literal in and out ---------- */}
+      <section id="the-trade" className="scroll-mt-20 bg-[var(--st-ink-2)]">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="mb-14 max-w-3xl">
+            <p className="st-kicker mb-4">How it works, plainly</p>
+            <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)] mb-5">The trade</h2>
+            <p className="st-lede">
+              One upload in. A month of postable content out. You stay the editor of
+              record, and nothing goes live until you say so.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-8 items-stretch">
+            <div className="st-panel p-8 md:p-10">
+              <p className="st-kicker st-kicker-dim mb-6">You send</p>
+              <ul className="space-y-4">
+                {whatYouSend.map((item) => (
+                  <li key={item} className="flex gap-3.5">
+                    <span className="st-display text-[1.1rem] text-[rgba(244,239,228,0.35)] shrink-0 leading-6">
+                      &#9656;
+                    </span>
+                    <span className="st-body text-[0.98rem]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex lg:flex-col items-center justify-center">
+              <span className="st-display text-[2.6rem] st-flare-text leading-none rotate-90 lg:rotate-0">
+                &#10230;
+              </span>
+            </div>
+
+            <div className="st-panel p-8 md:p-10 !border-[var(--st-flare)]">
+              <p className="st-kicker mb-6">You get back</p>
+              <ul className="space-y-4">
+                {whatYouGetBack.map((item) => (
+                  <li key={item} className="flex gap-3.5">
+                    <span className="st-flare-text text-[1.1rem] shrink-0 leading-6">
+                      &#9656;
+                    </span>
+                    <span className="st-body text-[0.98rem] !text-[var(--st-bone)]">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Platforms ---------- */}
+      <section>
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="st-kicker mb-4">Where it goes</p>
+              <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">
+                Built for <span className="st-flare-text">Reels</span> and TikTok
+              </h2>
+            </div>
+            <p className="st-body max-w-sm text-[0.95rem]">
+              Video is the hard part, and it&rsquo;s the part that travels, so that&rsquo;s where
+              most of a drop goes. Slides and written posts ship alongside it.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {platforms.map((pf) => (
+              <div
+                key={pf.name}
+                className={`st-panel p-7 h-full ${pf.primary ? '!border-[rgba(255,59,31,0.55)]' : ''}`}
+              >
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span
+                    className={`st-kicker !text-[0.62rem] ${pf.primary ? '' : 'st-kicker-dim'}`}
+                  >
+                    {pf.primary ? 'Primary' : 'Also included'}
+                  </span>
+                </div>
+                <h3 className="st-display text-[1.5rem] mb-1">{pf.name}</h3>
+                <p className="st-kicker st-kicker-dim !tracking-[0.12em] mb-4">
+                  {pf.format}
+                </p>
+                <p className="st-body text-[0.92rem]">{pf.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ---------- The pitch, inverted to paper ---------- */}
       <section className="st-paper">
@@ -90,7 +196,7 @@ export default function StudioPage() {
               </h2>
             </div>
             <div className="lg:pt-3">
-              <p className="st-serif text-[clamp(1.3rem,2.4vw,1.75rem)] leading-[1.45] mb-7 text-[#1E1A15]">
+              <p className="st-lede !text-[#1E1A15] text-[clamp(1.2rem,2.2vw,1.6rem)] !leading-[1.45] mb-7">
                 Every working musician has the same archive: hours of raw video on a drive,
                 a catalog of finished songs, and no time to turn one into the other.
               </p>
@@ -352,7 +458,7 @@ export default function StudioPage() {
             <br />
             of <span className="st-flare-text">footage</span>
           </h2>
-          <p className="st-serif text-[clamp(1.15rem,2vw,1.4rem)] max-w-xl mx-auto mb-10 text-[#2A251E]">
+          <p className="st-lede !text-[#2A251E] max-w-xl mx-auto mb-10">
             Start with one drop. If nothing in it earns a post, you&rsquo;ve lost one upload and
             nothing else.
           </p>

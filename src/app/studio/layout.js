@@ -1,23 +1,16 @@
 import Link from 'next/link';
-import { Bebas_Neue, Crimson_Text, Barlow, Barlow_Condensed } from 'next/font/google';
+import { Bebas_Neue, Barlow, Barlow_Condensed } from 'next/font/google';
 import './studio.css';
 
-// Loaded through next/font, not a CSS @import: the bundler drops @import url()
-// from route-level stylesheets, which silently fell the whole Studio identity
-// back to Impact and Times. next/font also self-hosts, so there is no
-// render-blocking request to Google on every view.
+// Two families only: Bebas Neue for display, Barlow (plus its condensed cut)
+// for everything else. Loaded through next/font, not a CSS @import: the bundler
+// drops @import url() from route-level stylesheets, which silently fell the
+// whole Studio identity back to Impact. next/font also self-hosts, so there is
+// no render-blocking request to Google on every view.
 const bebas = Bebas_Neue({
   variable: '--font-st-display',
   subsets: ['latin'],
   weight: ['400'],
-  display: 'swap',
-});
-
-const crimson = Crimson_Text({
-  variable: '--font-st-serif',
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  style: ['normal', 'italic'],
   display: 'swap',
 });
 
@@ -35,7 +28,7 @@ const barlowCondensed = Barlow_Condensed({
   display: 'swap',
 });
 
-const fontVars = [bebas, crimson, barlow, barlowCondensed].map((f) => f.variable).join(' ');
+const fontVars = [bebas, barlow, barlowCondensed].map((f) => f.variable).join(' ');
 
 // Studio runs its own brand system. The global Symphony AI header and footer
 // still wrap this from the root layout, so site navigation persists, but
