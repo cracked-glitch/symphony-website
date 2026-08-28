@@ -1,24 +1,20 @@
 import Link from 'next/link';
-import Section from '@/components/ui/Section';
-import Button from '@/components/ui/Button';
-import CTA from '@/components/ui/CTA';
-import FAQ from '@/components/ui/FAQ';
-import TrustBadge from '@/components/ui/TrustBadge';
-import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
-import WaveformBg from '@/components/backgrounds/WaveformBg';
+import StudioFAQ from '@/components/studio/StudioFAQ';
+import Marquee from '@/components/studio/Marquee';
 import {
   studioMeta,
   studioTiers,
   deliverables,
+  accountLanes,
   pipeline,
   intakeRequirements,
   studioFaq,
 } from '@/lib/studio';
 
 export const metadata = {
-  title: 'Symphony Studio',
+  title: 'Studio',
   description:
-    'Send us your raw footage. We cut it into vertical video, write the captions in your voice, and hand back files you can post today.',
+    'Send us your raw footage. We turn it into a month of trial-ready reels, captions in your voice, and the alternate accounts to post them from.',
 };
 
 function formatPrice(amount) {
@@ -32,272 +28,353 @@ function formatPrice(amount) {
 export default function StudioPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden py-20 md:py-28 bg-noise">
-        <GradientOrbsBg variant="hero" />
-        <WaveformBg variant="subtle" />
-        <div className="relative z-10 mx-auto max-w-[1280px] px-6">
-          <div className="max-w-3xl">
-            <div className="flex flex-wrap gap-3 mb-8">
-              <TrustBadge text="You Own the Output" />
-              <TrustBadge text="Nothing Publishes Without You" />
-              <TrustBadge text="No Subscription" />
-            </div>
-            <span className="inline-block font-heading text-xs font-semibold tracking-[1.5px] uppercase text-warning mb-4">
-              For Artists and Creators
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-6">
-              One upload. <span className="gradient-text">A month of posts.</span>
-            </h1>
-            <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-4 max-w-2xl">
+      {/* ---------- Hero ---------- */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto max-w-[1280px] px-6 pt-16 pb-14 md:pt-24 md:pb-20">
+          <p className="st-kicker mb-6">For working artists</p>
+
+          <h1 className="st-display text-[clamp(3.4rem,13vw,10.5rem)] mb-2">
+            Post like you
+          </h1>
+          <h1 className="st-display text-[clamp(3.4rem,13vw,10.5rem)] mb-8">
+            have a <span className="st-flare-text">label</span>
+          </h1>
+
+          <div className="st-rule-flare max-w-md mb-8" />
+
+          <div className="grid lg:grid-cols-[1.35fr_1fr] gap-10 lg:gap-16 items-start">
+            <p className="st-lede max-w-2xl">
               {studioMeta.blurb}
             </p>
-            <p className="text-text-tertiary max-w-2xl mb-8">
-              You already shot the footage. The work that stops you is cutting it, scoring it,
-              and finding the words. That is the part we do.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button href="/studio/order" size="lg">
-                Start a Drop
-              </Button>
-              <Button href="#what-you-get" variant="ghost" size="lg">
-                See What Ships
-              </Button>
+            <div className="lg:pt-2">
+              <p className="st-body text-[0.95rem] mb-7">
+                The platforms now expect an unsustainable amount of content. Artists with
+                nepotism or a label budget hire a team for it. This is how everyone else
+                competes on the same footing.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/studio/order" className="st-btn st-btn-primary">
+                  Start a Drop
+                </Link>
+                <Link href="#tracklist" className="st-btn st-btn-ghost">
+                  What Ships
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="gradient-line-thick" />
+      <Marquee
+        items={[
+          '12 to 15 reels per drop',
+          'Captions in your voice',
+          'Fan pages built and fed',
+          'You own everything',
+          'No subscription',
+        ]}
+      />
 
-      {/* The problem */}
-      <Section bg="bg-bg-tertiary" background="grid">
-        <div className="max-w-3xl">
-          <h2 className="text-2xl md:text-3xl font-bold font-heading mb-5">
-            An hour of footage is not a post.
-          </h2>
-          <p className="text-text-secondary leading-relaxed mb-4">
-            Every gigging artist has the same archive: hours of raw video on a drive, a catalog
-            of finished songs, and no time to turn one into the other. The footage is not the
-            bottleneck. Cutting it to vertical, syncing it to the master, choosing the fifteen
-            seconds that hold attention, and writing something that sounds like you: that is
-            the bottleneck.
-          </p>
-          <p className="text-text-secondary leading-relaxed">
-            Symphony Studio takes the raw material and hands back finished posts. You stay the
-            editor of record. We do the labor.
-          </p>
-        </div>
-      </Section>
-
-      {/* What you get */}
-      <Section id="what-you-get" decoration="nodes">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-semibold text-purple bg-purple/10 px-2.5 py-1 rounded-full">
-            In Every Drop
-          </span>
-          <h2 className="text-2xl md:text-3xl font-bold font-heading">What Ships</h2>
-        </div>
-        <p className="text-text-secondary mb-10 max-w-2xl">
-          Not one file to one spec. A set of options built from your own catalog, so you can
-          test what lands before you commit your main account to it.
-        </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {deliverables.map((d) => (
-            <div key={d.title} className="gradient-border-subtle">
-              <div className="glass rounded-[calc(1rem-1px)] p-6 h-full">
-                <h3 className="text-base font-semibold font-heading mb-2">{d.title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">{d.desc}</p>
-              </div>
+      {/* ---------- The pitch, inverted to paper ---------- */}
+      <section className="st-paper">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-20">
+            <div>
+              <p className="st-kicker mb-5">The problem</p>
+              <h2 className="st-display text-[clamp(2.4rem,5.5vw,4.2rem)]">
+                One shoot.
+                <br />
+                Four accounts.
+                <br />
+                <span className="st-flare-text">No team.</span>
+              </h2>
             </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* How it works */}
-      <Section bg="bg-bg-tertiary" decoration="waveform">
-        <h2 className="text-2xl md:text-3xl font-bold font-heading mb-3">
-          How a <span className="gradient-text">Drop</span> Works
-        </h2>
-        <p className="text-text-secondary mb-10 max-w-2xl">
-          Four steps. You are involved in two of them.
-        </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {pipeline.map((step) => (
-            <div key={step.n} className="gradient-border-subtle">
-              <div className="glass rounded-[calc(1rem-1px)] p-6 h-full">
-                <div className="font-heading font-bold text-purple text-sm tracking-[2px] mb-3">
-                  {step.n}
-                </div>
-                <h3 className="text-lg font-semibold font-heading mb-2">{step.title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">{step.desc}</p>
-              </div>
+            <div className="lg:pt-3">
+              <p className="st-serif text-[clamp(1.3rem,2.4vw,1.75rem)] leading-[1.45] mb-7 text-[#1E1A15]">
+                Every working musician has the same archive: hours of raw video on a drive,
+                a catalog of finished songs, and no time to turn one into the other.
+              </p>
+              <p className="st-body mb-5">
+                The footage isn&rsquo;t the problem. Cutting it vertical, scoring it, finding
+                the fifteen seconds that hold attention, writing something that sounds
+                like you, then doing it again four times a week across four different
+                pages: that&rsquo;s the job. At label tier it&rsquo;s somebody&rsquo;s actual title.
+              </p>
+              <p className="st-body">
+                Studio does that work at a price a working artist can absorb. You stay the
+                editor of record. Nothing goes out that you didn&rsquo;t choose.
+              </p>
             </div>
-          ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
-      {/* What we need from you */}
-      <Section decoration="rings">
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold font-heading mb-4">
-              What we need from you
-            </h2>
-            <p className="text-text-secondary leading-relaxed mb-4">
-              Four things. A complete brief is the difference between a drop that lands and a
-              drop that needs rebuilding.
-            </p>
-            <p className="text-text-tertiary text-sm leading-relaxed">
-              We learned the master audio requirement the hard way. Our first client run
-              shipped without it, and every note came back the same: sync it to the master.
+      {/* ---------- Tracklist: what ships ---------- */}
+      <section id="tracklist" className="scroll-mt-20">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="st-kicker mb-4">In every drop</p>
+              <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">What ships</h2>
+            </div>
+            <p className="st-body max-w-sm text-[0.95rem]">
+              A whole set to try, built out of your own catalog, so you learn what lands
+              before your main account commits to it.
             </p>
           </div>
-          <div className="space-y-4">
-            {intakeRequirements.map((req) => (
-              <div key={req.label} className="gradient-border-subtle">
-                <div className="glass rounded-[calc(1rem-1px)] p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-base font-semibold font-heading">{req.label}</h3>
-                    {req.required && (
-                      <span className="text-[11px] font-medium tracking-wide text-warning bg-warning/10 px-2 py-0.5 rounded">
-                        Required
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-text-secondary leading-relaxed">{req.desc}</p>
+
+          <div>
+            {deliverables.map((d, i) => (
+              <div key={d.title} className="st-track">
+                <div className="st-track-num">{String(i + 1).padStart(2, '0')}</div>
+                <div>
+                  <h3 className="st-track-title">{d.title}</h3>
+                  <p className="st-body text-[0.95rem] max-w-3xl">{d.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Pricing */}
-      <Section id="pricing" bg="bg-bg-tertiary" background="dots">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-semibold text-purple bg-purple/10 px-2.5 py-1 rounded-full">
-            Pay Per Drop
-          </span>
-          <h2 className="text-2xl md:text-3xl font-bold font-heading">Pricing</h2>
-        </div>
-        <p className="text-text-secondary mb-10 max-w-2xl">
-          You pay when you have something to promote. No monthly fee sitting on your card
-          between releases.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {studioTiers.map((tier) => (
-            <div
-              key={tier.id}
-              className={tier.highlight ? 'gradient-border' : 'gradient-border-subtle'}
-            >
-              <div
-                className={`glass rounded-[calc(1rem-1px)] p-7 flex flex-col h-full ${
-                  tier.highlight ? 'glow-purple' : ''
-                }`}
-              >
-                {tier.highlight && (
-                  <span className="self-start text-[11px] font-semibold tracking-wide text-purple bg-purple/15 px-2.5 py-1 rounded-full mb-4">
-                    Most Artists Start Here
-                  </span>
-                )}
-                <h3 className="text-xl font-bold font-heading mb-2">{tier.name}</h3>
-                <div className="flex items-baseline gap-2 mb-3">
-                  <span className="font-heading font-bold text-3xl gradient-text">
-                    {tier.price === null ? 'Custom' : formatPrice(tier.price)}
-                  </span>
-                  <span className="text-sm text-text-tertiary">{tier.unit}</span>
-                </div>
-                <p className="text-sm text-text-secondary leading-relaxed mb-5">
-                  {tier.summary}
-                </p>
-                <ul className="space-y-2.5 mb-7 flex-1">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex gap-2.5 text-sm text-text-secondary">
-                      <span className="text-success shrink-0 mt-0.5">&#10003;</span>
-                      <span className="leading-relaxed">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  href={
-                    tier.id === 'catalog'
-                      ? '/contact?topic=studio-catalog'
-                      : `/studio/order?tier=${tier.id}`
-                  }
-                  variant={tier.highlight ? 'primary' : 'ghost'}
-                  fullWidth
-                >
-                  {tier.cta}
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <p className="text-text-tertiary text-sm mt-8 max-w-2xl">
-          Prices are indicative while we run our first cohort. We confirm the number with you
-          before any work starts, and you are never charged automatically.
-        </p>
-      </Section>
-
-      {/* FAQ */}
-      <Section decoration="orbs">
-        <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold font-heading mb-4">
-              Questions artists ask
+      {/* ---------- Account lanes ---------- */}
+      <section className="bg-[var(--st-ink-2)]">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="max-w-3xl mb-14">
+            <p className="st-kicker mb-4">The part you can&rsquo;t do alone</p>
+            <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)] mb-6">
+              We build your <span className="st-flare-text">other</span> accounts
             </h2>
-            <p className="text-text-secondary leading-relaxed">
-              Still unsure whether your footage is workable? Send it over and we will tell you
-              honestly before you pay anything.
+            <p className="st-lede">
+              Nobody breaks through on one page anymore. Labels run a network: the artist
+              account, the archive, the niche pages that pull listeners in before they
+              know your name. We build for every lane and hand you the plan to run them.
             </p>
-            <div className="mt-6">
-              <Button href="/contact" variant="ghost" size="sm">
-                Ask Us Directly
-              </Button>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5">
+            {accountLanes.map((lane, i) => (
+              <div key={lane.title} className="st-panel p-7 md:p-9">
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <h3 className="st-display text-[1.65rem]">{lane.title}</h3>
+                  <span className="st-display text-[1.4rem] text-[rgba(244,239,228,0.22)]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <p className="st-body text-[0.95rem]">{lane.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="st-hint mt-8 max-w-2xl">
+            Every page we help you build says who runs it. We don&rsquo;t invent fake personas,
+            and we don&rsquo;t fake comment threads between your own accounts.
+          </p>
+        </div>
+      </section>
+
+      {/* ---------- How it works ---------- */}
+      <section>
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="mb-14">
+            <p className="st-kicker mb-4">The process</p>
+            <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">
+              Four steps. You&rsquo;re in two.
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+            {pipeline.map((step) => (
+              <div key={step.n}>
+                <div className="st-ghost-num mb-4">{step.n}</div>
+                <div className="st-rule mb-5" />
+                <h3 className="st-display text-[1.5rem] mb-3">{step.title}</h3>
+                <p className="st-body text-[0.93rem]">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- What we need ---------- */}
+      <section className="st-paper">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
+            <div>
+              <p className="st-kicker mb-4">Intake</p>
+              <h2 className="st-display text-[clamp(2.2rem,5vw,3.6rem)] mb-6">
+                What we need from you
+              </h2>
+              <p className="st-body">
+                A complete brief is the difference between a drop that lands and a drop that
+                needs rebuilding. Only three of these are hard requirements.
+              </p>
+            </div>
+
+            <div>
+              {intakeRequirements.map((req, i) => (
+                <div
+                  key={req.label}
+                  className={`py-6 ${i === 0 ? '' : 'border-t border-[rgba(12,11,10,0.14)]'}`}
+                >
+                  <div className="flex flex-wrap items-center gap-3 mb-2.5">
+                    <span className="st-display text-[1.35rem] text-[rgba(12,11,10,0.3)]">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="st-display text-[1.4rem]">{req.label}</h3>
+                    <span
+                      className={`st-kicker ${
+                        req.required ? '' : 'st-kicker-dim'
+                      } !text-[0.66rem] !tracking-[0.18em]`}
+                    >
+                      {req.required ? 'Required' : 'Your call'}
+                    </span>
+                  </div>
+                  <p className="st-body text-[0.95rem]">{req.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
-          <FAQ items={studioFaq} />
         </div>
-      </Section>
+      </section>
 
-      {/* Bridge to the rest of the site */}
-      <Section bg="bg-bg-tertiary" decoration="waveform">
-        <div className="max-w-3xl">
-          <span className="inline-block font-heading text-xs font-semibold tracking-[1.5px] uppercase text-warning mb-3">
-            Not an Artist
-          </span>
-          <h2 className="text-2xl md:text-3xl font-bold font-heading mb-4">
-            The same engine, pointed at your work.
-          </h2>
-          <p className="text-text-secondary mb-6">
-            Studio is one application of what we build: systems that take messy raw input and
-            produce finished, on-voice output. If you want that pointed at your operation
-            instead of your footage, start with{' '}
-            <Link href="/services" className="text-cyan hover:underline">
-              Services
-            </Link>{' '}
-            or the{' '}
-            <Link href="/suite" className="text-cyan hover:underline">
-              Symphony Suite
-            </Link>
-            .
+      {/* ---------- Pricing ---------- */}
+      <section id="pricing" className="scroll-mt-20 bg-[var(--st-ink-2)]">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
+            <div>
+              <p className="st-kicker mb-4">Pay per drop</p>
+              <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">Pricing</h2>
+            </div>
+            <p className="st-body max-w-sm text-[0.95rem]">
+              You pay when you have something to promote. No monthly fee sitting on your
+              card between releases.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {studioTiers.map((tier) => {
+              const featured = tier.highlight;
+              return (
+                <div
+                  key={tier.id}
+                  className={`st-stub p-7 md:p-8 flex flex-col ${
+                    featured ? 'st-stub-featured' : ''
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-3 mb-5">
+                    <h3 className="st-display text-[1.7rem]">{tier.name}</h3>
+                    {featured && (
+                      <span className="st-kicker !text-[0.62rem]">Most start here</span>
+                    )}
+                  </div>
+
+                  <div className="flex items-baseline gap-2.5 mb-4">
+                    <span className="st-display text-[3.2rem] leading-none">
+                      {tier.price === null ? 'Talk' : formatPrice(tier.price)}
+                    </span>
+                    <span
+                      className={`st-kicker !tracking-[0.14em] ${
+                        featured ? '' : 'st-kicker-dim'
+                      }`}
+                    >
+                      {tier.unit}
+                    </span>
+                  </div>
+
+                  <p className="st-body text-[0.93rem] mb-6">{tier.summary}</p>
+
+                  <div
+                    className={`st-perf mb-6 ${featured ? 'text-[#0C0B0A]' : 'text-[#F4EFE4]'}`}
+                  />
+
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex gap-3 text-[0.9rem]">
+                        <span className="st-flare-text shrink-0 leading-6">&#9656;</span>
+                        <span className="st-body !text-[0.9rem]">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href={
+                      tier.id === 'catalog'
+                        ? '/contact?topic=studio-catalog'
+                        : `/studio/order?tier=${tier.id}`
+                    }
+                    className={`st-btn w-full ${
+                      featured ? 'st-btn-primary' : 'st-btn-ghost'
+                    }`}
+                  >
+                    {tier.cta}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="st-hint mt-8 max-w-2xl">
+            Prices are indicative while we run our first cohort. We confirm the number with
+            you before any work starts, and you&rsquo;re never charged automatically.
           </p>
-          <Button href="/services" variant="ghost" size="md">
-            Explore Services
-          </Button>
         </div>
-      </Section>
+      </section>
 
-      <CTA
-        heading="Send Us an Hour of Footage"
-        subheading="Start with one drop. If the output does not earn a post, you have lost one upload and nothing else."
-        primaryLabel="Start a Drop"
-        primaryHref="/studio/order"
-        secondaryLabel="Talk to Us First"
-        secondaryHref="/contact"
+      {/* ---------- FAQ ---------- */}
+      <section>
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="grid lg:grid-cols-[1fr_1.7fr] gap-12 lg:gap-20">
+            <div>
+              <p className="st-kicker mb-4">Questions</p>
+              <h2 className="st-display text-[clamp(2.2rem,5vw,3.6rem)] mb-6">
+                What artists ask
+              </h2>
+              <p className="st-body mb-7">
+                Not sure your footage is workable? Send it over and we&rsquo;ll tell you straight,
+                before you pay anything.
+              </p>
+              <Link href="/contact" className="st-btn st-btn-ghost">
+                Ask Us Directly
+              </Link>
+            </div>
+            <StudioFAQ items={studioFaq} />
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Closing ---------- */}
+      <section className="st-paper">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28 text-center">
+          <p className="st-kicker mb-6">Start here</p>
+          <h2 className="st-display text-[clamp(2.8rem,9vw,7rem)] mb-8">
+            Send us an hour
+            <br />
+            of <span className="st-flare-text">footage</span>
+          </h2>
+          <p className="st-serif text-[clamp(1.15rem,2vw,1.4rem)] max-w-xl mx-auto mb-10 text-[#2A251E]">
+            Start with one drop. If nothing in it earns a post, you&rsquo;ve lost one upload and
+            nothing else.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/studio/order" className="st-btn st-btn-primary">
+              Start a Drop
+            </Link>
+            <Link href="/contact" className="st-btn st-btn-ghost">
+              Talk to Us First
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Marquee
+        items={[
+          'Symphony Studio',
+          'Built for working artists',
+          'You own the output',
+          'Nothing publishes without you',
+        ]}
+        reverse
       />
     </>
   );

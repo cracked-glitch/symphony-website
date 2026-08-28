@@ -1,42 +1,39 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
-import GradientOrbsBg from '@/components/backgrounds/GradientOrbsBg';
 import OrderFlow from '@/components/studio/OrderFlow';
 
 export const metadata = {
   title: 'Start a Drop',
   description:
-    'Send us your footage, your masters, and your brief. We confirm scope and price before any work starts.',
+    'Send us your footage and your brief. We confirm scope and price before any work starts.',
 };
 
 function OrderFlowFallback() {
   return (
-    <div className="gradient-border">
-      <div className="glass rounded-[calc(1rem-1px)] p-10 text-center">
-        <p className="text-text-tertiary text-sm">Loading the intake form...</p>
-      </div>
+    <div className="st-panel p-10 text-center">
+      <p className="st-body text-[0.9rem]">Loading the intake form...</p>
     </div>
   );
 }
 
 export default function StudioOrderPage() {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 bg-noise">
-      <GradientOrbsBg variant="section" />
-      <div className="relative z-10 mx-auto max-w-[880px] px-6">
+    <section>
+      <div className="mx-auto max-w-[900px] px-6 py-14 md:py-20">
         <div className="mb-10">
           <Link
             href="/studio"
-            className="text-sm text-text-tertiary hover:text-cyan transition-colors"
+            className="st-kicker st-kicker-dim hover:text-[var(--st-flare)] transition-colors"
           >
             &#8592; Back to Studio
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold font-heading mt-4 mb-3">
-            Start a <span className="gradient-text">Drop</span>
+          <h1 className="st-display text-[clamp(2.6rem,8vw,5rem)] mt-5 mb-4">
+            Start a <span className="st-flare-text">drop</span>
           </h1>
-          <p className="text-text-secondary max-w-xl leading-relaxed">
-            Four steps, about three minutes. We reply by email to confirm scope and price. No
-            payment is taken through this form.
+          <div className="st-rule-flare max-w-xs mb-6" />
+          <p className="st-lede max-w-xl">
+            Four steps, about three minutes. We reply by email to confirm scope and price.
+            No payment is taken through this form.
           </p>
         </div>
 

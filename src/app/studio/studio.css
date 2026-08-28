@@ -1,0 +1,420 @@
+/* ============================================================
+   SYMPHONY STUDIO — scoped brand system
+
+   Studio is a sub-brand for artists, not the Symphony AI
+   consulting look. Everything here lives under .studio-brand so
+   the corporate purple/cyan glass system is untouched elsewhere.
+
+   Register: tour poster, album liner notes, record label press
+   kit. Warm ink instead of cool black, paper instead of glass,
+   one hot accent instead of a gradient wash.
+   ============================================================ */
+
+.studio-brand {
+  /* Surface */
+  --st-ink: #0C0B0A;
+  --st-ink-2: #14120F;
+  --st-panel: #1B1814;
+  --st-bone: #F4EFE4;
+  --st-bone-dim: #CFC6B6;
+  --st-dust: #8F877A;
+
+  /* Accents. Flare carries the brand; acid is the highlight. */
+  --st-flare: #FF3B1F;
+  --st-flare-deep: #D42B12;
+  --st-acid: #E9FF4D;
+
+  /* Type */
+  --st-display: var(--font-st-display), 'Barlow Condensed', Impact, sans-serif;
+  --st-serif: var(--font-st-serif), 'Times New Roman', Georgia, serif;
+  --st-ui: var(--font-st-ui), 'Inter', system-ui, sans-serif;
+  --st-cond: var(--font-st-cond), 'Barlow', sans-serif;
+
+  background-color: var(--st-ink);
+  color: var(--st-bone);
+  font-family: var(--st-ui);
+  position: relative;
+}
+
+/* Film grain. Sits over the whole section, never over the cursor. */
+.studio-brand::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.studio-brand > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Type scale ---------- */
+
+.st-display {
+  font-family: var(--st-display);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.st-serif {
+  font-family: var(--st-serif);
+}
+
+.st-kicker {
+  font-family: var(--st-cond);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  color: var(--st-flare);
+}
+
+.st-kicker-dim {
+  color: var(--st-dust);
+}
+
+.st-lede {
+  font-family: var(--st-serif);
+  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--st-bone-dim);
+}
+
+.st-body {
+  font-family: var(--st-ui);
+  line-height: 1.65;
+  color: var(--st-bone-dim);
+}
+
+/* Hairline rules do a lot of the liner-notes work. */
+.st-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(244, 239, 228, 0.28),
+    rgba(244, 239, 228, 0.06) 70%,
+    transparent
+  );
+}
+
+.st-rule-flare {
+  height: 2px;
+  background: linear-gradient(to right, var(--st-flare), var(--st-flare-deep) 40%, transparent);
+}
+
+/* ---------- Marquee ---------- */
+
+.st-marquee {
+  overflow: hidden;
+  background: var(--st-flare);
+  color: var(--st-ink);
+  border-top: 2px solid var(--st-ink);
+  border-bottom: 2px solid var(--st-ink);
+}
+
+.st-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: st-scroll 38s linear infinite;
+}
+
+.st-marquee-track span {
+  font-family: var(--st-display);
+  font-size: 1.55rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+}
+
+.st-marquee-track span::after {
+  content: '✦';
+  padding: 0 1.4rem;
+  opacity: 0.55;
+}
+
+@keyframes st-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Inverted paper block ---------- */
+
+.st-paper {
+  background: var(--st-bone);
+  color: var(--st-ink);
+}
+
+.st-paper .st-body {
+  color: #3A342B;
+}
+
+.st-paper .st-lede {
+  color: #2A251E;
+}
+
+.st-paper .st-kicker {
+  color: var(--st-flare-deep);
+}
+
+.st-paper .st-rule {
+  background: linear-gradient(to right, rgba(12, 11, 10, 0.3), rgba(12, 11, 10, 0.06) 70%, transparent);
+}
+
+/* ---------- Tracklist ---------- */
+
+.st-track {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: 1.25rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid rgba(244, 239, 228, 0.14);
+  transition: background-color 0.25s ease, padding-left 0.25s ease;
+}
+
+.st-track:last-child {
+  border-bottom: 1px solid rgba(244, 239, 228, 0.14);
+}
+
+.st-track:hover {
+  background-color: rgba(255, 59, 31, 0.055);
+  padding-left: 0.6rem;
+}
+
+.st-track-num {
+  font-family: var(--st-display);
+  font-size: 1.5rem;
+  color: var(--st-flare);
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+
+.st-track-title {
+  font-family: var(--st-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Panels and cards ---------- */
+
+.st-panel {
+  background: var(--st-panel);
+  border: 1px solid rgba(244, 239, 228, 0.1);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.st-panel:hover {
+  border-color: rgba(255, 59, 31, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Ticket stub: notched edge, used for pricing. */
+.st-stub {
+  background: var(--st-panel);
+  border: 1px solid rgba(244, 239, 228, 0.13);
+  position: relative;
+}
+
+.st-stub-featured {
+  background: var(--st-bone);
+  color: var(--st-ink);
+  border-color: var(--st-flare);
+}
+
+.st-stub-featured .st-body {
+  color: #3A342B;
+}
+
+.st-perf {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    currentColor 0,
+    currentColor 5px,
+    transparent 5px,
+    transparent 11px
+  );
+  opacity: 0.32;
+}
+
+/* ---------- Buttons ---------- */
+
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--st-cond);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.94rem;
+  padding: 0.95rem 1.9rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.st-btn-primary {
+  background: var(--st-flare);
+  color: var(--st-bone);
+  box-shadow: 4px 4px 0 var(--st-ink);
+}
+
+.st-btn-primary:hover {
+  background: var(--st-bone);
+  color: var(--st-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--st-flare-deep);
+}
+
+.st-btn-ghost {
+  background: transparent;
+  color: var(--st-bone);
+  border-color: rgba(244, 239, 228, 0.4);
+}
+
+.st-btn-ghost:hover {
+  border-color: var(--st-flare);
+  color: var(--st-flare);
+}
+
+.st-paper .st-btn-ghost,
+.st-stub-featured .st-btn-ghost {
+  color: var(--st-ink);
+  border-color: rgba(12, 11, 10, 0.4);
+}
+
+.st-paper .st-btn-ghost:hover,
+.st-stub-featured .st-btn-ghost:hover {
+  border-color: var(--st-flare);
+  color: var(--st-flare-deep);
+}
+
+.st-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Forms ---------- */
+
+.st-input {
+  width: 100%;
+  background: rgba(12, 11, 10, 0.55);
+  border: 1px solid rgba(244, 239, 228, 0.2);
+  color: var(--st-bone);
+  font-family: var(--st-ui);
+  padding: 0.85rem 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.st-input::placeholder {
+  color: rgba(143, 135, 122, 0.85);
+}
+
+.st-input:focus {
+  outline: none;
+  border-color: var(--st-flare);
+  box-shadow: 0 0 0 3px rgba(255, 59, 31, 0.16);
+}
+
+.st-label {
+  display: block;
+  font-family: var(--st-cond);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  color: var(--st-bone);
+  margin-bottom: 0.55rem;
+}
+
+.st-hint {
+  font-size: 0.78rem;
+  color: var(--st-dust);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Selectable chip, used for platforms and account lanes. */
+.st-chip {
+  font-family: var(--st-cond);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.82rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(244, 239, 228, 0.24);
+  background: transparent;
+  color: var(--st-bone-dim);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.st-chip:hover {
+  border-color: rgba(255, 59, 31, 0.6);
+  color: var(--st-bone);
+}
+
+.st-chip[aria-pressed='true'] {
+  background: var(--st-flare);
+  border-color: var(--st-flare);
+  color: var(--st-bone);
+}
+
+/* ---------- Step indicator ---------- */
+
+.st-step {
+  font-family: var(--st-cond);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.76rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(244, 239, 228, 0.18);
+  color: var(--st-dust);
+}
+
+.st-step-current {
+  border-color: var(--st-flare);
+  background: var(--st-flare);
+  color: var(--st-bone);
+}
+
+.st-step-done {
+  border-color: rgba(233, 255, 77, 0.5);
+  color: var(--st-acid);
+}
+
+/* ---------- Accents ---------- */
+
+.st-flare-text { color: var(--st-flare); }
+.st-acid-text { color: var(--st-acid); }
+
+/* Oversized ghost numeral behind step content. */
+.st-ghost-num {
+  font-family: var(--st-display);
+  font-size: clamp(4.5rem, 9vw, 7.5rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 59, 31, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .st-marquee-track { animation: none; }
+  .st-panel:hover,
+  .st-btn-primary:hover { transform: none; }
+  .st-track:hover { padding-left: 0; }
+}
