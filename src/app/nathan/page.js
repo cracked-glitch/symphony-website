@@ -93,7 +93,7 @@ export default function NathanPage() {
       <h2 style={s.h2}>Background</h2>
       <ul>
         <li>Delta Air Lines, 2021 to 2026: Enterprise Agile Coach, then Senior Enterprise AI and Agile Coach (AI delivery lead). Founding team of Delta Concierge. System administrator and strategy owner for the 5,000-user Agility tool. SAFe 6.0 Practice Consultant.</li>
-        <li>Capgemini, 2019 to 2021: Lean Six Sigma and automation engagements for a Class I railroad and a national restaurant chain; coached teams in six countries.</li>
+        <li>Capgemini, 2019 to 2021: Lean Six Sigma and automation engagements for a Class I railroad and McDonald's; coached teams in six countries.</li>
         <li>Symphony AI, founder: hands-on Claude trainings and skills with eval suites; automated trading systems on the Alpaca and Kalshi APIs.</li>
         <li>Georgia Institute of Technology, B.S.B.A. Finance (2019); University of Oxford (2016). 2,000+ options trades.</li>
       </ul>
