@@ -3,7 +3,7 @@
 export const metadata = {
   title: "Nathan Settlage: a Fortune 100 AI rollout, decomposed",
   description:
-    "How I deploy AI with customers and own adoption: a Delta Air Lines rollout decomposed, the product I ship as CPO at PinnTag, and the product I ship now.",
+    "How I deploy AI with customers and take new things from zero to one: a Delta Air Lines rollout decomposed, the product I ship as CPO at PinnTag, and the product I ship now.",
 };
 
 const s = {
@@ -27,12 +27,12 @@ export default function NathanPage() {
   return (
     <main style={s.main}>
       <h1 style={s.h1}>Nathan Settlage</h1>
-      <p style={s.lede}>I deploy AI with customers and own what happens after the contract. One example, decomposed, below.</p>
+      <p style={s.lede}>I deploy AI with customers, and I take new things from zero to one. One example, decomposed, below.</p>
       <p style={s.num}>Chief Product Officer, PinnTag (seed-stage AI) · ex-Delta Air Lines AI delivery lead · Georgia Tech finance · relocating to New York · <a href="mailto:nathansettlage@gmail.com" style={{ color: "#93C5FD" }}>nathansettlage@gmail.com</a></p>
 
 
       <h2 style={s.h2}>A Fortune 100 AI rollout, decomposed</h2>
-      <p><strong>The result first.</strong> Effort per feature in the first pilot went from about 96 hours and three people to about 5 hours, and AI-generated features shipped to production. The pattern was repeated across five Delta Air Lines departments, a non-developer in Airport Operations shipped production-bound features, and AI-assisted prototyping became a permanent practice in Delta's Digital organization.</p>
+      <p><strong>The result first.</strong> Effort per feature in the first pilot went from about 96 hours and a team of 10 to about 5 hours and three people, and AI-generated features shipped to production. The pattern was repeated across five Delta Air Lines departments, a non-developer in Airport Operations shipped production-bound features, and AI-assisted prototyping became a permanent practice in Delta's Digital organization.</p>
 
       <h3 style={s.h3}>1. The problem, in the sponsor's words</h3>
       <p>Delta's product teams had more approved work than delivery capacity. The ask was not "use AI"; it was "find out whether AI-assisted delivery can move real backlog items to production inside our controls, and if it can, make it the way we work."</p>
@@ -40,7 +40,7 @@ export default function NathanPage() {
       <h3 style={s.h3}>2. What I needed to know before touching a tool</h3>
       <ul>
         <li>Who owns the outcome in each department, and the one backlog item they would accept as the test.</li>
-        <li>The baseline: a comparable feature took about 96 hours and three people, by the Employee Services team's own retrospective estimate.</li>
+        <li>The baseline: a comparable feature took about 96 hours and a team of 10, by the Employee Services team's own retrospective estimate.</li>
         <li>The controls a change must pass to go live: code review, the CI/CD pipeline, security scanning. Nothing bypassed them.</li>
         <li>Where data and environments lived, and who could grant access the same week.</li>
       </ul>
@@ -57,7 +57,7 @@ export default function NathanPage() {
       <table style={s.table}>
         <thead><tr><th style={s.th}>Pilot</th><th style={s.th}>Baseline</th><th style={s.th}>AI-enabled</th><th style={s.th}>Note</th></tr></thead>
         <tbody>
-          <tr><td style={s.td}>Employee Services</td><td style={s.td}>about 96 hours, three people</td><td style={s.td}>about 5 hours</td><td style={s.td}>baseline from the team's retrospective</td></tr>
+          <tr><td style={s.td}>Employee Services</td><td style={s.td}>about 96 hours, a team of 10</td><td style={s.td}>about 5 hours, three people</td><td style={s.td}>baseline from the team's retrospective</td></tr>
           <tr><td style={s.td}>Airport Operations</td><td style={s.td}>roadmap items scheduled for future years</td><td style={s.td}>shipped in the current cycle</td><td style={s.td}>built by a non-developer subject-matter expert</td></tr>
           <tr><td style={s.td}>Digital (Fly Delta app, Delta Concierge)</td><td style={s.td}>spec documents, weeks of alignment</td><td style={s.td}>a working prototype in the three-day product workshop</td><td style={s.td}>proactive outreach to customers during irregular operations</td></tr>
         </tbody>
@@ -74,7 +74,7 @@ export default function NathanPage() {
       <ul>
         <li>Rebuilt the path to production with the owners of review, pipeline, and security in the room: AI-assisted code review immediately after generation, automated CI/CD, and security scanning at generation time and at deployment. Controls got stronger while cycle time dropped.</li>
         <li>Moved shaping to prototypes. Leaders aligned on a running prototype instead of a spec; Delta's Digital teams adopted it as a permanent practice.</li>
-        <li>Codified the pattern into playbooks, built a Product Owner agent in Copilot Studio that drafts features from documentation, and taught it to about 400 product owners, product managers, and Scrum Masters. Participants ranked the sessions above the vendor-led training.</li>
+        <li>Codified the pattern into playbooks, built a Product Owner agent in Copilot Studio that drafts features from documentation, and taught it to over 400 product owners, product managers, and Scrum Masters. Participants ranked the sessions above the vendor-led training.</li>
       </ul>
 
       <h3 style={s.h3}>7. What I would tell a CTO before their rollout</h3>
@@ -87,7 +87,7 @@ export default function NathanPage() {
 
       <h2 style={s.h2}>What I ship now</h2>
       <div style={s.box}>
-        <p><strong>PinnTag, Chief Product Officer (seed-stage AI local commerce).</strong> I started as the consultant who reviewed the AI codebase and wrote the architecture assessment, then prototyped a background marketing agent: it reads a merchant's own data (sales curve, inventory, brand voice) and public signals (weather, holidays, local events) and writes three ready-to-post campaigns per goal, each citing the signal that produced it, approved in one tap. That engagement became the CPO seat. Since then: onboarding redesigned, releases from every three to four months to weekly with a team in India, a 474-item launch list cut to 36, and an Atlanta venue corridor opened in person: ten conversations in week one, one venue live, a two-venue ownership group signed, zero no's, and a weekly scorecard investors forward unchanged.</p>
+        <p><strong>PinnTag, Chief Product Officer (seed-stage AI local commerce).</strong> I started as the consultant who reviewed the AI codebase and wrote the architecture assessment, then prototyped a background marketing agent: it reads a merchant's own data (sales curve, inventory, brand voice) and public signals (weather, holidays, local events) and writes three ready-to-post campaigns per goal, each citing the signal that produced it, approved in one tap. That engagement became the CPO seat. Since then: onboarding redesigned, releases from every three to four months to weekly with a team in India, a 474-item launch list cut to 36, and Atlanta's BeltLine venue corridor opened in person, the first venues signed door to door; multiple venues are live, the list is growing, and a weekly scorecard goes to investors unchanged.</p>
       </div>
 
       <h2 style={s.h2}>Background</h2>
