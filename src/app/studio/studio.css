@@ -394,6 +394,26 @@
   color: var(--st-acid);
 }
 
+/* ---------- Reel ---------- */
+
+.st-reel {
+  scroll-padding-inline: 1.5rem;
+  scrollbar-width: none;
+}
+
+.st-reel::-webkit-scrollbar { display: none; }
+
+.st-reel-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: var(--st-panel);
+  border: 1px solid rgba(244, 239, 228, 0.12);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 /* ---------- Accents ---------- */
 
 .st-flare-text { color: var(--st-flare); }

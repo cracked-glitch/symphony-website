@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Bebas_Neue, Barlow, Barlow_Condensed } from 'next/font/google';
+import { showPack, tierHref } from '@/lib/studio';
 import './studio.css';
 
 // Two families only: Bebas Neue for display, Barlow (plus its condensed cut)
@@ -51,10 +52,10 @@ export default function StudioLayout({ children }) {
               Pricing
             </Link>
             <Link
-              href="/studio/order"
+              href={tierHref(showPack)}
               className="st-btn st-btn-primary !px-4 sm:!px-5 !py-2 !text-[0.72rem] sm:!text-[0.8rem] whitespace-nowrap"
             >
-              Book a Show
+              Book my show
             </Link>
           </div>
         </div>

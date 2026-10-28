@@ -1,23 +1,21 @@
 import Link from 'next/link';
 import StudioFAQ from '@/components/studio/StudioFAQ';
-import Marquee from '@/components/studio/Marquee';
+import ReelStrip from '@/components/studio/ReelStrip';
+import StickyBook from '@/components/studio/StickyBook';
 import {
   studioMeta,
   studioTiers,
-  deliverables,
-  accountLanes,
-  pipeline,
-  intakeRequirements,
+  showPack,
+  tierHref,
+  reel,
+  howItWorks,
   studioFaq,
-  whatYouSend,
-  whatYouGetBack,
-  platforms,
 } from '@/lib/studio';
 
 export const metadata = {
   title: 'Studio',
   description:
-    'Symphony Studio makes social content for musicians. Send an hour of raw footage, get back finished Instagram Reels, TikToks, slides, and captions.',
+    'Send us the footage from one show. In 5 days you get 6 vertical edits cut to your songs, ready for TikTok and Reels. $199 per show.',
 };
 
 function formatPrice(amount) {
@@ -28,391 +26,99 @@ function formatPrice(amount) {
   }).format(amount);
 }
 
+// The page runs in one line: show the work, say what it is, price it, book it.
+// Everything a buyer has to read before the button stays under ~60 words.
 export default function StudioPage() {
+  const bookHref = tierHref(showPack);
+  const buyable = studioTiers.filter((t) => t.price !== null);
+  const roster = studioTiers.find((t) => t.id === 'catalog');
+
   return (
     <>
-      {/* ---------- Purpose banner. States the service before anything else. ---------- */}
-      <div className="bg-[var(--st-flare)] text-[var(--st-ink)]">
-        <div className="mx-auto max-w-[1280px] px-6 py-3.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="st-display text-[1.15rem] leading-none">
-            Symphony Studio makes social content for musicians.
-          </span>
-          <span className="st-body !text-[rgba(12,11,10,0.82)] text-[0.95rem]">
-            You send raw footage. We send back posts.
-          </span>
-        </div>
-      </div>
-
-      {/* ---------- Hero ---------- */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-[1280px] px-6 pt-14 pb-14 md:pt-20 md:pb-20">
-          <p className="st-kicker mb-6">For musicians, first</p>
-
-          <h1 className="st-display text-[clamp(2.9rem,10.5vw,8.6rem)] mb-1">
-            You send footage.
-          </h1>
-          <h1 className="st-display text-[clamp(2.9rem,10.5vw,8.6rem)] mb-8">
-            We send back <span className="st-flare-text">posts</span>.
-          </h1>
-
-          <div className="st-rule-flare max-w-md mb-8" />
-
-          <div className="grid lg:grid-cols-[1.35fr_1fr] gap-10 lg:gap-16 items-start">
-            <p className="st-lede max-w-2xl">{studioMeta.blurb}</p>
-            <div className="lg:pt-2">
-              <p className="st-body text-[0.95rem] mb-7">
-                Give us a night of live video, phone clips included. You get back 6 finished
-                edits cut to your songs, with hooks, captions, and a plan for when to post
-                each one. Nothing to edit. Nothing to write.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link href="/studio/order" className="st-btn st-btn-primary">
-                  Book a Show Pack
-                </Link>
-                <Link href="#the-trade" className="st-btn st-btn-ghost">
-                  See the Trade
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Marquee
-        items={[
-          'Instagram Reels',
-          'TikToks',
-          'Carousel slides',
-          'Captions in your voice',
-          '6 edits per show',
-          'You own everything',
-        ]}
-      />
-
-      {/* ---------- The trade: literal in and out ---------- */}
-      <section id="the-trade" className="scroll-mt-20 bg-[var(--st-ink-2)]">
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="mb-14 max-w-3xl">
-            <p className="st-kicker mb-4">How it works, plainly</p>
-            <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)] mb-5">The trade</h2>
-            <p className="st-lede">
-              One upload in. A month of postable content out. You stay the editor of
-              record, and nothing goes live until you say so.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-8 items-stretch">
-            <div className="st-panel p-8 md:p-10">
-              <p className="st-kicker st-kicker-dim mb-6">You send</p>
-              <ul className="space-y-4">
-                {whatYouSend.map((item) => (
-                  <li key={item} className="flex gap-3.5">
-                    <span className="st-display text-[1.1rem] text-[rgba(244,239,228,0.35)] shrink-0 leading-6">
-                      &#9656;
-                    </span>
-                    <span className="st-body text-[0.98rem]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex lg:flex-col items-center justify-center">
-              <span className="st-display text-[2.6rem] st-flare-text leading-none rotate-90 lg:rotate-0">
-                &#10230;
-              </span>
-            </div>
-
-            <div className="st-panel p-8 md:p-10 !border-[var(--st-flare)]">
-              <p className="st-kicker mb-6">You get back</p>
-              <ul className="space-y-4">
-                {whatYouGetBack.map((item) => (
-                  <li key={item} className="flex gap-3.5">
-                    <span className="st-flare-text text-[1.1rem] shrink-0 leading-6">
-                      &#9656;
-                    </span>
-                    <span className="st-body text-[0.98rem] !text-[var(--st-bone)]">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- Platforms ---------- */}
+      {/* ---------- Hero: the reel leads, the pitch and button sit beside it ---------- */}
       <section>
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
-            <div>
-              <p className="st-kicker mb-4">Where it goes</p>
-              <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">
-                Built for <span className="st-flare-text">Reels</span> and TikTok
-              </h2>
-            </div>
-            <p className="st-body max-w-sm text-[0.95rem]">
-              Video is the hard part, and it&rsquo;s the part that travels, so that&rsquo;s where
-              most of a drop goes. Slides and written posts ship alongside it.
+        <div className="mx-auto max-w-[1280px] px-6 pt-8 pb-14 md:pt-12 md:pb-20 grid gap-x-12 gap-y-6 grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] [grid-template-areas:'head''reel''copy'] md:[grid-template-areas:'head_copy''reel_reel']">
+          <div className="[grid-area:head]">
+            <p className="st-kicker mb-3">For musicians who play live</p>
+            <h1 className="st-display text-[clamp(2.7rem,7.5vw,6rem)]">
+              Your show, cut for <span className="st-flare-text">TikTok</span>.
+            </h1>
+          </div>
+
+          <div className="[grid-area:copy] md:self-end">
+            <p className="st-body text-[1.02rem] !text-[var(--st-bone)] mb-5 max-w-md">
+              {studioMeta.blurb}
             </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {platforms.map((pf) => (
-              <div
-                key={pf.name}
-                className={`st-panel p-7 h-full ${pf.primary ? '!border-[rgba(255,59,31,0.55)]' : ''}`}
-              >
-                <div className="flex items-center gap-2.5 mb-3">
-                  <span
-                    className={`st-kicker !text-[0.62rem] ${pf.primary ? '' : 'st-kicker-dim'}`}
-                  >
-                    {pf.primary ? 'Primary' : 'Also included'}
-                  </span>
-                </div>
-                <h3 className="st-display text-[1.5rem] mb-1">{pf.name}</h3>
-                <p className="st-kicker st-kicker-dim !tracking-[0.12em] mb-4">
-                  {pf.format}
-                </p>
-                <p className="st-body text-[0.92rem]">{pf.note}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- The pitch, inverted to paper ---------- */}
-      <section className="st-paper">
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-20">
-            <div>
-              <p className="st-kicker mb-5">The problem</p>
-              <h2 className="st-display text-[clamp(2.4rem,5.5vw,4.2rem)]">
-                One shoot.
-                <br />
-                Four accounts.
-                <br />
-                <span className="st-flare-text">No team.</span>
-              </h2>
-            </div>
-            <div className="lg:pt-3">
-              <p className="st-lede !text-[#1E1A15] text-[clamp(1.2rem,2.2vw,1.6rem)] !leading-[1.45] mb-7">
-                Every working musician has the same archive: hours of raw video on a drive,
-                a catalog of finished songs, and no time to turn one into the other.
-              </p>
-              <p className="st-body mb-5">
-                The footage isn&rsquo;t the problem. Cutting it vertical, scoring it, finding
-                the fifteen seconds that hold attention, writing something that sounds
-                like you, then doing it again four times a week across four different
-                pages: that&rsquo;s the job. At label tier it&rsquo;s somebody&rsquo;s actual title.
-              </p>
-              <p className="st-body">
-                Studio does that work at a price a working artist can absorb. You stay the
-                editor of record. Nothing goes out that you didn&rsquo;t choose.
-              </p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Link href={bookHref} className="st-btn st-btn-primary" data-book-cta>
+                Book my show · {formatPrice(showPack.price)}
+              </Link>
+              <Link href="#pricing" className="st-kicker st-kicker-dim hover:text-[var(--st-flare)] transition-colors">
+                What&rsquo;s included
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ---------- Tracklist: what ships ---------- */}
-      <section id="tracklist" className="scroll-mt-20">
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
-            <div>
-              <p className="st-kicker mb-4">In every drop</p>
-              <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">What ships</h2>
-            </div>
-            <p className="st-body max-w-sm text-[0.95rem]">
-              A whole set to try, built out of your own catalog, so you learn what lands
-              before your main account commits to it.
-            </p>
-          </div>
-
-          <div>
-            {deliverables.map((d, i) => (
-              <div key={d.title} className="st-track">
-                <div className="st-track-num">{String(i + 1).padStart(2, '0')}</div>
-                <div>
-                  <h3 className="st-track-title">{d.title}</h3>
-                  <p className="st-body text-[0.95rem] max-w-3xl">{d.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="[grid-area:reel] min-w-0 md:mt-4">
+            <ReelStrip clips={reel} />
           </div>
         </div>
       </section>
 
-      {/* ---------- Account lanes ---------- */}
-      <section className="bg-[var(--st-ink-2)]">
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="max-w-3xl mb-14">
-            <p className="st-kicker mb-4">The part you can&rsquo;t do alone</p>
-            <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)] mb-6">
-              We build your <span className="st-flare-text">other</span> accounts
-            </h2>
-            <p className="st-lede">
-              Nobody breaks through on one page anymore. Labels run a network: the artist
-              account, the archive, the niche pages that pull listeners in before they
-              know your name. We build for every lane and hand you the plan to run them.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-5">
-            {accountLanes.map((lane, i) => (
-              <div key={lane.title} className="st-panel p-7 md:p-9">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <h3 className="st-display text-[1.65rem]">{lane.title}</h3>
-                  <span className="st-display text-[1.4rem] text-[rgba(244,239,228,0.22)]">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                <p className="st-body text-[0.95rem]">{lane.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="st-hint mt-8 max-w-2xl">
-            Every page we help you build says who runs it. We don&rsquo;t invent fake personas,
-            and we don&rsquo;t fake comment threads between your own accounts.
-          </p>
-        </div>
-      </section>
-
-      {/* ---------- How it works ---------- */}
-      <section>
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="mb-14">
-            <p className="st-kicker mb-4">The process</p>
-            <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">
-              Four steps. You&rsquo;re in two.
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-            {pipeline.map((step) => (
-              <div key={step.n}>
-                <div className="st-ghost-num mb-4">{step.n}</div>
-                <div className="st-rule mb-5" />
-                <h3 className="st-display text-[1.5rem] mb-3">{step.title}</h3>
-                <p className="st-body text-[0.93rem]">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- What we need ---------- */}
-      <section className="st-paper">
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
-            <div>
-              <p className="st-kicker mb-4">Intake</p>
-              <h2 className="st-display text-[clamp(2.2rem,5vw,3.6rem)] mb-6">
-                What we need from you
-              </h2>
-              <p className="st-body">
-                A complete brief is the difference between a drop that lands and a drop that
-                needs rebuilding. Only three of these are hard requirements.
-              </p>
-            </div>
-
-            <div>
-              {intakeRequirements.map((req, i) => (
-                <div
-                  key={req.label}
-                  className={`py-6 ${i === 0 ? '' : 'border-t border-[rgba(12,11,10,0.14)]'}`}
-                >
-                  <div className="flex flex-wrap items-center gap-3 mb-2.5">
-                    <span className="st-display text-[1.35rem] text-[rgba(12,11,10,0.3)]">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="st-display text-[1.4rem]">{req.label}</h3>
-                    <span
-                      className={`st-kicker ${
-                        req.required ? '' : 'st-kicker-dim'
-                      } !text-[0.66rem] !tracking-[0.18em]`}
-                    >
-                      {req.required ? 'Required' : 'Your call'}
-                    </span>
-                  </div>
-                  <p className="st-body text-[0.95rem]">{req.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- Pricing ---------- */}
+      {/* ---------- Pricing, with the three steps folded in above it ---------- */}
       <section id="pricing" className="scroll-mt-20 bg-[var(--st-ink-2)]">
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
-            <div>
-              <p className="st-kicker mb-4">Pay per show</p>
-              <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">Pricing</h2>
-            </div>
-            <p className="st-body max-w-sm text-[0.95rem]">
-              You pay when you have something to promote. No monthly fee sitting on your
-              card between releases.
-            </p>
-          </div>
+        <div className="mx-auto max-w-[1280px] px-6 py-16 md:py-24">
+          <h2 className="st-display text-[clamp(2.2rem,5.5vw,4rem)] mb-8">
+            One show. <span className="st-flare-text">Six posts.</span>
+          </h2>
 
-          <div className="grid md:grid-cols-3 gap-5">
-            {studioTiers.map((tier) => {
+          <ol className="grid sm:grid-cols-3 gap-6 mb-12">
+            {howItWorks.map((s) => (
+              <li key={s.n} className="flex gap-4">
+                <span className="st-display text-[1.6rem] text-[rgba(255,59,31,0.7)] leading-none">{s.n}</span>
+                <span>
+                  <span className="st-display text-[1.3rem] block mb-1">{s.title}</span>
+                  <span className="st-body text-[0.92rem]">{s.desc}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+
+          <div className="grid md:grid-cols-2 gap-5 max-w-4xl">
+            {buyable.map((tier) => {
               const featured = tier.highlight;
               return (
                 <div
                   key={tier.id}
-                  className={`st-stub p-7 md:p-8 flex flex-col ${
-                    featured ? 'st-stub-featured' : ''
-                  }`}
+                  className={`st-stub p-7 md:p-8 flex flex-col ${featured ? 'st-stub-featured' : ''}`}
                 >
-                  <div className="flex items-center justify-between gap-3 mb-5">
+                  <div className="flex items-center justify-between gap-3 mb-4">
                     <h3 className="st-display text-[1.7rem]">{tier.name}</h3>
-                    {featured && (
-                      <span className="st-kicker !text-[0.62rem]">Most start here</span>
-                    )}
+                    {featured && <span className="st-kicker !text-[0.62rem]">Most start here</span>}
                   </div>
 
-                  <div className="flex items-baseline gap-2.5 mb-4">
-                    <span className="st-display text-[3.2rem] leading-none">
-                      {tier.price === null ? 'Talk' : formatPrice(tier.price)}
-                    </span>
-                    <span
-                      className={`st-kicker !tracking-[0.14em] ${
-                        featured ? '' : 'st-kicker-dim'
-                      }`}
-                    >
-                      {tier.unit}
+                  <div className="flex items-baseline gap-2.5 mb-3">
+                    <span className="st-display text-[3.2rem] leading-none">{formatPrice(tier.price)}</span>
+                    <span className={`st-kicker !tracking-[0.14em] ${featured ? '' : 'st-kicker-dim'}`}>
+                      {tier.note || tier.unit}
                     </span>
                   </div>
 
-                  <p className="st-body text-[0.93rem] mb-6">{tier.summary}</p>
+                  <p className="st-body text-[0.93rem] mb-5">{tier.summary}</p>
 
-                  <div
-                    className={`st-perf mb-6 ${featured ? 'text-[#0C0B0A]' : 'text-[#F4EFE4]'}`}
-                  />
-
-                  <ul className="space-y-3 mb-8 flex-1">
+                  <ul className="space-y-2.5 mb-7 flex-1">
                     {tier.features.map((f) => (
-                      <li key={f} className="flex gap-3 text-[0.9rem]">
-                        <span className="st-flare-text shrink-0 leading-6">&#9656;</span>
-                        <span className="st-body !text-[0.9rem]">{f}</span>
+                      <li key={f} className="flex gap-3">
+                        <span className="st-flare-text shrink-0 leading-6">&#10003;</span>
+                        <span className="st-body !text-[0.92rem]">{f}</span>
                       </li>
                     ))}
                   </ul>
 
                   <Link
-                    href={
-                      tier.paymentUrl ||
-                      (tier.id === 'catalog'
-                        ? '/contact?topic=studio-catalog'
-                        : `/studio/order?tier=${tier.id}`)
-                    }
-                    className={`st-btn w-full ${
-                      featured ? 'st-btn-primary' : 'st-btn-ghost'
-                    }`}
+                    href={tierHref(tier)}
+                    className={`st-btn w-full ${featured ? 'st-btn-primary' : 'st-btn-ghost'}`}
+                    data-book-cta
                   >
                     {tier.cta}
                   </Link>
@@ -421,29 +127,31 @@ export default function StudioPage() {
             })}
           </div>
 
-          <p className="st-hint mt-8 max-w-2xl">
-            Prices are indicative while we run our first cohort. We confirm the number with
-            you before any work starts, and you&rsquo;re never charged automatically.
+          <p className="st-body text-[0.92rem] mt-7 max-w-2xl">
+            Pay once per show, no subscription.{' '}
+            <span className="!text-[var(--st-bone)]">Manage a roster or run a venue?</span>{' '}
+            <Link href={tierHref(roster)} className="st-flare-text underline underline-offset-4">
+              Talk to us
+            </Link>
+            .
           </p>
         </div>
       </section>
 
-      {/* ---------- FAQ ---------- */}
+      {/* ---------- FAQ: the five questions that stop a booking ---------- */}
       <section>
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
-          <div className="grid lg:grid-cols-[1fr_1.7fr] gap-12 lg:gap-20">
+        <div className="mx-auto max-w-[1280px] px-6 py-16 md:py-24">
+          <div className="grid lg:grid-cols-[1fr_1.7fr] gap-10 lg:gap-20">
             <div>
               <p className="st-kicker mb-4">Questions</p>
-              <h2 className="st-display text-[clamp(2.2rem,5vw,3.6rem)] mb-6">
-                What artists ask
-              </h2>
-              <p className="st-body mb-7">
-                Not sure your footage is workable? Send it over and we&rsquo;ll tell you straight,
-                before you pay anything.
+              <h2 className="st-display text-[clamp(2.2rem,5vw,3.6rem)] mb-5">Before you book</h2>
+              <p className="st-body">
+                Anything else?{' '}
+                <Link href="/contact" className="st-flare-text underline underline-offset-4">
+                  Ask us directly
+                </Link>
+                .
               </p>
-              <Link href="/contact" className="st-btn st-btn-ghost">
-                Ask Us Directly
-              </Link>
             </div>
             <StudioFAQ items={studioFaq} />
           </div>
@@ -452,37 +160,20 @@ export default function StudioPage() {
 
       {/* ---------- Closing ---------- */}
       <section className="st-paper">
-        <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28 text-center">
-          <p className="st-kicker mb-6">Start here</p>
-          <h2 className="st-display text-[clamp(2.8rem,9vw,7rem)] mb-8">
-            Send us an hour
-            <br />
-            of <span className="st-flare-text">footage</span>
+        <div className="mx-auto max-w-[1280px] px-6 py-16 md:py-24 text-center">
+          <h2 className="st-display text-[clamp(2.6rem,8vw,6rem)] mb-5">
+            Got a show <span className="st-flare-text">coming up?</span>
           </h2>
-          <p className="st-lede !text-[#2A251E] max-w-xl mx-auto mb-10">
-            Start with one show. If nothing in it earns a post, you&rsquo;ve lost one upload and
-            nothing else.
+          <p className="st-lede !text-[#2A251E] max-w-xl mx-auto mb-8">
+            Get someone to film it on a phone. We&rsquo;ll do the rest.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/studio/order" className="st-btn st-btn-primary">
-              Book a Show Pack
-            </Link>
-            <Link href="/contact" className="st-btn st-btn-ghost">
-              Talk to Us First
-            </Link>
-          </div>
+          <Link href={bookHref} className="st-btn st-btn-primary" data-book-cta>
+            Book my show · {formatPrice(showPack.price)}
+          </Link>
         </div>
       </section>
 
-      <Marquee
-        items={[
-          'Symphony Studio',
-          'Built for working artists',
-          'You own the output',
-          'Nothing publishes without you',
-        ]}
-        reverse
-      />
+      <StickyBook href={bookHref} price={formatPrice(showPack.price)} />
     </>
   );
 }
