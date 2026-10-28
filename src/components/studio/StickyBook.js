@@ -31,7 +31,7 @@ export default function StickyBook({ href, price }) {
     >
       <p className="leading-tight">
         <span className="st-display text-[1.5rem] leading-none">{price}</span>
-        <span className="st-kicker st-kicker-dim !text-[0.62rem] block">6 edits · 5 days</span>
+        <span className="st-kicker st-kicker-dim !text-[0.62rem] block">6 edits · 1 day</span>
       </p>
       <Link href={href} className="st-btn st-btn-primary !py-3" tabIndex={show ? 0 : -1}>
         Book my show

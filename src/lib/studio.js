@@ -6,7 +6,7 @@ export const studioMeta = {
   name: 'Symphony Studio',
   tagline: 'Your show, cut for TikTok.',
   blurb:
-    'Send us the footage from one show, phone clips included. In 5 days you get 6 vertical edits cut to your songs, ready for TikTok and Reels.',
+    'Send us the footage from one show, phone clips included. Within a day, you get 6 vertical edits cut to your songs, ready for TikTok and Reels.',
 };
 
 // Where the order flow sends briefs.
@@ -29,7 +29,7 @@ export const reel = [
 export const howItWorks = [
   { n: '01', title: 'Book your show', desc: 'Pay for the pack. No subscription.' },
   { n: '02', title: 'Send the footage', desc: 'A Drive or Dropbox link. Phone clips work.' },
-  { n: '03', title: 'Get 6 edits in 5 days', desc: 'Cut to your songs, with hooks and a posting plan.' },
+  { n: '03', title: 'Get 6 edits in 1 day', desc: 'Cut to your songs, with hooks and a posting plan.' },
 ];
 
 // paymentUrl: a Stripe Payment Link. When set, that tier's pricing button goes
@@ -40,7 +40,7 @@ export const studioTiers = [
     name: 'Show Pack',
     price: 199,
     unit: 'per show',
-    summary: "One show's footage becomes 6 vertical edits cut to your songs. Back in 5 days.",
+    summary: "One show's footage becomes 6 vertical edits cut to your songs. Back in 1 day.",
     footageHours: 1,
     postCount: '6 edits from one show',
     features: [

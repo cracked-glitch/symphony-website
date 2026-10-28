@@ -15,7 +15,7 @@ import {
 export const metadata = {
   title: 'Studio',
   description:
-    'Send us the footage from one show. In 5 days you get 6 vertical edits cut to your songs, ready for TikTok and Reels. $199 per show.',
+    'Send us the footage from one show. Within a day, you get 6 vertical edits cut to your songs, ready for TikTok and Reels. $199 per show.',
 };
 
 function formatPrice(amount) {
