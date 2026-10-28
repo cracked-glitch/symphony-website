@@ -51,7 +51,7 @@ export const studioTiers = [
       'One round of revisions',
     ],
     cta: 'Book my show',
-    paymentUrl: null,
+    paymentUrl: 'https://buy.stripe.com/5kQ9AT8LObOY5wmf4D83C02',
     highlight: true,
   },
   {
@@ -70,7 +70,7 @@ export const studioTiers = [
       'Use them whenever you play. They don’t expire.',
     ],
     cta: 'Book my 3 shows',
-    paymentUrl: null,
+    paymentUrl: 'https://buy.stripe.com/bJeaEX7HKdX6bUKg8H83C03',
     highlight: false,
   },
   {
@@ -90,9 +90,11 @@ export const studioTiers = [
 ];
 
 // Where a tier's button goes: Stripe checkout once the link exists, the brief
-// form until then, and a conversation for managers and venues.
+// form until then, and a conversation for managers and venues. The utm tags
+// tell site sales apart from email sales in Stripe and carry through to the
+// post-payment redirect.
 export function tierHref(tier) {
-  if (tier.paymentUrl) return tier.paymentUrl;
+  if (tier.paymentUrl) return `${tier.paymentUrl}?utm_source=symphonylabs&utm_medium=studio_page`;
   return tier.id === 'catalog' ? '/contact?topic=studio-catalog' : `/studio/order?tier=${tier.id}`;
 }
 
