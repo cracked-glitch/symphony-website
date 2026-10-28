@@ -23,6 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://symphonylabs.ai'),
   title: {
     default: 'Symphony AI - Custom AI Agents & Automation for Elite Teams',
     template: '%s | Symphony AI',

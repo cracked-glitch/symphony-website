@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LogoMark from '@/components/ui/LogoMark';
 
 export default function GuideFooterCTA({
   headline,
@@ -10,6 +11,7 @@ export default function GuideFooterCTA({
     <>
       {/* Brand wordmark */}
       <div className="text-center mt-8 mb-6">
+        <LogoMark className="h-12 w-12 mx-auto mb-3" />
         <h2 className="text-2xl font-bold font-heading mb-1">Symphony AI</h2>
         <p className="text-text-tertiary mb-2">Strategic AI Consulting</p>
         <p className="italic font-medium text-lg text-purple">From Prompt to Power.</p>

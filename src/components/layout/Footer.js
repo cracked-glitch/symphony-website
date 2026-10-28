@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { siteConfig } from '@/lib/config';
 import WaveformBg from '@/components/backgrounds/WaveformBg';
+import LogoMark from '@/components/ui/LogoMark';
 
 const footerLinks = {
   Services: [
@@ -24,7 +25,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Symphony AI home">
+              <LogoMark className="h-8 w-8 mr-0.5" />
               <span className="text-xl font-bold font-heading gradient-text">Symphony</span>
               <span className="text-xl font-light font-heading text-text-secondary">AI</span>
             </Link>

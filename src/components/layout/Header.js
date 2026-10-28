@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/lib/config';
 import Overlay from '@/components/ui/Overlay';
+import LogoMark from '@/components/ui/LogoMark';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -14,7 +15,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-bg-primary/60 backdrop-blur-xl" style={{ borderBottom: '1px solid transparent', borderImage: 'linear-gradient(to right, transparent, rgba(124,58,237,0.3), rgba(6,182,212,0.2), transparent) 1' }}>
       <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2" aria-label="Symphony AI home">
+          <LogoMark className="h-8 w-8 mr-0.5" />
           <span className="text-xl font-bold font-heading gradient-text">Symphony</span>
           <span className="text-xl font-light font-heading text-text-secondary">AI</span>
         </Link>

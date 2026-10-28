@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Bebas_Neue, Barlow, Barlow_Condensed } from 'next/font/google';
 import { showPack, tierHref } from '@/lib/studio';
+import LogoMark from '@/components/ui/LogoMark';
 import './studio.css';
 
 // Two families only: Bebas Neue for display, Barlow (plus its condensed cut)
@@ -42,7 +43,9 @@ export default function StudioLayout({ children }) {
         <div className="mx-auto max-w-[1280px] px-6 py-3.5 flex items-center justify-between gap-4">
           <Link href="/studio" className="flex items-baseline gap-2.5 group">
             <span className="st-display text-[1.7rem] leading-none">Studio</span>
-            <span className="st-kicker st-kicker-dim hidden sm:inline">by Symphony</span>
+            <span className="st-kicker st-kicker-dim hidden sm:inline-flex items-center gap-1.5 self-center">
+              by <LogoMark className="h-4 w-4" /> Symphony AI
+            </span>
           </Link>
           <div className="flex items-center gap-5">
             <Link
