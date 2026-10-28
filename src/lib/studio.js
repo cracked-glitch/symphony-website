@@ -25,10 +25,10 @@ export const whatYouSend = [
 ];
 
 export const whatYouGetBack = [
-  '12 to 15 Instagram Reels and TikToks, cut and captioned',
-  'Carousel slides pulled from the same footage',
+  '6 vertical edits per show, cut to your songs',
+  'Five hook options per edit, plus no-text versions',
   'Captions written in your voice, per post',
-  'Long-form text posts for Facebook and newsletters',
+  'A posting guide for TikTok, Reels, and Shorts',
 ];
 
 // Where the output is aimed. Video is the hard part and the part that travels,
@@ -60,64 +60,68 @@ export const platforms = [
   },
 ];
 
+// paymentUrl: a Stripe Payment Link. When set, that tier's pricing button goes
+// straight to checkout; when null it falls back to the brief form.
 export const studioTiers = [
   {
     id: 'drop',
-    name: 'Single Drop',
-    price: 10,
-    unit: 'per drop',
+    name: 'Show Pack',
+    price: 199,
+    unit: 'per show',
     summary:
-      'One hour of footage becomes 3 to 5 post concepts, cut into 12 to 15 trial-ready reels.',
+      "One show's footage, phone clips included, becomes 6 vertical edits cut to your songs. Back in 5 days.",
     footageHours: 1,
-    postCount: '12 to 15 reels from 3 to 5 concepts',
+    postCount: '6 edits from one show',
     features: [
-      '3 to 5 post concepts, built from your footage',
-      '12 to 15 trial-ready reels across those concepts',
-      'Five on-screen hook options per concept',
-      'Captions written in your voice',
-      'A blank template with ideas for the next round',
+      '6 vertical edits cut to your songs',
+      'Five on-screen hook options per edit',
+      'No-text versions of every edit',
+      'Sized for TikTok, Reels, and Shorts',
+      'A posting guide: song, start point, caption, and post time',
       'One round of revisions',
     ],
-    cta: 'Start a Drop',
-    highlight: false,
-  },
-  {
-    id: 'season',
-    name: 'Season',
-    price: 40,
-    unit: 'for five drops',
-    summary:
-      'Five drops at eight dollars each. Enough output to run a main account and two alternates.',
-    footageHours: 5,
-    postCount: '60 to 75 reels across five drops',
-    features: [
-      'Everything in Single Drop, five times over',
-      'Lyric syncs, line by line or word by word',
-      'Section chops that turn one song into many reels',
-      'Aesthetic-page campaigns on licensed stock footage',
-      'A posting plan across your main and alternate accounts',
-      'Two rounds of revisions per drop',
-    ],
-    cta: 'Start a Season',
+    cta: 'Book a Show Pack',
+    paymentUrl: null,
     highlight: true,
   },
   {
+    id: 'season',
+    name: 'Three Shows',
+    price: 499,
+    unit: 'for three shows',
+    summary:
+      'Three Show Packs, booked up front. Use them across a tour, a residency, or your next three nights out.',
+    footageHours: 3,
+    postCount: '18 edits across three shows',
+    features: [
+      'Everything in the Show Pack, three times over',
+      'Lyric syncs, line by line or word by word',
+      'Section chops that turn one song into several edits',
+      'A posting plan across all three shows',
+      'Use them whenever you play, no expiry',
+    ],
+    cta: 'Book Three Shows',
+    paymentUrl: null,
+    highlight: false,
+  },
+  {
     id: 'catalog',
-    name: 'Catalog',
+    name: 'Managers & Venues',
     price: null,
     unit: 'custom',
     summary:
-      'For artists sitting on a back catalog, and for managers running more than one act.',
+      'For managers running more than one act, and for venues that want recaps of every night.',
     footageHours: null,
-    postCount: 'Scoped to the catalog',
+    postCount: 'Scoped to the roster',
     features: [
-      'Full back catalog and archive footage',
-      'Multiple voice profiles across artists',
-      'Fan pages and aesthetic pages built and seeded',
-      'Named creative direction per campaign',
-      'Standing revision cycle',
+      'Packs for every artist on the roster',
+      'Voice profiles for each act',
+      'Venue recap edits for your own channels',
+      'One point of contact, one invoice',
+      'Standing turnaround',
     ],
     cta: 'Talk to Us',
+    paymentUrl: null,
     highlight: false,
   },
 ];
@@ -127,7 +131,7 @@ export const studioTiers = [
 export const deliverables = [
   {
     title: 'Trial-ready reels',
-    desc: '12 to 15 vertical cuts per drop at 15 and 30 seconds, synced to your audio, framed 9:16 for Reels, TikTok, and Shorts.',
+    desc: '6 vertical cuts per show at 10 to 60 seconds, cut on the beat of your song, framed 9:16 for Reels, TikTok, and Shorts.',
   },
   {
     title: 'Hook variants',
@@ -241,9 +245,9 @@ export const studioFaq = [
       "You still get a drop. Master-synced cuts do perform better and we'll say so, but plenty of working artists have tracks sitting unreleased, uncleared, or half finished. Send live audio, a scratch take, or a rough mix and we'll build from that. Whether your masters ever leave your drive is your call. It's never a condition of working with us.",
   },
   {
-    question: 'How many posts is a drop, really?',
+    question: "What's in a Show Pack, exactly?",
     answer:
-      "A drop is 3 to 5 post concepts, and each concept ships as several usable cuts: a hook version, a clean version, lyric-synced versions, and section chops. That works out to 12 to 15 trial-ready reels, plus a blank template with the next round of ideas written out. They're built for testing. Post the ones that earn it.",
+      "6 vertical edits from one show, each cut to one of your songs. Every edit comes with five on-screen hook options and a no-text version, so you can test what lands. You also get a posting guide with the song, the start point, a caption, and a time to post for each one. Phone clips are fine. Most of what we've cut started on a phone.",
   },
   {
     question: 'Can you help me run more than one account?',
@@ -271,8 +275,8 @@ export const studioFaq = [
       "Tell us what missed and we'll rebuild it. Every tier includes revisions. Usually the concept lands and the format needs tuning, so revisions tend to be about pacing, text placement, and which section of the song to use.",
   },
   {
-    question: 'How long does a drop take?',
+    question: 'How long does a Show Pack take?',
     answer:
-      'Plan on a few days from a complete brief. Half-finished briefs are the main thing that slows a drop down, which is why the intake asks for your reference posts up front.',
+      'Five days from the footage landing. Half-finished briefs are the main thing that slows a pack down, which is why the intake asks for your reference posts up front.',
   },
 ];

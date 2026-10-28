@@ -54,7 +54,7 @@ export default function StudioLayout({ children }) {
               href="/studio/order"
               className="st-btn st-btn-primary !px-4 sm:!px-5 !py-2 !text-[0.72rem] sm:!text-[0.8rem] whitespace-nowrap"
             >
-              Start a Drop
+              Book a Show
             </Link>
           </div>
         </div>

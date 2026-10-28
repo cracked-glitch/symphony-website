@@ -61,13 +61,13 @@ export default function StudioPage() {
             <p className="st-lede max-w-2xl">{studioMeta.blurb}</p>
             <div className="lg:pt-2">
               <p className="st-body text-[0.95rem] mb-7">
-                Give us an hour of studio footage or a night of live video. You get back a
-                month of finished Reels and TikToks, plus the slides and captions to run
-                alongside them. Nothing to edit. Nothing to write.
+                Give us a night of live video, phone clips included. You get back 6 finished
+                edits cut to your songs, with hooks, captions, and a plan for when to post
+                each one. Nothing to edit. Nothing to write.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/studio/order" className="st-btn st-btn-primary">
-                  Start a Drop
+                  Book a Show Pack
                 </Link>
                 <Link href="#the-trade" className="st-btn st-btn-ghost">
                   See the Trade
@@ -84,7 +84,7 @@ export default function StudioPage() {
           'TikToks',
           'Carousel slides',
           'Captions in your voice',
-          '12 to 15 posts per drop',
+          '6 edits per show',
           'You own everything',
         ]}
       />
@@ -349,7 +349,7 @@ export default function StudioPage() {
         <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
             <div>
-              <p className="st-kicker mb-4">Pay per drop</p>
+              <p className="st-kicker mb-4">Pay per show</p>
               <h2 className="st-display text-[clamp(2.4rem,6vw,4.5rem)]">Pricing</h2>
             </div>
             <p className="st-body max-w-sm text-[0.95rem]">
@@ -405,9 +405,10 @@ export default function StudioPage() {
 
                   <Link
                     href={
-                      tier.id === 'catalog'
+                      tier.paymentUrl ||
+                      (tier.id === 'catalog'
                         ? '/contact?topic=studio-catalog'
-                        : `/studio/order?tier=${tier.id}`
+                        : `/studio/order?tier=${tier.id}`)
                     }
                     className={`st-btn w-full ${
                       featured ? 'st-btn-primary' : 'st-btn-ghost'
@@ -459,12 +460,12 @@ export default function StudioPage() {
             of <span className="st-flare-text">footage</span>
           </h2>
           <p className="st-lede !text-[#2A251E] max-w-xl mx-auto mb-10">
-            Start with one drop. If nothing in it earns a post, you&rsquo;ve lost one upload and
+            Start with one show. If nothing in it earns a post, you&rsquo;ve lost one upload and
             nothing else.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/studio/order" className="st-btn st-btn-primary">
-              Start a Drop
+              Book a Show Pack
             </Link>
             <Link href="/contact" className="st-btn st-btn-ghost">
               Talk to Us First

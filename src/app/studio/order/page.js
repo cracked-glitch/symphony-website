@@ -3,7 +3,7 @@ import Link from 'next/link';
 import OrderFlow from '@/components/studio/OrderFlow';
 
 export const metadata = {
-  title: 'Start a Drop',
+  title: 'Book a Show Pack',
   description:
     'Send us your footage and your brief. We confirm scope and price before any work starts.',
 };
@@ -28,7 +28,7 @@ export default function StudioOrderPage() {
             &#8592; Back to Studio
           </Link>
           <h1 className="st-display text-[clamp(2.6rem,8vw,5rem)] mt-5 mb-4">
-            Start a <span className="st-flare-text">drop</span>
+            Book a <span className="st-flare-text">show</span>
           </h1>
           <div className="st-rule-flare max-w-xs mb-6" />
           <p className="st-lede max-w-xl">
