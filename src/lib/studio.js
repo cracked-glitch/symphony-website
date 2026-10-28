@@ -18,11 +18,11 @@ export const studioIntakeEndpoint = 'https://formspree.io/f/mgopdoqy';
 // The reel at the top of /studio. Real client edits, re-encoded as short muted
 // loops (public/studio/reel). Get the artist's OK before adding one here.
 export const reel = [
-  { src: 'carter-pov', artist: 'Carter Hall', where: 'Georgia Theatre' },
+  { src: 'chef-pov', artist: 'DJ Chef', where: 'Georgia Theatre' },
   { src: 'brendan-chaotic', artist: 'Brendan Abernathy', where: 'Live set' },
-  { src: 'carter-walkout', artist: 'Carter Hall', where: 'Green room' },
+  { src: 'chef-walkout', artist: 'DJ Chef', where: 'Green room' },
   { src: 'brendan-ghosts', artist: 'Brendan Abernathy', where: 'Live set' },
-  { src: 'carter-hype', artist: 'Carter Hall', where: 'Georgia Theatre' },
+  { src: 'chef-cooking', artist: 'DJ Chef', where: 'Georgia Theatre' },
   { src: 'brendan-angel', artist: 'Brendan Abernathy', where: 'Live set' },
 ];
 
