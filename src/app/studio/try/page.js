@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import WhoCuts from '@/components/studio/WhoCuts';
-import { trialCheckoutHref, wholeSet } from '@/lib/studio';
+import { trialCheckoutHref, oneClip, wholeSet } from '@/lib/studio';
 
 export const metadata = {
-  title: 'Try it: 2 clips for $5 · Studio',
+  title: 'First order: 2 clips for $5 · Studio',
   description:
-    'First order for stand-up comedians: two captioned vertical clips from your set for $5, ready for Reels, TikTok, and Shorts, back the same day.',
+    'For stand-up comedians: your first order is two captioned vertical clips from your set for $5, back the same day. After that, $5 a clip or $50 for the whole set.',
 };
 
 const steps = [
@@ -34,21 +34,20 @@ export default async function StudioTryPage({ searchParams }) {
           >
             &#8592; Studio
           </Link>
-          <p className="st-kicker mt-6 mb-4">For stand-up comedians · first order</p>
+          <p className="st-kicker mt-6 mb-4">For stand-up comedians · first order only</p>
           <h1 className="st-display text-[clamp(2.6rem,8vw,5rem)] mb-4">
-            Try it: 2 clips <span className="st-gradient-text">for $5.</span>
+            Your first order: 2 clips <span className="st-gradient-text">for $5.</span>
           </h1>
           <div className="st-rule-flare max-w-xs mb-6" />
           <p className="st-lede !text-[var(--st-bone)] max-w-xl mb-8">
-            My rate is $5 a clip. On your first order, the second one&rsquo;s free. Send a link to a
-            recent set and get two captioned vertical clips for Reels, TikTok, and Shorts, back the
-            same day.
+            {`My rate is $${oneClip.price} a clip, or $${wholeSet.price} for your whole set (up to 15 clips).`} The first time you order, I&rsquo;ll cut 2 clips for $5 so you can see the work.
+            Send a link to a recent set and they&rsquo;re back the same day.
           </p>
 
           <div className="st-stub st-stub-featured p-7 md:p-8 max-w-md mb-10">
             <div className="flex items-baseline gap-2.5 mb-4">
               <span className="st-display text-[3rem] leading-none">$5</span>
-              <span className="st-kicker st-kicker-dim !tracking-[0.12em]">2 clips · first order</span>
+              <span className="st-kicker st-kicker-dim !tracking-[0.12em]">2 clips · one time</span>
             </div>
             <ul className="space-y-2.5 mb-7">
               {[
@@ -56,6 +55,7 @@ export default async function StudioTryPage({ searchParams }) {
                 'You pick the bits, or I pick the ones that land',
                 'Captions word by word, real laughs only, no titles',
                 'Back the same day',
+                `One time per comic. After that it’s $${oneClip.price} a clip or $${wholeSet.price} a set.`,
               ].map((f) => (
                 <li key={f} className="flex gap-3">
                   <span className="st-flare-text shrink-0 leading-6" aria-hidden="true">
@@ -80,9 +80,10 @@ export default async function StudioTryPage({ searchParams }) {
           </ol>
 
           <p className="st-body text-[0.92rem]">
-            Like them? The whole set is ${wholeSet.price}, up to 15 clips.{' '}
+            After your first order: ${oneClip.price} a clip, or ${wholeSet.price} for the whole set,
+            up to 15 clips.{' '}
             <Link href="/studio#pricing" className="st-flare-text underline underline-offset-4">
-              See the full offer
+              See pricing
             </Link>
             .
           </p>

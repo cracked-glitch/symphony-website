@@ -93,7 +93,11 @@ export default function StudioPage() {
             <a href={tierHref(oneClip)} className="st-flare-text underline underline-offset-4">
               {formatPrice(oneClip.price)} a clip
             </a>
-            . First order, the second one&rsquo;s free.
+            . New here?{' '}
+            <Link href="/studio/try" className="st-flare-text underline underline-offset-4">
+              Your first order is 2 clips for $5
+            </Link>
+            , one time only.
           </p>
 
           <ol className="mt-12 grid sm:grid-cols-3 gap-4 max-w-4xl">
