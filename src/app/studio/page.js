@@ -3,6 +3,7 @@ import StudioFAQ from '@/components/studio/StudioFAQ';
 import StickyBook from '@/components/studio/StickyBook';
 import ExampleClip from '@/components/studio/ExampleClip';
 import ReelStrip from '@/components/studio/ReelStrip';
+import WhoCuts from '@/components/studio/WhoCuts';
 import {
   oneClip,
   wholeSet,
@@ -105,6 +106,9 @@ export default function StudioPage() {
           </ol>
         </div>
       </section>
+
+      {/* ---------- Who cuts your clips: a real person ---------- */}
+      <WhoCuts />
 
       {/* ---------- FAQ ---------- */}
       <section className="border-t border-[var(--st-line)]">

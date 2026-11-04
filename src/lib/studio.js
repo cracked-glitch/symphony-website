@@ -80,6 +80,32 @@ export const comedySteps = [
   'Get your clips back within 24 hours',
 ];
 
+// ---------- Who cuts your clips ----------
+// The most common reply from comics is "are you a real person?", so /studio and
+// /studio/free say who does the work and how to reach him.
+// photo: path under /public to a real, recent photo (a phone shot is fine).
+// Leave null and the block shows initials. Don't use the AI-generated headshot.
+// phone: remove it to take the number off the site.
+export const studioHuman = {
+  name: 'Nathan Settlage',
+  initials: 'NS',
+  city: 'Atlanta',
+  photo: '/studio/nathan.jpg',
+  phone: '770-286-8865',
+  email: 'nathan@symphonylabs.ai',
+};
+
+// Comedian quotes for /studio. Add one only with the comic's written OK, in
+// their own words: { quote, name, credit } (credit like "Helium Atlanta").
+// The block stays hidden while this is empty.
+export const testimonials = [];
+
+// ---------- Free clip (/studio/free) ----------
+// The link that Facebook group posts, DMs, and QR cards point to. A comic
+// sends a set, gets one free clip, then gets offered the whole set. Add ?src=
+// to the link (fb-atl, ig, qr, fiverr) so each request shows where it came from.
+export const freeClipCheckoutHref = `${wholeSet.paymentUrl}?utm_source=free_clip&utm_medium=studio_free`;
+
 // The "this is the look" clip at the top of /studio. It is NOT our work: it's
 // a comic's own Short, played through YouTube's official embed from their own
 // channel (embedding allowed, checked 2026-11-04), labelled as a reference.
