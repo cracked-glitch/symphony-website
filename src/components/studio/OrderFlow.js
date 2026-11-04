@@ -138,7 +138,7 @@ export default function OrderFlow() {
             'You approve, we send a payment link, and the drop starts.',
             'Files land in your inbox with a posting plan.',
           ].map((line, i) => (
-            <li key={line} className="flex gap-4 py-3 border-t border-[rgba(244,239,228,0.14)]">
+            <li key={line} className="flex gap-4 py-3 border-t border-[rgba(255,255,255,0.14)]">
               <span className="st-display text-[1.2rem] st-flare-text shrink-0">
                 {String(i + 1).padStart(2, '0')}
               </span>
@@ -200,8 +200,8 @@ export default function OrderFlow() {
                       aria-pressed={active}
                       className={`text-left p-6 border transition-all duration-200 ${
                         active
-                          ? 'border-[var(--st-flare)] bg-[rgba(255,59,31,0.1)]'
-                          : 'border-[rgba(244,239,228,0.18)] hover:border-[rgba(244,239,228,0.4)]'
+                          ? 'border-[var(--st-flare)] bg-[rgba(124,58,237,0.1)]'
+                          : 'border-[rgba(255,255,255,0.18)] hover:border-[rgba(255,255,255,0.4)]'
                       }`}
                     >
                       <div className="flex items-baseline justify-between gap-3 mb-1">
@@ -435,7 +435,7 @@ export default function OrderFlow() {
               </div>
 
               {/* Summary */}
-              <div className="border border-[rgba(244,239,228,0.18)] p-5">
+              <div className="border border-[rgba(255,255,255,0.18)] p-5">
                 <p className="st-kicker mb-4">Summary</p>
                 <dl className="space-y-2.5 text-[0.9rem]">
                   {[
@@ -459,7 +459,7 @@ export default function OrderFlow() {
               </div>
 
               {error && (
-                <div className="border border-[var(--st-flare)] bg-[rgba(255,59,31,0.12)] px-4 py-3 text-[0.9rem] st-flare-text">
+                <div className="border border-[var(--st-flare)] bg-[rgba(124,58,237,0.12)] px-4 py-3 text-[0.9rem] st-flare-text">
                   {error}
                 </div>
               )}
@@ -467,7 +467,7 @@ export default function OrderFlow() {
           )}
 
           {/* Nav */}
-          <div className="flex items-center justify-between gap-4 mt-9 pt-6 border-t border-[rgba(244,239,228,0.16)]">
+          <div className="flex items-center justify-between gap-4 mt-9 pt-6 border-t border-[rgba(255,255,255,0.16)]">
             <button
               type="button"
               onClick={() => setStep((s) => Math.max(0, s - 1))}

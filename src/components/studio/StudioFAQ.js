@@ -6,13 +6,13 @@ function Item({ question, answer, index }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-t border-[rgba(244,239,228,0.16)] last:border-b">
+    <div className="border-t border-[rgba(255,255,255,0.16)] last:border-b">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-start gap-4 py-5 text-left group"
         aria-expanded={open}
       >
-        <span className="st-display text-[1.1rem] text-[rgba(244,239,228,0.3)] pt-1 shrink-0">
+        <span className="st-display text-[1.1rem] text-[rgba(255,255,255,0.3)] pt-1 shrink-0">
           {String(index + 1).padStart(2, '0')}
         </span>
         <span className="st-display text-[1.25rem] flex-1 group-hover:text-[var(--st-flare)] transition-colors">

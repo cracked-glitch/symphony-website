@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 
 // Phone-only booking bar. It appears once the hero's button has scrolled away
 // and steps aside while another booking button is already on screen.
-export default function StickyBook({ href, price }) {
+export default function StickyBook({ href, price, detail = '6 edits · 1 day', label = 'Book my show' }) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -24,18 +23,18 @@ export default function StickyBook({ href, price }) {
 
   return (
     <div
-      className={`md:hidden !fixed inset-x-0 bottom-0 !z-40 border-t border-[rgba(244,239,228,0.14)] bg-[var(--st-ink)] px-6 py-3 flex items-center justify-between gap-4 transition-transform duration-300 ${
+      className={`md:hidden !fixed inset-x-0 bottom-0 !z-40 border-t border-[var(--st-line)] bg-[rgba(10,10,10,0.92)] backdrop-blur px-6 py-3 flex items-center justify-between gap-4 transition-transform duration-300 ${
         show ? 'translate-y-0' : 'translate-y-full'
       }`}
       aria-hidden={!show}
     >
       <p className="leading-tight">
-        <span className="st-display text-[1.5rem] leading-none">{price}</span>
-        <span className="st-kicker st-kicker-dim !text-[0.62rem] block">6 edits · 1 day</span>
+        <span className="st-display text-[1.4rem] leading-none">{price}</span>
+        <span className="st-kicker st-kicker-dim !text-[0.6rem] !tracking-[0.1em] block mt-1">{detail}</span>
       </p>
-      <Link href={href} className="st-btn st-btn-primary !py-3" tabIndex={show ? 0 : -1}>
-        Book my show
-      </Link>
+      <a href={href} className="st-btn st-btn-primary !py-3" tabIndex={show ? 0 : -1}>
+        {label}
+      </a>
     </div>
   );
 }

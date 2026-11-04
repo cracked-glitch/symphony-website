@@ -4,7 +4,7 @@ import OrderFlow from '@/components/studio/OrderFlow';
 import PaidBrief from '@/components/studio/PaidBrief';
 
 export const metadata = {
-  title: 'Book a Show Pack',
+  title: 'Book Studio',
   description:
     'Send us your footage and your brief. We confirm scope and price before any work starts.',
   robots: { index: false },
@@ -42,7 +42,7 @@ export default async function StudioOrderPage({ searchParams }) {
               </h1>
               <div className="st-rule-flare max-w-xs mb-6" />
               <p className="st-lede max-w-xl">
-                Payment&rsquo;s in. Tell us which show and where the footage is, and the clock
+                Payment&rsquo;s in. Tell us what to cut and where the footage is, and the clock
                 starts. About a minute.
               </p>
             </>

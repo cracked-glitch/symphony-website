@@ -4,9 +4,9 @@
 
 export const studioMeta = {
   name: 'Symphony Studio',
-  tagline: 'Your show, cut for TikTok.',
+  tagline: 'Your set, cut into clips.',
   blurb:
-    'Send us the footage from one show, phone clips included. Within a day, you get 6 vertical edits cut to your songs, ready for TikTok and Reels.',
+    'Send us one set. Get up to 15 captioned vertical clips for Reels, TikTok, and Shorts. The first clips come back the same day, the rest within 24 hours.',
 };
 
 // Where the order flow sends briefs.
@@ -15,8 +15,114 @@ export const studioMeta = {
 // real backend endpoint here and nothing else has to change.
 export const studioIntakeEndpoint = 'https://formspree.io/f/mgopdoqy';
 
-// The reel at the top of /studio. Real client edits, re-encoded as short muted
-// loops (public/studio/reel). Get the artist's OK before adding one here.
+// ---------- Comedians: the lead offer ----------
+// These are the same Stripe Payment Links the cold emails send (see
+// marketing/studio-sprint/COMEDY-PROGRAM.md), so a comic who lands here from
+// the email signature sees the exact price and checkout they were quoted.
+// Stripe sends One Clip and Whole Set buyers back to /studio/order?tier=drop and
+// Whole Tour buyers to ?tier=season; PaidBrief asks what they booked.
+export const comedyTiers = [
+  {
+    id: 'clip',
+    name: 'One Clip',
+    price: 5,
+    unit: 'per clip',
+    note: 'Buy 1 to 50',
+    summary: 'Got one bit you know kills? Send it and we cut just that.',
+    features: ['Pick the bit, we cut it', 'Captioned vertical clip', 'Back the same day'],
+    cta: 'Buy one clip',
+    paymentUrl: 'https://buy.stripe.com/dRm8wP1jm2eo0c26y783C0d',
+    highlight: false,
+  },
+  {
+    id: 'set',
+    name: 'Whole Set',
+    price: 50,
+    unit: 'per set',
+    note: 'Up to 15 clips',
+    summary: 'One set becomes up to 15 clips you can post for weeks.',
+    features: [
+      'Up to 15 clips from one set',
+      'Captions timed word by word',
+      'Sized for Reels, TikTok, and Shorts',
+      'First clips the same day, the rest within 24 hours',
+      'Changes included',
+    ],
+    cta: 'Cut my set',
+    paymentUrl: 'https://buy.stripe.com/8x200jaTWcT2e2Sg8H83C0c',
+    highlight: true,
+  },
+  {
+    id: 'tour',
+    name: 'Whole Tour',
+    price: 500,
+    unit: 'up to 20 shows',
+    note: '$25 a show',
+    summary: 'On the road? Send each set as you play it and the clips keep coming.',
+    features: [
+      'Up to 20 shows or sets',
+      'Up to 15 clips from each one',
+      'Everything in the Whole Set, every night',
+      'One checkout for the whole run',
+    ],
+    cta: 'Book my tour',
+    paymentUrl: 'https://buy.stripe.com/aFabJ16DG1ak9MC8Gf83C0e',
+    highlight: false,
+  },
+];
+
+export const wholeSet = comedyTiers[1];
+export const wholeTour = comedyTiers[2];
+
+export const comedyHowItWorks = [
+  { n: '01', title: 'Check out', desc: '$50 for one set, up to 15 clips. No subscription.' },
+  {
+    n: '02',
+    title: 'Send the set',
+    desc: 'A one-minute form asks for the link: YouTube, Drive, or Dropbox. A master file cuts cleanest.',
+  },
+  {
+    n: '03',
+    title: 'Get your clips',
+    desc: 'The first clips come back the same day, the rest within 24 hours. Changes included.',
+  },
+];
+
+// How we treat a comic's set. Each line answers a worry a comic raised in a
+// reply: fake laughs, titles they didn't write, a face lost to the crop.
+export const comedyPromises = [
+  {
+    title: 'Captions, no titles',
+    desc: "Words appear as you say them, three at most on screen. We don't add a title or hook unless you ask, so the tease stays yours.",
+  },
+  {
+    title: 'Real laughs only',
+    desc: "We never add or sweeten laughter. If the room mic is quiet we can lift it, and that's all.",
+  },
+  {
+    title: 'You stay in frame',
+    desc: 'Every clip is checked start to finish so your face stays inside the vertical crop. A shot that loses you gets recut or dropped.',
+  },
+  {
+    title: 'Your clips, your call',
+    desc: "You own every clip. We don't post for you or ask for logins, and we never show your set as our work without your OK.",
+  },
+];
+
+// Real comedy client clips for the page. Empty on purpose: a client owns their
+// set, so a clip goes here only after they say yes in writing. Files go in
+// public/studio/comedy. Shape:
+// { src: 'file-stem', comic: 'Name', where: 'Club, City', bit: 'Bit name' }
+export const comedyExamples = [];
+
+// Anyone else with a mic. Churches were quoted $199 a Sunday in outreach, the
+// same price as a Show Pack, so the Show Pack link covers one event.
+export const otherUses = ['Sermons', 'Podcasts', 'Keynotes and talks', 'Panels', 'Live events', 'Workshops'];
+
+// ---------- Musicians ----------
+
+// The music reel. Real client edits, re-encoded as short muted loops
+// (public/studio/reel). Get the artist's OK before adding one here.
 export const reel = [
   { src: 'chef-pov', artist: 'DJ Chef', where: 'Georgia Theatre' },
   { src: 'brendan-chaotic', artist: 'Brendan Abernathy', where: 'Live set' },
@@ -26,7 +132,7 @@ export const reel = [
   { src: 'brendan-angel', artist: 'Brendan Abernathy', where: 'Live set' },
 ];
 
-export const howItWorks = [
+export const musicHowItWorks = [
   { n: '01', title: 'Book your show', desc: 'Pay for the pack. No subscription.' },
   { n: '02', title: 'Send the footage', desc: 'A Drive or Dropbox link. Phone clips work.' },
   { n: '03', title: 'Get 6 edits in 1 day', desc: 'Cut to your songs, with hooks and a posting plan.' },
@@ -100,30 +206,40 @@ export function tierHref(tier) {
 
 export const showPack = studioTiers[0];
 
+// Comedy questions first, since most visitors arrive from a comedy email.
 export const studioFaq = [
   {
-    question: 'What kind of footage works?',
+    question: 'What footage works?',
     answer:
-      "Anything from the night: phone clips, a friend's camera, the venue's video, the green room. Most of what we've cut started on a phone. Not sure yours is enough? Email it over and we'll tell you before you pay.",
+      "A YouTube link to your set is enough to start. A master file from the camera cuts cleanest, because a vertical clip uses about a third of the frame. Phone video from the back of the room, or a wide shot where you're tiny, is hard to crop. Not sure about yours? Send the link and we'll tell you before you pay.",
   },
   {
-    question: "What if I don't have masters?",
+    question: 'I got a free clip in my email. Is it really mine?',
+    answer:
+      "Yes. Post it or don't, no strings. If you want the rest of that set done the same way, the Whole Set is $50.",
+  },
+  {
+    question: 'How do you pick the bits?',
+    answer:
+      'We look for bits that stand on their own: a clear setup and a punchline that lands without the rest of the set. Tell us anything to keep or skip in the form after checkout.',
+  },
+  {
+    question: 'What if a clip misses?',
+    answer: "Reply with what's off and we'll recut it. Changes are included in every set.",
+  },
+  {
+    question: 'Who owns the clips?',
+    answer:
+      "You do. Your jokes, your footage, your files. We'll ask before showing any of it as an example of our work, and you can say no.",
+  },
+  {
+    question: "Musicians: what if I don't have masters?",
     answer:
       "That's fine. We'll cut to the live audio, or you add the song in TikTok when you post. Masters do perform better, so send them if you have them.",
   },
   {
-    question: 'Do you post to my accounts?',
+    question: 'Can you cut something other than stand-up or music?',
     answer:
-      "No. You get the files and a plan. You pick what goes up and you post it. We'll never ask for your logins.",
-  },
-  {
-    question: 'What if an edit misses?',
-    answer:
-      "Tell us what's off and we'll rebuild it. Every pack includes a round of revisions.",
-  },
-  {
-    question: 'Who owns the edits?',
-    answer:
-      "You do. Your footage, your music, your files. We'll ask before showing any of it as an example of our work, and you can say no.",
+      "Yes. Sermons, podcasts, talks, panels, and events all work the same way: send the video, get vertical clips with captions. One event or service is $199, or tell us what you have and we'll quote it.",
   },
 ];
