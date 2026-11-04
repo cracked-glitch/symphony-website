@@ -34,9 +34,9 @@ export default function WhoCuts() {
             A real person, <span className="st-gradient-text">in {city}.</span>
           </h2>
           <p className="st-body !text-[var(--st-bone)] max-w-2xl mb-5">
-            I&rsquo;m {name}. I watch your whole set, pick the bits that land, and check every clip
-            before it gets to you: captions word by word, your audio, the room&rsquo;s real laughs.
-            Nothing gets posted for you. You get a folder of clips and you decide what goes up.
+            I&rsquo;m {name}. I&rsquo;ll watch your whole set and pick the best jokes. Every clip is
+            captioned word by word, with your real audio and the room&rsquo;s real laughs. You get a
+            folder of all the clips and decide what to post.
           </p>
           <ul className="space-y-2 mb-6 max-w-2xl">
             {[
