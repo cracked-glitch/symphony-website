@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { studioTiers, comedyTiers, studioIntakeEndpoint } from '@/lib/studio';
+import { studioTiers, comedyTiers, firstOrder, studioIntakeEndpoint } from '@/lib/studio';
 
 // Where Stripe sends a buyer after they pay. They've already bought, so this
 // asks only for what we need to start: who they are, what to cut, and where the
@@ -67,6 +67,7 @@ const COPY = {
 
 // What the buyer most likely paid for, given the redirect's tier and their answer.
 function packageName(tierId, kind) {
+  if (tierId === firstOrder.id) return firstOrder.name;
   const comedy = comedyTiers.find((t) => t.id === tierId);
   if (comedy) return comedy.name;
   if (kind === 'comedy') return tierId === 'season' ? 'Whole Tour' : 'Whole Set or One Clip';
@@ -99,7 +100,7 @@ const STEPS = {
 };
 
 export default function PaidBrief({ tierId, sessionId }) {
-  const presetComedy = comedyTiers.some((t) => t.id === tierId);
+  const presetComedy = tierId === firstOrder.id || comedyTiers.some((t) => t.id === tierId);
   const [kind, setKind] = useState(presetComedy ? 'comedy' : null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);

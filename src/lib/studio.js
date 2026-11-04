@@ -106,6 +106,17 @@ export const testimonials = [];
 // clip by hand on a comic's first order. The free clip lives only in cold
 // emails. Add ?src= to the page link (fb-atl, ig, qr) and it rides through to
 // Stripe as utm_source and client_reference_id, so each sale shows its channel.
+// paymentUrl: the Stripe Payment Link "First order: 2 clips" ($5, quantity
+// locked at 1), whose confirmation redirects to
+// /studio/order?tier=try&paid=1&session={CHECKOUT_SESSION_ID} so the paid
+// brief says what was bought. Until it's set, the trial uses the One Clip link.
+export const firstOrder = {
+  id: 'try',
+  name: 'First order: 2 clips',
+  price: 5,
+  paymentUrl: null,
+};
+
 export function trialCheckoutHref(source) {
   const src = source || 'studio_try';
   const params = new URLSearchParams({
@@ -114,7 +125,7 @@ export function trialCheckoutHref(source) {
     utm_medium: 'studio_try',
     utm_campaign: 'first2for5',
   });
-  return `${oneClip.paymentUrl}?${params}`;
+  return `${firstOrder.paymentUrl || oneClip.paymentUrl}?${params}`;
 }
 
 // The "this is the look" clip at the top of /studio. It is NOT our work: it's
