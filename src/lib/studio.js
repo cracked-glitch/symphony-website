@@ -109,12 +109,13 @@ export const testimonials = [];
 // paymentUrl: the Stripe Payment Link "First order: 2 clips" ($5, quantity
 // locked at 1), whose confirmation redirects to
 // /studio/order?tier=try&paid=1&session={CHECKOUT_SESSION_ID} so the paid
-// brief says what was bought. Until it's set, the trial uses the One Clip link.
+// brief says what was bought. Created 2026-11-04. If it's ever null again, the
+// trial falls back to the One Clip link.
 export const firstOrder = {
   id: 'try',
   name: 'First order: 2 clips',
   price: 5,
-  paymentUrl: null,
+  paymentUrl: 'https://buy.stripe.com/7sY14nbY02eo3oee0z83C0f',
 };
 
 export function trialCheckoutHref(source) {
