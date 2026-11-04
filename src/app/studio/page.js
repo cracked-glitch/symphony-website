@@ -2,6 +2,7 @@ import Link from 'next/link';
 import StudioFAQ from '@/components/studio/StudioFAQ';
 import StickyBook from '@/components/studio/StickyBook';
 import ExampleClip from '@/components/studio/ExampleClip';
+import ReelStrip from '@/components/studio/ReelStrip';
 import {
   oneClip,
   wholeSet,
@@ -10,6 +11,7 @@ import {
   exampleClip,
   showPack,
   threeShows,
+  reel,
   tierHref,
   studioFaq,
 } from '@/lib/studio';
@@ -29,21 +31,18 @@ function formatPrice(amount) {
 }
 
 // One offer, said fast: send your set, get clips back, $50. The tour is the
-// bigger version. Music and everything else get one line at the bottom.
+// bigger version. Music, with real client edits, sits at the bottom.
 export default function StudioPage() {
   const setHref = tierHref(wholeSet);
   const tourHref = tierHref(wholeTour);
 
   return (
     <>
-      {/* ---------- Hero: the joke, the offer, the look ---------- */}
+      {/* ---------- Hero: the offer and the look ---------- */}
       <section className="st-spotlight">
         <div className="mx-auto max-w-[1100px] px-6 pt-10 pb-16 md:pt-16 md:pb-20 grid gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] items-center">
           <div>
             <p className="st-kicker mb-5">For stand-up comedians</p>
-            <p className="st-body !text-[var(--st-bone)] text-[1.1rem] italic border-l-2 border-[var(--st-flare)] pl-4 mb-6 max-w-md">
-              You killed for twenty minutes. The internet saw zero of them.
-            </p>
             <h1 className="st-display text-[clamp(2.5rem,6vw,4.4rem)] mb-6">
               Send us your set. Get back a <span className="st-gradient-text">stack of clips.</span>
             </h1>
@@ -124,14 +123,22 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* ---------- Not a comedian ---------- */}
+      {/* ---------- Not a comedian: real music edits, then the other links ---------- */}
       <section id="more" className="scroll-mt-20 border-t border-[var(--st-line)] bg-[var(--st-ink-2)]">
-        <div className="mx-auto max-w-[1100px] px-6 py-10 md:py-12">
+        <div className="mx-auto max-w-[1100px] px-6 py-14 md:py-16">
           <p className="st-kicker st-kicker-dim mb-3">Not a comedian?</p>
-          <p className="st-body !text-[var(--st-bone)] mb-4 max-w-2xl">
-            We also cut live music shows into edits set to your songs, and sermons, podcasts, and
-            talks into captioned clips.
+          <h2 className="st-display text-[clamp(1.8rem,4vw,2.6rem)] mb-3">
+            We cut <span className="st-gradient-text">live music</span> too.
+          </h2>
+          <p className="st-body max-w-2xl mb-8">
+            Real edits we made for DJ Chef and Brendan Abernathy from their live shows. We also cut
+            sermons, podcasts, and talks into captioned clips.
           </p>
+
+          <div className="mb-8">
+            <ReelStrip clips={reel} />
+          </div>
+
           <ul className="flex flex-wrap gap-x-6 gap-y-2 st-body text-[0.92rem]">
             <li>
               <a href={tierHref(showPack)} className="st-flare-text underline underline-offset-4">
@@ -145,7 +152,7 @@ export default function StudioPage() {
             </li>
             <li>
               <Link href="/studio/brendan" className="st-flare-text underline underline-offset-4">
-                See music edits
+                Watch Brendan&rsquo;s edits with sound
               </Link>
             </li>
             <li>

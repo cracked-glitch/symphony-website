@@ -93,7 +93,18 @@ export const exampleClip = {
 };
 
 // ---------- Musicians and everyone else ----------
-// A short strip at the bottom of /studio, plus the /studio/brendan proof page.
+// A section at the bottom of /studio, plus the /studio/brendan proof page.
+
+// The music reel. Real client edits, re-encoded as short muted loops
+// (public/studio/reel). Get the artist's OK before adding one here.
+export const reel = [
+  { src: 'chef-pov', artist: 'DJ Chef', where: 'Georgia Theatre' },
+  { src: 'brendan-chaotic', artist: 'Brendan Abernathy', where: 'Live set' },
+  { src: 'chef-walkout', artist: 'DJ Chef', where: 'Green room' },
+  { src: 'brendan-ghosts', artist: 'Brendan Abernathy', where: 'Live set' },
+  { src: 'chef-cooking', artist: 'DJ Chef', where: 'Georgia Theatre' },
+  { src: 'brendan-angel', artist: 'Brendan Abernathy', where: 'Live set' },
+];
 
 // paymentUrl: a Stripe Payment Link. When set, that tier's pricing button goes
 // straight to checkout; when null it falls back to the brief form.
