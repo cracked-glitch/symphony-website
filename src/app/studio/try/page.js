@@ -40,8 +40,7 @@ export default async function StudioTryPage({ searchParams }) {
           </h1>
           <div className="st-rule-flare max-w-xs mb-6" />
           <p className="st-lede !text-[var(--st-bone)] max-w-xl mb-8">
-            {`My rate is $${oneClip.price} a clip, or $${wholeSet.price} for your whole set (up to 15 clips).`} The first time you order, I&rsquo;ll cut 2 clips for $5 so you can see the work.
-            Send a link to a recent set and they&rsquo;re back the same day.
+            {`On your first order, you get 2 clips for $5. My standard rate is $${oneClip.price} a clip, or $${wholeSet.price} for your whole set (up to 15 clips). To start, check out below, send me a link to your set, and I’ll send your clips back the same day.`}
           </p>
 
           <div className="st-stub st-stub-featured p-7 md:p-8 max-w-md mb-10">
