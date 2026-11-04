@@ -24,19 +24,13 @@ export default function StudioLayout({ children }) {
               href="/studio#pricing"
               className="st-kicker st-kicker-dim !tracking-[0.12em] hover:text-[var(--st-bone)] transition-colors hidden md:inline"
             >
-              Comedians
-            </Link>
-            <Link
-              href="/studio#music"
-              className="st-kicker st-kicker-dim !tracking-[0.12em] hover:text-[var(--st-bone)] transition-colors hidden md:inline"
-            >
-              Musicians
+              Pricing
             </Link>
             <Link
               href="/studio#more"
               className="st-kicker st-kicker-dim !tracking-[0.12em] hover:text-[var(--st-bone)] transition-colors hidden md:inline"
             >
-              Everything else
+              Not a comedian?
             </Link>
             <StudioBarCta
               comedy={{ href: tierHref(wholeSet), label: `Cut my set · $${wholeSet.price}` }}

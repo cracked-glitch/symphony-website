@@ -200,7 +200,7 @@ export default function OrderFlow() {
                       aria-pressed={active}
                       className={`text-left p-6 border transition-all duration-200 ${
                         active
-                          ? 'border-[var(--st-flare)] bg-[rgba(124,58,237,0.1)]'
+                          ? 'border-[var(--st-flare)] bg-[rgba(255,59,31,0.1)]'
                           : 'border-[rgba(255,255,255,0.18)] hover:border-[rgba(255,255,255,0.4)]'
                       }`}
                     >
@@ -459,7 +459,7 @@ export default function OrderFlow() {
               </div>
 
               {error && (
-                <div className="border border-[var(--st-flare)] bg-[rgba(124,58,237,0.12)] px-4 py-3 text-[0.9rem] st-flare-text">
+                <div className="border border-[var(--st-flare)] bg-[rgba(255,59,31,0.12)] px-4 py-3 text-[0.9rem] st-flare-text">
                   {error}
                 </div>
               )}

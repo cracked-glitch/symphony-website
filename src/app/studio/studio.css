@@ -1,11 +1,10 @@
 /* ============================================================
    SYMPHONY STUDIO — scoped styles
 
-   Studio sells to comedians first, then musicians and anyone
-   else with a mic, and it runs on the Symphony AI brand: near
-   black, Symphony Purple for action, Electric Indigo in support,
-   Neon Cyan only inside gradients. Inter for headings, Sora for
-   body, both loaded once by the root layout.
+   Studio sells to comedians. It shares the Symphony AI layout and
+   type (Inter for headings, Sora for body, both loaded once by the
+   root layout) but keeps its own accent: Studio orange, with amber
+   only inside gradients.
 
    Everything lives under .studio-brand so the class names the
    order flow and proof pages already use (st-*) keep working.
@@ -23,12 +22,11 @@
   --st-bone-dim: #D1D5DB;
   --st-dust: #9CA3AF;
 
-  /* Brand. Purple carries every action; the light cut is for text. */
-  --st-flare: #7C3AED;
-  --st-flare-deep: #6D28D9;
-  --st-flare-text: #8B5CF6;
-  --st-indigo: #6366F1;
-  --st-cyan: #06B6D4;
+  /* Accent. Orange carries every action; the light cut is for text. */
+  --st-flare: #FF3B1F;
+  --st-flare-deep: #D42B12;
+  --st-flare-text: #FF5A3D;
+  --st-amber: #FF8A3D;
   --st-ok: #10B981;
 
   /* Type */
@@ -90,12 +88,12 @@
 
 .st-rule-flare {
   height: 2px;
-  background-image: linear-gradient(to right, var(--st-flare), var(--st-indigo) 45%, var(--st-cyan) 75%, transparent);
+  background-image: linear-gradient(to right, var(--st-flare), var(--st-amber) 55%, transparent);
 }
 
 /* Brand gradient on a word in a headline. */
 .st-gradient-text {
-  background-image: linear-gradient(120deg, #8B5CF6, #6366F1 45%, #06B6D4);
+  background-image: linear-gradient(120deg, #FF3B1F, #FF8A3D);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -106,16 +104,16 @@
 /* A soft stage light behind the hero, in brand colors. */
 .st-spotlight {
   background-image:
-    radial-gradient(60% 55% at 78% 30%, rgba(124, 58, 237, 0.22), transparent 70%),
-    radial-gradient(40% 40% at 10% 0%, rgba(99, 102, 241, 0.12), transparent 70%);
+    radial-gradient(60% 55% at 78% 30%, rgba(255, 59, 31, 0.22), transparent 70%),
+    radial-gradient(40% 40% at 10% 0%, rgba(255, 138, 61, 0.08), transparent 70%);
 }
 
 /* The closing band: the one loud block on the page. */
 .st-paper {
   background-image:
-    radial-gradient(70% 90% at 50% 0%, rgba(124, 58, 237, 0.35), transparent 70%),
-    linear-gradient(180deg, #120D22, #0A0A0A);
-  border-top: 1px solid rgba(139, 92, 246, 0.3);
+    radial-gradient(70% 90% at 50% 0%, rgba(255, 59, 31, 0.35), transparent 70%),
+    linear-gradient(180deg, #1E0F0B, #0A0A0A);
+  border-top: 1px solid rgba(255, 90, 61, 0.3);
   color: var(--st-bone);
 }
 
@@ -135,7 +133,7 @@
 }
 
 .st-panel-hover:hover {
-  border-color: rgba(139, 92, 246, 0.5);
+  border-color: rgba(255, 90, 61, 0.5);
   transform: translateY(-2px);
 }
 
@@ -150,11 +148,11 @@
 .st-stub-featured {
   background-image:
     linear-gradient(var(--st-panel-solid), var(--st-panel-solid)),
-    linear-gradient(135deg, #8B5CF6, #6366F1 50%, #06B6D4);
+    linear-gradient(135deg, #FF3B1F, #FF8A3D);
   background-origin: border-box;
   background-clip: padding-box, border-box;
   border: 1.5px solid transparent;
-  box-shadow: 0 0 40px rgba(124, 58, 237, 0.22);
+  box-shadow: 0 0 40px rgba(255, 59, 31, 0.22);
 }
 
 .st-perf {
@@ -184,12 +182,12 @@
 .st-btn-primary {
   background-image: linear-gradient(90deg, var(--st-flare), var(--st-flare-deep));
   color: #FFFFFF;
-  box-shadow: 0 0 28px rgba(124, 58, 237, 0.28);
+  box-shadow: 0 0 28px rgba(255, 59, 31, 0.28);
 }
 
 .st-btn-primary:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 42px rgba(124, 58, 237, 0.42);
+  box-shadow: 0 0 42px rgba(255, 59, 31, 0.42);
 }
 
 .st-btn-ghost {
@@ -200,7 +198,7 @@
 
 .st-btn-ghost:hover {
   border-color: var(--st-flare-text);
-  background-color: rgba(124, 58, 237, 0.08);
+  background-color: rgba(255, 59, 31, 0.08);
 }
 
 .st-btn:disabled {
@@ -236,7 +234,7 @@
 .st-input:focus {
   outline: none;
   border-color: var(--st-flare-text);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 59, 31, 0.2);
 }
 
 .st-label {
@@ -270,7 +268,7 @@
 }
 
 .st-chip:hover {
-  border-color: rgba(139, 92, 246, 0.6);
+  border-color: rgba(255, 90, 61, 0.6);
   color: var(--st-bone);
 }
 
@@ -334,9 +332,9 @@
   border: 1px solid rgba(255, 255, 255, 0.16);
   background-image:
     radial-gradient(55% 38% at 50% 30%, rgba(255, 255, 255, 0.14), transparent 70%),
-    radial-gradient(90% 60% at 50% 105%, rgba(124, 58, 237, 0.45), transparent 70%),
-    linear-gradient(180deg, #17122B 0%, #0B0A12 100%);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 60px rgba(124, 58, 237, 0.25);
+    radial-gradient(90% 60% at 50% 105%, rgba(255, 59, 31, 0.45), transparent 70%),
+    linear-gradient(180deg, #22140F 0%, #0B0A0A 100%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 60px rgba(255, 59, 31, 0.25);
 }
 
 .st-caption-card {
@@ -357,7 +355,7 @@
 /* ---------- Accents ---------- */
 
 .st-flare-text { color: var(--st-flare-text); }
-.st-acid-text { color: var(--st-cyan); }
+.st-acid-text { color: var(--st-amber); }
 
 .st-num {
   font-family: var(--st-display);
@@ -371,7 +369,7 @@
   height: 2.1rem;
   border-radius: 999px;
   color: #FFFFFF;
-  background-image: linear-gradient(135deg, var(--st-flare), var(--st-indigo));
+  background-image: linear-gradient(135deg, var(--st-flare), var(--st-amber));
   flex-shrink: 0;
 }
 

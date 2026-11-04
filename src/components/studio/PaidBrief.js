@@ -271,7 +271,7 @@ export default function PaidBrief({ tierId, sessionId }) {
           type="checkbox"
           checked={showcaseOk}
           onChange={(e) => setShowcaseOk(e.target.checked)}
-          className="mt-1 h-4 w-4 accent-[#7C3AED]"
+          className="mt-1 h-4 w-4 accent-[#FF3B1F]"
         />
         <span className="st-body text-[0.88rem]">
           It&rsquo;s OK to show a clip or two on symphonylabs.ai as an example of our work, with my
