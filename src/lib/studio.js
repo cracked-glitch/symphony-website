@@ -82,7 +82,7 @@ export const comedySteps = [
 
 // ---------- Who cuts your clips ----------
 // The most common reply from comics is "are you a real person?", so /studio and
-// /studio/free say who does the work and how to reach him.
+// /studio/try say who does the work and how to reach him.
 // photo: path under /public to a real, recent photo (a phone shot is fine).
 // Leave null and the block shows initials. Don't use the AI-generated headshot.
 // phone: remove it to take the number off the site.
@@ -100,11 +100,22 @@ export const studioHuman = {
 // The block stays hidden while this is empty.
 export const testimonials = [];
 
-// ---------- Free clip (/studio/free) ----------
-// The link that Facebook group posts, DMs, and QR cards point to. A comic
-// sends a set, gets one free clip, then gets offered the whole set. Add ?src=
-// to the link (fb-atl, ig, qr, fiverr) so each request shows where it came from.
-export const freeClipCheckoutHref = `${wholeSet.paymentUrl}?utm_source=free_clip&utm_medium=studio_free`;
+// ---------- First order: 2 clips for $5 (/studio/try) ----------
+// The link that Facebook group posts, DMs, and QR cards point to. Comics pay
+// from the start: the regular $5 One Clip checkout, and Nathan adds the second
+// clip by hand on a comic's first order. The free clip lives only in cold
+// emails. Add ?src= to the page link (fb-atl, ig, qr) and it rides through to
+// Stripe as utm_source and client_reference_id, so each sale shows its channel.
+export function trialCheckoutHref(source) {
+  const src = source || 'studio_try';
+  const params = new URLSearchParams({
+    client_reference_id: `try-${src}`,
+    utm_source: src,
+    utm_medium: 'studio_try',
+    utm_campaign: 'first2for5',
+  });
+  return `${oneClip.paymentUrl}?${params}`;
+}
 
 // The "this is the look" clip at the top of /studio. It is NOT our work: it's
 // a comic's own Short, played through YouTube's official embed from their own

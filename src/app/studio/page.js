@@ -93,7 +93,7 @@ export default function StudioPage() {
             <a href={tierHref(oneClip)} className="st-flare-text underline underline-offset-4">
               {formatPrice(oneClip.price)} a clip
             </a>
-            .
+            . First order, the second one&rsquo;s free.
           </p>
 
           <ol className="mt-12 grid sm:grid-cols-3 gap-4 max-w-4xl">
