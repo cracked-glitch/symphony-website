@@ -129,6 +129,19 @@ export function trialCheckoutHref(source) {
   return `${firstOrder.paymentUrl || oneClip.paymentUrl}?${params}`;
 }
 
+// The Whole Set button on /studio/try, tagged the same way (set-<src>) so a
+// $50 sale from a Facebook post shows which post it came from.
+export function setCheckoutHref(source) {
+  const src = source || 'studio_try';
+  const params = new URLSearchParams({
+    client_reference_id: `set-${src}`,
+    utm_source: src,
+    utm_medium: 'studio_try',
+    utm_campaign: 'first2for5',
+  });
+  return `${wholeSet.paymentUrl}?${params}`;
+}
+
 // The "this is the look" clip at the top of /studio. It is NOT our work: it's
 // a comic's own Short, played through YouTube's official embed from their own
 // channel (embedding allowed, checked 2026-11-04), labelled as a reference.
