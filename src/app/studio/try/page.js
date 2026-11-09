@@ -7,18 +7,18 @@ import { trialCheckoutHref, setCheckoutHref, oneClip, wholeSet } from '@/lib/stu
 export const metadata = {
   title: 'First order: 2 clips for $5 · Studio',
   description:
-    'For stand-up comedians: your first order is two captioned vertical clips from your set for $5, back the same day. Or get your whole set cut for $50, up to 15 clips.',
+    'For stand-up comedians: your first order is two captioned vertical clips from your set for $5, back the same day. Or get your whole set cut for $99, up to 15 clips.',
 };
 
 const steps = [
-  'Check out: 2 clips for $5, or the whole set for $50',
+  'Check out: 2 clips for $5, or the whole set for $99',
   'Send the link to your set in the one-minute form',
   'Get your clips back: 2 the same day, a whole set within 24 hours',
 ];
 
 // Where Facebook group posts, DMs, and QR cards send comics. Not linked from
 // /studio's nav. Two ways to buy: the one-time 2-for-$5 first order, or the
-// $50 Whole Set (same card as /studio). ?src= (fb-atl, ig, qr) is passed
+// $99 Whole Set (same card as /studio). ?src= (fb-atl, ig, qr) is passed
 // through to Stripe on both buttons so each sale shows where it came from.
 // After checkout Stripe returns the buyer to /studio/order, which asks for the set.
 export default async function StudioTryPage({ searchParams }) {

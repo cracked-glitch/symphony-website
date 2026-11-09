@@ -10,7 +10,7 @@ import './studio.css';
 export default function StudioLayout({ children }) {
   return (
     <div className="studio-brand">
-      {/* Studio bar: names the product and keeps the $50 button in reach. */}
+      {/* Studio bar: names the product and keeps the $99 button in reach. */}
       <div className="border-b border-[var(--st-line)] bg-[rgba(10,10,10,0.6)]">
         <div className="mx-auto max-w-[1180px] px-6 py-3 flex items-center justify-between gap-4">
           <Link href="/studio" className="flex items-baseline gap-2">

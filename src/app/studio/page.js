@@ -21,7 +21,7 @@ import {
 export const metadata = {
   title: 'Studio: clips for stand-up comedians',
   description:
-    'Send us the raw video of your set. For $50 we cut it into up to 15 captioned vertical clips for TikTok, Reels, and Shorts, back in 24 hours. Whole tour: $500.',
+    'Send us the raw video of your set. For $99 we cut it into up to 15 captioned vertical clips for TikTok, Reels, and Shorts, back in 24 hours. Whole tour: $500.',
 };
 
 function formatPrice(amount) {
@@ -32,7 +32,7 @@ function formatPrice(amount) {
   }).format(amount);
 }
 
-// One offer, said fast: send your set, get clips back, $50. The tour is the
+// One offer, said fast: send your set, get clips back, $99. The tour is the
 // bigger version. Music, with real client edits, sits at the bottom.
 export default function StudioPage() {
   const setHref = tierHref(wholeSet);

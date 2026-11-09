@@ -6,7 +6,7 @@ export const studioMeta = {
   name: 'Symphony Studio',
   tagline: 'Send us your set. Get back a stack of clips.',
   blurb:
-    'Send the raw video of one set. For $50 we cut it into up to 15 vertical clips with captions, ready for TikTok, Reels, and Shorts. Back in 24 hours.',
+    'Send the raw video of one set. For $99 we cut it into up to 15 vertical clips with captions, ready for TikTok, Reels, and Shorts. Back in 24 hours.',
 };
 
 // Where the order flow sends briefs.
@@ -37,7 +37,7 @@ export const comedyTiers = [
   {
     id: 'set',
     name: 'Whole Set',
-    price: 50,
+    price: 99,
     unit: 'per set',
     note: 'One set',
     summary: 'Send the raw video of one set. Get back up to 15 clips.',
@@ -48,7 +48,7 @@ export const comedyTiers = [
       'Back within 24 hours, changes included',
     ],
     cta: 'Cut my set',
-    paymentUrl: 'https://buy.stripe.com/8x200jaTWcT2e2Sg8H83C0c',
+    paymentUrl: 'https://buy.stripe.com/3cI8wPfac7yI0c24pZ83C0g',
     highlight: true,
   },
   {
@@ -130,7 +130,7 @@ export function trialCheckoutHref(source) {
 }
 
 // The Whole Set button on /studio/try, tagged the same way (set-<src>) so a
-// $50 sale from a Facebook post shows which post it came from.
+// $99 sale from a Facebook post shows which post it came from.
 export function setCheckoutHref(source) {
   const src = source || 'studio_try';
   const params = new URLSearchParams({
