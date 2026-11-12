@@ -123,7 +123,7 @@ export default async function ClipPage({ params }) {
                 {[
                   'Each one captioned, plus a clean copy with no captions',
                   `First 3 within 24 hours, the rest within 48`,
-                  'Changes included',
+                  'Two rounds of changes included',
                   `Pick the ${v.noun} at checkout, or use this one`,
                 ].map((line) => (
                   <li key={line} className="flex gap-3">

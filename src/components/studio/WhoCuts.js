@@ -41,7 +41,7 @@ export default function WhoCuts() {
           <ul className="space-y-2 mb-6 max-w-2xl">
             {[
               'Your footage is only used to cut your clips. It never gets shared or posted.',
-              'Changes until you’re happy.',
+              'Two rounds of changes included.',
             ].map((line) => (
               <li key={line} className="flex gap-3">
                 <span className="st-flare-text shrink-0 leading-6" aria-hidden="true">

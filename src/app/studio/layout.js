@@ -40,6 +40,15 @@ export default function StudioLayout({ children }) {
         </div>
       </div>
       {children}
+      <nav
+        aria-label="Studio policies"
+        className="border-t border-[var(--st-line)] mx-auto max-w-[1180px] px-6 py-5 flex flex-wrap gap-x-6 gap-y-2 st-hint"
+      >
+        <span>Symphony Studio. Payments by Stripe.</span>
+        <Link href="/studio/terms" className="hover:text-[var(--st-bone)]">Terms</Link>
+        <Link href="/studio/refunds" className="hover:text-[var(--st-bone)]">Refunds</Link>
+        <Link href="/studio/privacy" className="hover:text-[var(--st-bone)]">Privacy</Link>
+      </nav>
     </div>
   );
 }
