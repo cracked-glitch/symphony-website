@@ -1,22 +1,17 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { clipSlugs, getClipPage, mediaUrl, checkoutHref, prettyDate } from '@/lib/clipPages';
+import { getClipPage, mediaUrl, checkoutHref, prettyDate } from '@/lib/clipPages';
 import { studioHuman, studioIntakeEndpoint } from '@/lib/studio';
 import DeleteMyClip from '@/components/clips/DeleteMyClip';
 import '../../studio/studio.css';
 
 // One page per person: their free clip first, then the offer. After they pay, their clips are added
-// to the same record (src/data/clips/<slug>.json) and appear under "Your clips". Unlisted: sent by
-// email only, never indexed or linked from the site.
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return clipSlugs().map((slug) => ({ slug }));
-}
+// to the same page.json in storage and appear under "Your clips". Rendered on each visit from private
+// storage (see src/lib/clipPages.js); sent by email only, never indexed or linked from the site.
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const rec = getClipPage(slug);
+  const rec = await getClipPage(slug);
   return {
     title: rec ? `Your clip, ${rec.firstName || rec.name}` : 'Your clip',
     robots: { index: false, follow: false },
@@ -59,7 +54,7 @@ function Clip({ slug, clip, label }) {
 
 export default async function ClipPage({ params }) {
   const { slug } = await params;
-  const rec = getClipPage(slug);
+  const rec = await getClipPage(slug);
   if (!rec) notFound();
   const { v } = rec;
   const paid = rec.paid || [];

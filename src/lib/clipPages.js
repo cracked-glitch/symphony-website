@@ -1,21 +1,17 @@
 // Per-prospect clip pages: symphonylabs.ai/c/<code>.
 //
-// Private by design: <code> is random (never the person's name), the page and its video are never
-// listed, linked or indexed (X-Robots-Tag in next.config.mjs), an unpaid page is deleted on its
-// `expires` date by verticals/expire_pages.py, and the page has a one-tap delete.
+// Private by design. Nothing about a prospect lives in this (public) repo: each page's details and video
+// sit in private object storage under CLIP_BASE/<code>/ (page.json, sample.mp4, sample.jpg, paid clips),
+// and the page fetches them when opened. <code> is random, never the person's name; storage has no
+// listing, so a page can only be opened with its exact link. Pages and videos are never indexed
+// (X-Robots-Tag in next.config.mjs). Deleting the storage folder takes the page down at once, with no
+// deploy: verticals/expire_pages.py does that on the expiry date or on a delete request.
 //
 // One page per person we contact. It starts as the outreach page (their free clip, the offer, who we
-// are) and becomes their delivery page: when they pay, their clips are added to the same record and
-// show up under "Your clips". One JSON file per person in src/data/clips/<slug>.json.
-//
-// Video files live under CLIP_BASE/<slug>/<file>. Today that is the site itself (public/clips);
-// set NEXT_PUBLIC_CLIP_BASE to the storage bucket's public URL (e.g. https://clips.cutmyset.com)
-// once clips move to object storage, and nothing else changes.
-import fs from 'node:fs';
-import path from 'node:path';
+// are) and becomes their delivery page: when they pay, their clips are added to the same page.json.
 
-const DATA_DIR = path.join(process.cwd(), 'src', 'data', 'clips');
-export const CLIP_BASE = process.env.NEXT_PUBLIC_CLIP_BASE || '/clips';
+// Public base URL of the clip storage bucket. Set CLIP_BASE locally to test against another bucket.
+export const CLIP_BASE = (process.env.CLIP_BASE || 'https://clips.symphonylabs.ai').replace(/\/$/, '');
 
 // What each audience is sold. One Stripe Payment Link per offer; checkout asks which video, what to
 // skip, and captions or not, so there is no form after paying.
@@ -52,27 +48,26 @@ export const verticals = {
   },
 };
 
-export function clipSlugs() {
-  if (!fs.existsSync(DATA_DIR)) return [];
-  return fs
-    .readdirSync(DATA_DIR)
-    .filter((f) => f.endsWith('.json'))
-    .map((f) => f.replace(/\.json$/, ''));
+const CODE = /^[a-z0-9]{8,24}$/;
+
+// The page's details, read from storage on every visit (never cached), or null if there is no such page.
+export async function getClipPage(code) {
+  if (!CODE.test(code || '')) return null;
+  try {
+    const res = await fetch(`${CLIP_BASE}/${code}/page.json`, { cache: 'no-store' });
+    if (!res.ok) return null;
+    const rec = await res.json();
+    const v = verticals[rec.vertical] || verticals['b2b-podcast'];
+    return { ...rec, slug: code, v };
+  } catch {
+    return null;
+  }
 }
 
-export function getClipPage(slug) {
-  if (!/^[a-z0-9-]+$/.test(slug)) return null;
-  const file = path.join(DATA_DIR, `${slug}.json`);
-  if (!fs.existsSync(file)) return null;
-  const rec = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const v = verticals[rec.vertical] || verticals['b2b-podcast'];
-  return { ...rec, v };
-}
-
-export function mediaUrl(slug, file) {
+export function mediaUrl(code, file) {
   if (!file) return null;
   if (/^https?:\/\//.test(file)) return file;
-  return `${CLIP_BASE}/${slug}/${file}`;
+  return `${CLIP_BASE}/${code}/${file}`;
 }
 
 // "November 26" for a YYYY-MM-DD date.
