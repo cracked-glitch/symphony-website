@@ -17,7 +17,7 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
     terms: {
       title: 'Terms of Service',
       description: `What you get when you order clips from ${brand}, what's included, and what isn't.`,
-      intro: `These terms cover every order from ${brand}. They're written to be read, not skimmed past. The short version: you send a video, we cut it into short clips, you get two rounds of changes, and the clips are yours. If something goes wrong, the [Refund Policy](${refunds}) says what happens.`,
+      intro: `These terms cover every order from ${brand}. They're written to be read, not skimmed past. The short version: you send a video, we cut it into short clips, you get two rounds of changes, and the clips are yours. Once we start cutting, the order is final; the [Refund Policy](${refunds}) has the details.`,
       sections: [
         {
           h: '1. Who we are',
@@ -29,6 +29,7 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
           h: '2. Agreeing to these terms',
           p: [
             `By paying for an order, you agree to these terms, the [Refund Policy](${refunds}) and the [Privacy Policy](${privacy}). If you're ordering for a business or for someone you represent, you're confirming you can agree for them.`,
+            'Clips are custom work made for you, so orders are final once we start cutting, except as the [Refund Policy](' + refunds + ') says. You get two rounds of changes instead.',
             'If we quoted you something different in writing (an email or a text), the written quote wins where it differs from this page. We honor every price we have quoted you in writing.',
           ],
         },
@@ -39,7 +40,7 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
           ],
           list: [
             '"Up to" a number of clips means we cut as many moments as the video honestly supports, up to that number. A clip has to make sense on its own, so some videos give fewer.',
-            'If your video supports fewer than half the clips you ordered, we tell you before delivering. You choose: take the clips at a partial refund for the difference, or a full refund.',
+            'If one video doesn’t have enough good moments for the full count, send us another video or more footage within 60 days and we’ll cut the rest from it. Getting fewer clips from one video isn’t grounds for a refund.',
             'Captions are in English and included unless your order says otherwise. Where offered, you also get a clean copy without captions.',
             'We pick the moments unless you tell us at checkout which ones you want, or what to skip.',
             'Clips use your real audio. We never add laughs, applause or sound that wasn’t there.',
@@ -71,9 +72,7 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
         {
           h: '6. Turnaround',
           p: [
-            'The clock starts once we have three things: your payment, a working link to or file of your video, and the answers to any questions we asked about the order. Turnaround times are targets we work hard to hit, not guarantees. If we’re going to be late, we’ll tell you. If we’re very late, you can cancel; the [Refund Policy](' +
-              refunds +
-              ') says when.',
+            'The clock starts once we have three things: your payment, a working link to or file of your video, and the answers to any questions we asked about the order. Turnaround times are targets we work hard to hit, not guarantees. If we’re going to be late, we’ll tell you. A late delivery isn’t grounds for a refund.',
           ],
         },
         {
@@ -91,6 +90,7 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
             'Included: caption wording, spelling and timing; where a clip starts and ends; bleeping or cutting a word; dropping filler words from captions; captions on, off or moved; and swapping a clip for a different moment from the same video.',
             'Not included: anything from section 4, new footage, or a new style we weren’t told about before cutting. We’ll quote these, or you can place a new order.',
             'If you don’t ask for changes within 7 days of a delivery, that delivery is accepted and the order is complete.',
+            'Once we’ve delivered your clips and made the changes you asked for, up to two rounds, the order is complete. Not liking the clips is a reason to ask for changes, not for a refund.',
           ],
         },
         {
@@ -113,7 +113,7 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
           list: [
             'Payment is up front, in US dollars, through Stripe. We never see or store your full card number.',
             'Prices on the site can change, but never for an order you’ve already paid for.',
-            'Packages that cover several shows or videos are good for 12 months from purchase.',
+            'Packages that cover several shows or videos are good for 12 months from purchase. Unused shows aren’t refundable once work on the first one has started.',
           ],
         },
         {
@@ -164,53 +164,46 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
 
     refunds: {
       title: 'Refund Policy',
-      description: `When ${brand} refunds an order, and when it doesn’t.`,
-      intro: `We would rather fix your clips than refund them, but if we get it wrong, you shouldn't pay for it. Here's exactly how refunds work. The [Terms of Service](${terms}) cover the rest of the order.`,
+      description: `Clips are custom work. ${brand} orders can be refunded only before the work starts.`,
+      intro: `Every order is custom work. Once we start cutting your video, that time is spent and can't be used for anyone else, so orders are final once work starts. What you get instead is two rounds of changes to get the clips right. Please read this before you pay. The [Terms of Service](${terms}) cover the rest of the order.`,
       sections: [
         {
-          h: 'Full refund',
+          h: 'When we refund',
+          p: ['Only in these two cases:'],
           list: [
-            'Before we start. Ask before we’ve started cutting and we refund everything.',
-            'Footage we can’t use. If the audio, framing or length means we can’t make good clips, we tell you before cutting. You get a full refund, or you can send a different video.',
-            'We turn down the order. See section 5 of the [Terms](' + terms + ').',
-            'Very late. If your first clips arrive more than 3 days after the turnaround on your order, you can cancel for a full refund, as long as it’s before they arrive.',
-            'Still wrong after a fix. Tell us within 7 days of your first delivery what’s wrong. We fix it, which uses one of your two change rounds. If you still don’t want the clips after that, we refund in full, as long as you haven’t posted any clip from the order.',
+            'You cancel before we start. Ask before we’ve started cutting and we refund in full. Work often starts within hours of payment, so ask quickly.',
+            'We can’t do the job at all. If we turn down your order (section 5 of the [Terms](' + terms + ')), or we can’t make usable clips from any video you send us, we refund in full.',
           ],
         },
         {
-          h: 'Partial refund',
+          h: 'When we don’t refund',
           list: [
-            'Fewer clips than ordered. If your video supports fewer than half the clips you ordered, you can take the clips we made and get back the difference.',
-            'Unused shows in a package. Within 60 days of buying a package that covers several shows or videos, you can get back the per-show price for each show you haven’t sent yet. After 60 days, unused shows stay available for the rest of the 12 months but aren’t refundable.',
-          ],
-        },
-        {
-          h: 'No refund',
-          list: [
-            'After you’ve posted or published any clip from the order.',
-            'After 7 days from your last delivery with no change request. The order is complete at that point.',
-            'For a change of mind, when the clips match what you ordered.',
+            'Once we’ve started cutting your video.',
+            'Because you don’t like the clips. That’s what your two rounds of changes are for. Once we’ve delivered the clips and made the changes you asked for, the order is complete.',
+            'Because a video gave fewer clips than the number on your order. Orders are for "up to" a number of clips. Send us another video or more footage within 60 days and we’ll cut the rest from it.',
+            'Because a delivery took longer than expected. If we’re running behind, we’ll tell you and keep working until your clips are delivered.',
             'Because a clip didn’t get the views, followers or bookings you hoped for.',
             'For a style, length or edit you didn’t ask for before we cut, or for work outside the order (section 4 of the [Terms](' + terms + ')).',
-            'For a month of a monthly plan once we’ve started that month’s clips. Cancelling stops the next charge.',
+            'For unused shows in a package once work on the first show has started. Unused shows stay good for 12 months from purchase.',
+            'For a month of a monthly plan once that month’s work has started. Cancelling stops the next charge.',
           ],
         },
         {
-          h: 'One refund per customer',
+          h: 'If your footage won’t work',
           p: [
-            'We refund in good faith. After a first refund, later orders from the same person or business are final once the first clips are delivered. We may decline orders from anyone who abuses refunds or changes.',
+            'If the audio, framing or length of a video means we can’t make good clips from it, we tell you before cutting and you send a different one. Your order stays open for 60 days.',
           ],
         },
         {
-          h: 'How to ask',
+          h: 'How to cancel',
           p: [
-            `${contact} Tell us your name and the email you paid with. We answer within one business day. Approved refunds go back to the card or account you paid with through Stripe, and usually show up in 5 to 10 business days.`,
+            `${contact} Tell us your name and the email you paid with. If work hasn’t started, the refund goes back to the card or account you paid with through Stripe and usually shows up in 5 to 10 business days.`,
           ],
         },
         {
-          h: 'Before you dispute a charge',
+          h: 'Disputed charges',
           p: [
-            'Please contact us first. We can almost always sort it out faster than a bank can. If a charge is disputed after clips were delivered, we’ll share our order and delivery records with the payment processor.',
+            'Please talk to us before disputing a charge. By paying, you agree that a delivered order isn’t refundable. If a charge is disputed, we’ll send the payment processor our records: your order, these terms, the delivered clips and our messages with you. We may decline future orders from anyone who disputes a delivered order or abuses changes.',
           ],
         },
       ],
