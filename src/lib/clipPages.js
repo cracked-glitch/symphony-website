@@ -11,7 +11,7 @@
 // are) and becomes their delivery page: when they pay, their clips are added to the same page.json.
 
 // Public base URL of the clip storage bucket. Set CLIP_BASE locally to test against another bucket.
-export const CLIP_BASE = (process.env.CLIP_BASE || 'https://clips.symphonylabs.ai').replace(/\/$/, '');
+export const CLIP_BASE = (process.env.CLIP_BASE || 'https://pub-3430e470d84e45bf880072eb5ba9758e.r2.dev').replace(/\/$/, '');
 
 // What each audience is sold. One Stripe Payment Link per offer; checkout asks which video, what to
 // skip, and captions or not, so there is no form after paying.
