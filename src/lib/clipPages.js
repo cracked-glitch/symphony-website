@@ -5,7 +5,8 @@
 // and the page fetches them when opened. <code> is random, never the person's name; storage has no
 // listing, so a page can only be opened with its exact link. Pages and videos are never indexed
 // (X-Robots-Tag in next.config.mjs). Deleting the storage folder takes the page down at once, with no
-// deploy: verticals/expire_pages.py does that on the expiry date or on a delete request.
+// deploy: verticals/expire_pages.py does that on the expiry date, or by hand after Nathan OKs a delete request
+// (a "Delete my clip" tap only emails him; nothing is ever deleted automatically on a request).
 //
 // One page per person we contact. It starts as the outreach page (their free clip, the offer, who we
 // are) and becomes their delivery page: when they pay, their clips are added to the same page.json.

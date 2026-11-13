@@ -2,19 +2,23 @@
 
 import { useState } from 'react';
 
-// One tap asks for this page and its video to be deleted. The request lands in Nathan's inbox (the same
-// Formspree form the site already uses) and the cleanup script removes the page, the video and the
-// working files.
+// A delete REQUEST, never a delete. One tap asks "are you sure?"; a second tap emails Nathan through the
+// site's Formspree form. Nothing is removed automatically: Nathan decides, and deletes by hand with
+// `python verticals/expire_pages.py --delete <code>` in the comedy repo (Nathan, 2026-11-13).
 export default function DeleteMyClip({ code, endpoint }) {
-  const [state, setState] = useState('idle');
+  const [state, setState] = useState('idle'); // idle -> confirm -> sending -> done | error
 
-  async function remove() {
-    if (state !== 'idle') return;
+  async function send() {
     setState('sending');
     const body = new FormData();
     body.append('formType', 'Clip page: delete request');
-    body.append('_subject', `DELETE clip page ${code}`);
+    body.append('_subject', `Delete request for clip page ${code} (nothing deleted yet)`);
     body.append('page', code);
+    body.append('url', `https://symphonyclips.com/c/${code}`);
+    body.append(
+      'note',
+      `Nothing has been deleted. If you want it gone, run: python verticals/expire_pages.py --delete ${code}`,
+    );
     try {
       const res = await fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' } });
       setState(res.ok ? 'done' : 'error');
@@ -26,15 +30,29 @@ export default function DeleteMyClip({ code, endpoint }) {
   if (state === 'done') {
     return (
       <p className="st-body !text-[var(--st-bone)]">
-        Done. This page, the clip and everything I downloaded to make it will be deleted within 24 hours, and you
-        won&rsquo;t hear from me again.
+        Got it. I&rsquo;ll take this page down within a day, and you won&rsquo;t hear from me again.
       </p>
+    );
+  }
+  if (state === 'confirm' || state === 'sending') {
+    return (
+      <div className="flex flex-col gap-2 items-stretch md:items-end">
+        <p className="st-body !text-[0.9rem]">Delete this page and its clips?</p>
+        <div className="flex gap-2">
+          <button type="button" onClick={send} className="st-btn st-btn-ghost" disabled={state === 'sending'}>
+            {state === 'sending' ? 'Sending…' : 'Yes, delete it'}
+          </button>
+          <button type="button" onClick={() => setState('idle')} className="st-btn st-btn-ghost" disabled={state === 'sending'}>
+            Keep it
+          </button>
+        </div>
+      </div>
     );
   }
   return (
     <div>
-      <button type="button" onClick={remove} className="st-btn st-btn-ghost" disabled={state === 'sending'}>
-        {state === 'sending' ? 'Deleting…' : 'Delete my clip now'}
+      <button type="button" onClick={() => setState('confirm')} className="st-btn st-btn-ghost">
+        Delete my clip now
       </button>
       {state === 'error' && (
         <p className="st-hint mt-2">That didn&rsquo;t go through. Reply &ldquo;delete&rdquo; to my email and I&rsquo;ll do it by hand.</p>
