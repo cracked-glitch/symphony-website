@@ -75,8 +75,8 @@ export const wholeSet = comedyTiers[1];
 export const wholeTour = comedyTiers[2];
 
 export const comedySteps = [
-  'Check out',
-  'Send the link to your set: YouTube, Drive, or Dropbox',
+  'Check out and paste the link to your set: YouTube, Drive, or Dropbox',
+  'I watch the whole set and cut the best jokes',
   'Get your clips back within 24 hours',
 ];
 
@@ -258,15 +258,10 @@ export const studioFaq = [
   {
     question: 'What do I send?',
     answer:
-      "The raw video of your set. A YouTube link works. A master file from the camera cuts cleanest. A wide shot from the back of the room is hard to crop, so if yours won't work we'll tell you.",
+      "A link to the video of your set. You paste it at checkout. YouTube, Google Drive, and Dropbox links all work. If you have the master file from the camera, put it in Drive or Dropbox and paste that link, because it cuts cleanest. A wide shot from the back of the room is hard to crop, so if yours won't work I'll tell you.",
   },
   {
     question: 'Can I use the clips anywhere?',
     answer: "Yes. They're yours. Post them, repost them, run them as ads, use them however you want.",
-  },
-  {
-    question: 'Will you add laughs or titles?',
-    answer:
-      "No. Real laughs only, and captions only, so you write your own caption when you post. Want something changed? Tell us and we'll recut it.",
   },
 ];
