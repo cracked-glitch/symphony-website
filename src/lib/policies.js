@@ -5,7 +5,7 @@
 // Paragraphs may contain [label](href) links. A section has a heading `h`, then any of
 // `p` (paragraphs) and `list` (bullets), rendered in that order: p, list, after.
 
-export const POLICY_UPDATED = 'November 12, 2026';
+export const POLICY_UPDATED = 'November 13, 2026';
 
 export function getPolicies({ brand, base = '', email, address }) {
   const terms = `${base}/terms`;
@@ -78,7 +78,7 @@ export function getPolicies({ brand, base = '', email, address }) {
         {
           h: '7. Delivery',
           p: [
-            'We deliver your clips on a private web page, by email, or by a download link. Private pages are unlisted and hidden from search engines. Please save your clips. We keep delivery pages up for at least 30 days after the last delivery.',
+            'We deliver your clips on a private web page, by email, or by a download link. Private pages are unlisted and hidden from search engines, and only someone with the exact link can open them. Please save your clips. We keep delivery pages up for at least 30 days after the last delivery, and the delete date is shown on the page. After that the page and its clips are deleted, unless you add page hosting (section 12).',
           ],
         },
         {
@@ -117,9 +117,12 @@ export function getPolicies({ brand, base = '', email, address }) {
           ],
         },
         {
-          h: '12. Monthly plans',
+          h: '12. Monthly plans and page hosting',
           p: [
-            'A monthly plan renews each month until you cancel. Cancel any time by email or text. It ends at the close of the month you’ve paid for. Clips you don’t use in a month don’t roll over.',
+            'A monthly plan renews each month until you cancel. Cancel any time by email. It ends at the close of the month you’ve paid for. Clips you don’t use in a month don’t roll over.',
+            'Page hosting is $14 a month. It keeps your clips page and every clip on it online for as long as you keep paying, with no delete date. Clips from any later order are added to the same page. Hosting covers storing and showing the page. New clips and changes are separate orders.',
+            'A hosted page stays private (unlisted, hidden from search engines, open only to someone with the link) unless you ask us in writing to make it public. If you do, anyone can find and view it, including search engines. You can ask us to make it private again, or to delete it, at any time.',
+            'Cancel page hosting any time by email. The page stays up until the end of the month you’ve paid for. After that we email you, keep the page up for 14 more days so you can download your clips, and then delete it.',
           ],
         },
         {
@@ -169,9 +172,10 @@ export function getPolicies({ brand, base = '', email, address }) {
       sections: [
         {
           h: 'When we refund',
-          p: ['Only in these two cases:'],
+          p: ['Only in these cases:'],
           list: [
             'You cancel before we start. Ask before we’ve started cutting and we refund in full. Work often starts within hours of payment, so ask quickly.',
+            'We stop offering page hosting. If we ever do, we refund any month you’ve paid for and haven’t had, and give you at least 30 days to download your clips.',
             'We can’t do the job at all. If we turn down your order (section 5 of the [Terms](' + terms + ')), or we can’t make usable clips from any video you send us, we refund in full.',
           ],
         },
@@ -186,6 +190,7 @@ export function getPolicies({ brand, base = '', email, address }) {
             'For a style, length or edit you didn’t ask for before we cut, or for work outside the order (section 4 of the [Terms](' + terms + ')).',
             'For unused shows in a package once work on the first show has started. Unused shows stay good for 12 months from purchase.',
             'For a month of a monthly plan once that month’s work has started. Cancelling stops the next charge.',
+            'For a month of page hosting once that month has started. Cancelling stops the next charge, and your page stays up until the end of the month you’ve paid for.',
           ],
         },
         {
@@ -262,6 +267,7 @@ export function getPolicies({ brand, base = '', email, address }) {
           list: [
             'Your video and clips: while we’re working with you, and for a reasonable time after so we can make fixes or cut more. Ask at any time and we’ll delete them.',
             'Free sample pages: deleted when you tap delete or ask us, and taken down after about two weeks otherwise.',
+            'Delivery pages: at least 30 days after the last delivery, or for as long as you pay for page hosting. A hosted page is private unless you ask us to make it public, and then anyone can see it, including search engines.',
             'Payment records: as long as tax law requires, usually up to 7 years.',
             'The do-not-contact list: for as long as we send email.',
           ],
