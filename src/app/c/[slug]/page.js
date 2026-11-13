@@ -240,9 +240,6 @@ export default async function ClipPage({ params }) {
           </div>
           <DeleteMyClip code={slug} endpoint={studioIntakeEndpoint} />
         </div>
-        <p className="mx-auto max-w-[1000px] px-5 pb-8 st-hint">
-          Symphony Studio, 698 Rochelle Drive NE, Atlanta, GA.
-        </p>
       </section>
     </div>
   );

@@ -6,7 +6,6 @@ const policies = getPolicies({
   brand: 'Symphony Studio',
   base: '/studio',
   email: studioHuman.email,
-  address: '698 Rochelle Drive NE, Atlanta, GA',
 });
 const policy = policies.privacy;
 

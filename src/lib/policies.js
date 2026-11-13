@@ -7,11 +7,11 @@
 
 export const POLICY_UPDATED = 'November 13, 2026';
 
-export function getPolicies({ brand, base = '', email, address }) {
+export function getPolicies({ brand, base = '', email }) {
   const terms = `${base}/terms`;
   const refunds = `${base}/refunds`;
   const privacy = `${base}/privacy`;
-  const contact = `Email [${email}](mailto:${email}) or write to ${brand}, ${address}.`;
+  const contact = `Email [${email}](mailto:${email}).`;
 
   return {
     terms: {
@@ -22,7 +22,7 @@ export function getPolicies({ brand, base = '', email, address }) {
         {
           h: '1. Who we are',
           p: [
-            `${brand} is a trade name of Symphony AI, LLC, a Georgia limited liability company, ${address}. "We" and "us" mean Symphony AI, LLC. "You" means the person or business placing the order.`,
+            `${brand} is a trade name of Symphony AI, LLC, a Georgia limited liability company. "We" and "us" mean Symphony AI, LLC. "You" means the person or business placing the order.`,
           ],
         },
         {
@@ -221,7 +221,7 @@ export function getPolicies({ brand, base = '', email, address }) {
       sections: [
         {
           h: 'Who is responsible',
-          p: [`Symphony AI, LLC, which runs ${brand}, ${address}. ${contact}`],
+          p: [`Symphony AI, LLC, which runs ${brand}. ${contact}`],
         },
         {
           h: 'What we collect',
