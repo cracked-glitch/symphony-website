@@ -2,6 +2,7 @@ import Link from 'next/link';
 import StudioFAQ from '@/components/studio/StudioFAQ';
 import StickyBook from '@/components/studio/StickyBook';
 import ExampleClip from '@/components/studio/ExampleClip';
+import ClientClip from '@/components/studio/ClientClip';
 import ReelStrip from '@/components/studio/ReelStrip';
 import PriceCard from '@/components/studio/PriceCard';
 import WhoCuts from '@/components/studio/WhoCuts';
@@ -11,6 +12,7 @@ import {
   wholeTour,
   comedySteps,
   exampleClip,
+  clientSpotlight,
   showPack,
   threeShows,
   reel,
@@ -42,7 +44,7 @@ export default function StudioPage() {
     <>
       {/* ---------- Hero: the offer and the look ---------- */}
       <section className="st-spotlight">
-        <div className="mx-auto max-w-[1100px] px-6 pt-10 pb-16 md:pt-16 md:pb-20 grid gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] items-center">
+        <div className="mx-auto max-w-[1100px] px-6 pt-10 pb-16 md:pt-16 md:pb-20 grid gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-center">
           <div>
             <p className="st-kicker mb-5">For stand-up comedians</p>
             <h1 className="st-display text-[clamp(2.5rem,6vw,4.4rem)] mb-6">
@@ -65,14 +67,65 @@ export default function StudioPage() {
             </p>
           </div>
 
-          <figure className="mx-auto w-full max-w-[280px]">
-            <p className="st-kicker mb-3 text-center">This is the look</p>
-            <ExampleClip clip={exampleClip} />
-            <figcaption className="st-body text-[0.78rem] !text-[var(--st-dust)] mt-3 text-center leading-snug">
-              {exampleClip.comic}&rsquo;s own clip from the {exampleClip.channel} channel, shown as a
-              reference. Not our work, and not affiliated with us.
-            </figcaption>
-          </figure>
+          {/* Side by side, on phones too: Scott (our real work) first, then the Nate Bargatze reference. */}
+          <div className="mx-auto w-full max-w-[480px] grid grid-cols-2 gap-3 sm:gap-4 items-start">
+            {clientSpotlight.clips.slice(0, 1).map((clip) => (
+              <figure key={clip.src}>
+                <p className="st-kicker mb-3 text-center">My work</p>
+                <ClientClip clip={clip} who={clientSpotlight.name} />
+                <figcaption className="st-body text-[0.74rem] !text-[var(--st-dust)] mt-3 text-center leading-snug">
+                  Cut by me from {clientSpotlight.name}&rsquo;s set at {clientSpotlight.where}. Shown with his OK.
+                </figcaption>
+              </figure>
+            ))}
+            <figure>
+              <p className="st-kicker mb-3 text-center">The look</p>
+              <ExampleClip clip={exampleClip} />
+              <figcaption className="st-body text-[0.74rem] !text-[var(--st-dust)] mt-3 text-center leading-snug">
+                {exampleClip.comic}&rsquo;s own clip from his {exampleClip.channel} channel, as a reference. Not
+                our work, not affiliated.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Scott's quote and a thank-you shout-out (his clip is in the hero) ---------- */}
+      <section id="work" className="scroll-mt-20 border-t border-[var(--st-line)]">
+        <div className="mx-auto max-w-[1100px] px-6 py-12 md:py-16 grid gap-8 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] items-end">
+          <blockquote>
+            <p className="st-kicker mb-4">From my first client</p>
+            <p className="st-display text-[clamp(1.5rem,3.4vw,2.2rem)] leading-tight mb-5">
+              &ldquo;{clientSpotlight.quote}&rdquo;
+            </p>
+            <footer className="st-kicker st-kicker-dim !tracking-[0.12em]">
+              {clientSpotlight.name} · {clientSpotlight.role}
+            </footer>
+          </blockquote>
+          <div>
+            <p className="st-body !text-[var(--st-bone)]">
+              Scott was the first comic to send me a full set. I cut it into 21 clips. He&rsquo;s funny, so go follow
+              him and catch him live.
+            </p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 st-body text-[0.95rem] mt-4">
+              <li>
+                <a
+                  href={`https://www.instagram.com/${clientSpotlight.instagram}/`}
+                  target="_blank"
+                  rel="noopener"
+                  className="st-flare-text underline underline-offset-4"
+                >
+                  @{clientSpotlight.instagram} on Instagram
+                </a>
+              </li>
+              <li>
+                Book Scott:{' '}
+                <a href={`mailto:${clientSpotlight.email}`} className="st-flare-text underline underline-offset-4">
+                  {clientSpotlight.email}
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 

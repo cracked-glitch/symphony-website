@@ -97,8 +97,25 @@ export const studioHuman = {
 
 // Comedian quotes for /studio. Add one only with the comic's written OK, in
 // their own words: { quote, name, credit } (credit like "Helium Atlanta").
-// The block stays hidden while this is empty.
+// The block stays hidden while this is empty. Scott's quote lives in
+// clientSpotlight below, so it isn't repeated here.
 export const testimonials = [];
+
+// ---------- Real client work on /studio ----------
+// Same record as symphonyclips.com (src/lib/studio.js there). Scott Bedgood, our first paying comic, wrote back
+// on 2026-11-12 (Gmail thread 1a18ae364d34073c) with this quote, word for word, and "You can pick a clip of mine
+// to feature." ONE clip until he OKs more in writing. It sits in the hero beside the Nate Bargatze reference,
+// Scott first and labelled "My work"; his quote and a thank-you shout-out are the band under the hero.
+export const clientSpotlight = {
+  name: 'Scott Bedgood',
+  role: 'Stand-up comic',
+  where: 'Helium Comedy Club',
+  quote:
+    'Nathan was really great to work with. Very professional, got the clips cut quickly, and they look great!',
+  instagram: 'scottbedgood',
+  email: 'scott@bedgoodmarketing.com',
+  clips: [{ src: 'scott-falcons', title: 'The Atlanta Falcons of my marriage' }],
+};
 
 // ---------- First order: 2 clips for $5 (/studio/try) ----------
 // The link that Facebook group posts, DMs, and QR cards point to. Comics pay
