@@ -101,19 +101,19 @@ export const studioHuman = {
 // clientSpotlight below, so it isn't repeated here.
 export const testimonials = [];
 
-// ---------- Real client work on /studio ----------
-// Same record as symphonyclips.com (src/lib/studio.js there). Scott Bedgood, our first paying comic, wrote back
-// on 2026-11-12 (Gmail thread 1a18ae364d34073c) with this quote, word for word, and "You can pick a clip of mine
-// to feature." ONE clip until he OKs more in writing. It sits in the hero beside the Nate Bargatze reference,
-// Scott first and labelled "My work"; his quote and a thank-you shout-out are the band under the hero.
+// ---------- Real client work ----------
+// Scott Bedgood, our first paying comic. On 2026-11-12 he wrote back (Gmail thread 1a18ae364d34073c) with the
+// quote below, word for word, and "You can pick a clip of mine to feature." That's ONE clip, so `clips` holds
+// one until he OKs more in writing (only clips[0] is shown). It sits first in the hero, labelled "My work",
+// side by side with the Nate Bargatze reference, and his quote and Instagram sit right under it.
+// Nathan, 11/12: no backstory and no booking email. It's proof of my work, not an ad for Scott; the Instagram
+// link is the thank-you. Files: public/studio/clients/<src>.mp4 and .jpg (720x1280).
 export const clientSpotlight = {
   name: 'Scott Bedgood',
-  role: 'Stand-up comic',
   where: 'Helium Comedy Club',
   quote:
     'Nathan was really great to work with. Very professional, got the clips cut quickly, and they look great!',
   instagram: 'scottbedgood',
-  email: 'scott@bedgoodmarketing.com',
   clips: [{ src: 'scott-falcons', title: 'The Atlanta Falcons of my marriage' }],
 };
 
