@@ -78,7 +78,7 @@ export function getPolicies({ brand, base = '', email, address }) {
         {
           h: '7. Delivery',
           p: [
-            'We deliver your clips on a private web page, by email, or by a download link. Private pages are unlisted and hidden from search engines, and only someone with the exact link can open them. Please save your clips. We keep delivery pages up for at least 30 days after the last delivery, and the delete date is shown on the page. After that the page and its clips are deleted, unless you add page hosting (section 12).',
+            'We deliver your clips on a private web page, by email, or by a download link. Private pages are unlisted and hidden from search engines, and only someone with the exact link can open them. Please save your clips. We keep delivery pages up for at least 14 days after the last delivery, and the delete date is shown on the page. After that the page and its clips are deleted, unless you add page hosting (section 12).',
           ],
         },
         {
@@ -267,7 +267,7 @@ export function getPolicies({ brand, base = '', email, address }) {
           list: [
             'Your video and clips: while we’re working with you, and for a reasonable time after so we can make fixes or cut more. Ask at any time and we’ll delete them.',
             'Free sample pages: deleted when you tap delete or ask us, and taken down after about two weeks otherwise.',
-            'Delivery pages: at least 30 days after the last delivery, or for as long as you pay for page hosting. A hosted page is private unless you ask us to make it public, and then anyone can see it, including search engines.',
+            'Delivery pages: at least 14 days after the last delivery, or for as long as you pay for page hosting. A hosted page is private unless you ask us to make it public, and then anyone can see it, including search engines.',
             'Payment records: as long as tax law requires, usually up to 7 years.',
             'The do-not-contact list: for as long as we send email.',
           ],
