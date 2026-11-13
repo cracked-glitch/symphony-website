@@ -85,13 +85,13 @@ export const comedySteps = [
 // /studio/try say who does the work and how to reach him.
 // photo: path under /public to a real, recent photo (a phone shot is fine).
 // Leave null and the block shows initials. Don't use the AI-generated headshot.
-// phone: remove it to take the number off the site.
+// No phone number, ever. Nathan is reached by email (or the booking flow), never by a
+// number on the site.
 export const studioHuman = {
   name: 'Nathan Settlage',
   initials: 'NS',
   city: 'Atlanta',
   photo: '/studio/nathan.jpg',
-  phone: '770-286-8865',
   email: 'nathan@symphonylabs.ai',
 };
 

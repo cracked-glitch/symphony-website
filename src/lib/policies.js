@@ -7,11 +7,11 @@
 
 export const POLICY_UPDATED = 'November 12, 2026';
 
-export function getPolicies({ brand, base = '', email, phone, address }) {
+export function getPolicies({ brand, base = '', email, address }) {
   const terms = `${base}/terms`;
   const refunds = `${base}/refunds`;
   const privacy = `${base}/privacy`;
-  const contact = `Email [${email}](mailto:${email}), call or text ${phone}, or write to ${brand}, ${address}.`;
+  const contact = `Email [${email}](mailto:${email}) or write to ${brand}, ${address}.`;
 
   return {
     terms: {
@@ -125,7 +125,7 @@ export function getPolicies({ brand, base = '', email, phone, address }) {
         {
           h: '13. How the clips are made',
           p: [
-            'We use our own software and third-party tools, including automated transcription and editing software, to find moments, crop the frame and time captions. A person is responsible for every order and you can reach them by phone.',
+            'We use our own software and third-party tools, including automated transcription and editing software, to find moments, crop the frame and time captions. A person is responsible for every order and you can reach them by email.',
           ],
         },
         {

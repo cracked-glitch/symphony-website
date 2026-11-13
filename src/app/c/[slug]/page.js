@@ -59,7 +59,6 @@ export default async function ClipPage({ params }) {
   const { v } = rec;
   const paid = rec.paid || [];
   const first = rec.firstName || rec.name;
-  const phoneDigits = studioHuman.phone.replace(/\D/g, '');
   const buy = checkoutHref(rec);
   const expires = paid.length ? null : prettyDate(rec.expires);
 
@@ -149,7 +148,7 @@ export default async function ClipPage({ params }) {
           <div className="mx-auto max-w-[1100px] px-5 py-12 md:py-16">
             <h2 className="st-display text-[clamp(1.8rem,4vw,2.6rem)] mb-2">Your {v.clipWord}</h2>
             <p className="st-body mb-8">
-              Want something changed? Reply to my email or text {studioHuman.phone} with the clip number.
+              Want something changed? Reply to my email with the clip number.
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {paid.map((clip, i) => (
@@ -201,11 +200,7 @@ export default async function ClipPage({ params }) {
                 working copies when the page goes.
               </p>
               <p className="st-body">
-                Call or text{' '}
-                <a href={`tel:+1${phoneDigits}`} className="st-flare-text underline underline-offset-4">
-                  {studioHuman.phone}
-                </a>
-                , or email{' '}
+                Email me at{' '}
                 <a href={`mailto:${studioHuman.email}`} className="st-flare-text underline underline-offset-4">
                   {studioHuman.email}
                 </a>

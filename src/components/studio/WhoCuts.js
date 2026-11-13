@@ -5,8 +5,7 @@ import { studioHuman, testimonials } from '@/lib/studio';
 // photo when studioHuman.photo is set, initials until then. Quotes appear only
 // once testimonials has entries.
 export default function WhoCuts() {
-  const { name, initials, city, photo, phone, email } = studioHuman;
-  const phoneDigits = phone ? phone.replace(/\D/g, '') : null;
+  const { name, initials, city, photo, email } = studioHuman;
 
   return (
     <section className="border-t border-[var(--st-line)]">
@@ -53,16 +52,7 @@ export default function WhoCuts() {
           </ul>
           <p className="st-body text-[0.95rem]">
             Questions first?{' '}
-            {phone && (
-              <>
-                Call or text{' '}
-                <a href={`tel:+1${phoneDigits}`} className="st-flare-text underline underline-offset-4">
-                  {phone}
-                </a>
-                , or email{' '}
-              </>
-            )}
-            {!phone && 'Email '}
+            Email{' '}
             <a href={`mailto:${email}`} className="st-flare-text underline underline-offset-4">
               {email}
             </a>
