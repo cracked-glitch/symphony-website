@@ -96,7 +96,7 @@ export default function StudioPage() {
                 &ldquo;{clientSpotlight.quote}&rdquo;
               </p>
               <footer className="st-body text-[0.82rem] !text-[var(--st-dust)] mt-3">
-                {clientSpotlight.name}, on the clips I cut for him ·{' '}
+                &ndash;{clientSpotlight.name}{' '}
                 <a
                   href={`https://www.instagram.com/${clientSpotlight.instagram}/`}
                   target="_blank"
