@@ -1,6 +1,7 @@
 // symphonylabs.ai/nathan  — copy this file to src/app/nathan/page.js in the symphony-website repo.
 // Self-contained: no imports beyond React, inline styles, works with the existing Next.js App Router.
 export const metadata = {
+  robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
   title: "Nathan Settlage: a Fortune 100 AI rollout, decomposed",
   description:
     "How I deploy AI with customers and take new things from zero to one: a Delta Air Lines rollout decomposed, Symphony Clips, a clip studio run by AI agents, and the product I ship as CPO at PinnTag.",
