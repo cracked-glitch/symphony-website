@@ -144,11 +144,9 @@ export default function ServicesPage() {
           </div>
           <h2 className="text-2xl md:text-3xl font-bold font-heading mb-3">Grant Desk</h2>
           <p className="text-text-secondary leading-relaxed mb-5">
-            Short a grant writer? Send us the grant you are applying for. We draft the application
-            from your own materials, a person checks every page against the funder&rsquo;s rules,
-            and you approve and submit. The first section is free. A finished application is $750 flat.
+            We draft your next grant application. First section free. $750 flat.
           </p>
-          <Button href="/grants" size="sm">See how Grant Desk works</Button>
+          <Button href="/grants">See Grant Desk prices</Button>
         </div>
       </Section>
 
