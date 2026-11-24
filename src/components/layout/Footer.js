@@ -8,6 +8,7 @@ const footerLinks = {
     { label: 'AI Literacy Workshops', href: '/services' },
     { label: 'Custom Agent Development', href: '/services' },
     { label: 'Workflow Automation', href: '/services' },
+    { label: 'Grant Desk for Nonprofits', href: '/grants' },
   ],
   Company: [
     { label: 'About', href: '/about' },

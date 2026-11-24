@@ -136,6 +136,22 @@ export default function ServicesPage() {
         </div>
       </Section>
 
+      {/* Grant Desk — done-for-you grant applications */}
+      <Section>
+        <div className="rounded-xl bg-bg-secondary border-l-4 border-cyan p-6 md:p-8 max-w-4xl">
+          <div className="glass-subtle inline-block rounded-full text-cyan text-xs font-semibold px-3 py-1 mb-4">
+            For Nonprofits
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold font-heading mb-3">Grant Desk</h2>
+          <p className="text-text-secondary leading-relaxed mb-5">
+            Short a grant writer? Send us the grant you are applying for. We draft the application
+            from your own materials, a person checks every page against the funder&rsquo;s rules,
+            and you approve and submit. The first section is free. A finished application is $750 flat.
+          </p>
+          <Button href="/grants" size="sm">See how Grant Desk works</Button>
+        </div>
+      </Section>
+
       {/* The Symphony Suite — pre-built, ready-to-use */}
       <Section bg="bg-bg-tertiary" background="grid" decoration="orbs">
         <div className="max-w-3xl mb-10">
